@@ -1,0 +1,235 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/Poppins.otf");
+}
+body {
+  margin: 0px;
+}
+
+.active {
+  background-color: saddlebrown;
+  color: white;
+  /* veya istediğiniz stil değişikliklerini buraya ekleyebilirsiniz */
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Scroll bar genişliği */
+  height: 8px; /* Scroll bar yüksekliği */
+}
+::-webkit-scrollball-x {
+  width: 8px; /* Scroll bar genişliği */
+  height: 8px; /* Scroll bar yüksekliği */
+}
+
+/* Scroll bar arka planı */
+::-webkit-scrollbar-track {
+  background: #335c69;
+}
+
+/* Scroll barın kendisi */
+::-webkit-scrollbar-thumb {
+  background: #cefc2f;
+  border-radius: 4px; /* Köşeleri yuvarlama */
+}
+
+:where(.css-dev-only-do-not-override-nllxry).ant-flex-justify-space-evenly {
+  flex-wrap: wrap;
+}
+
+.ant-modal .ant-modal-content {
+  background-color: white;
+  border-radius: 1.5rem;
+}
+
+.dark .ant-modal .ant-modal-content {
+  background-color: #20232e;
+}
+
+.ant-modal .ant-modal-header {
+  background-color: transparent;
+}
+
+.ant-modal .ant-modal-title {
+  color: black;
+  text-align: center;
+  font-family: poppins;
+}
+.dark .ant-modal .ant-modal-title {
+  color: white;
+  text-align: center;
+  font-family: poppins;
+}
+.ant-modal .ant-modal-footer .ant-btn-default {
+  background-color: #63b995;
+  color: white;
+  font-family: poppins;
+}
+.ant-modal .ant-modal-footer .ant-btn-default:hover {
+  background-color: #9fe5c5;
+  color: white;
+  font-family: poppins;
+  border: white;
+}
+.dark .ant-modal .ant-modal-footer .ant-btn-default {
+  background-color: #20232e;
+  color: white;
+  font-family: poppins;
+}
+.dark .ant-modal .ant-modal-footer .ant-btn-default:hover {
+  background-color: #505050;
+}
+
+.ant-modal .ant-modal-footer .ant-btn-primary {
+  background-color: #63b995;
+  color: white;
+  font-family: poppins;
+}
+.ant-modal .ant-modal-footer .ant-btn-primary:hover {
+  background-color: #9fe5c5;
+  color: white;
+  font-family: poppins;
+  border: white;
+}
+.dark .ant-modal .ant-modal-footer .ant-btn-primary {
+  background-color: #20232e;
+  font-family: poppins;
+  border: 1px solid white;
+}
+.dark .ant-modal .ant-modal-footer .ant-btn-primary:hover {
+  background-color: #505050;
+  border: #505050;
+}
+.dark .ant-modal-close-x {
+  color: white;
+}
+.dark .ant-modal-close-x:hover {
+  color: #63b995;
+}
+/*Mode*/
+.ant-input::placeholder {
+  color: "rgba(0, 0, 0, 0.25)";
+  font-family: poppins;
+}
+.dark .ant-input::placeholder {
+  color: rgba(209, 213, 219, 1);
+}
+
+.dark .ant-input {
+  background-color: #20232e;
+  border: #20232e;
+  color: rgba(209, 213, 219, 1);
+}
+.ant-input {
+  border-radius: 1.5rem;
+  border: white;
+}
+
+.dark .ant-btn-primary {
+  background-color: #20232e;
+  color: white;
+}
+
+.ant-btn-primary {
+  background-color: white;
+  color: black;
+
+  font-family: poppins;
+}
+
+.ant-select {
+  background-color: white;
+  border-radius: 1.5rem;
+}
+.dark .ant-select {
+  background-color: #20232e;
+}
+.dark .ant-select-item-option {
+  background-color: #20232e;
+}
+.ant-btn-primary:hover {
+  background-color: #9fe5c5 !important;
+}
+.dark .ant-btn-primary:hover {
+  background-color: #505050 !important;
+}
+
+.dark .ant-select-selector {
+  background-color: #20232e !important;
+  color: rgba(209, 213, 219, 1) !important;
+  border: none;
+  font-family: poppins;
+}
+.ant-select-selection-item {
+  border: none !important;
+}
+.dark .ant-select-dropdown {
+  background-color: #20232e;
+  font-family: poppins;
+  color: white;
+}
+.dark .ant-select-dropdown:hover {
+  background-color: white;
+  font-family: poppins;
+  color: #20232e;
+}
+/*kart yazı ortalama*/
+.ant-card-head-title {
+  font-family: poppins;
+  text-align: center;
+}
+
+/*signinpage*/
+.ant-form-item-explain-error {
+  color: #505050 !important;
+  font-family: poppins !important;
+}
+.dark .ant-form-item-explain-error {
+  color: red !important;
+  font-family: poppins !important;
+}
+.ant-form-input {
+  background-color: #20232e;
+}
+.ant-form-item-control-input {
+}
+.ant-input-affix-wrapper {
+  background-color: white !important;
+}
+.dark .ant-input-affix-wrapper {
+  background-color: #20232e !important;
+}
+/*warning*/
+.dark .ant-notification-notice {
+  background-color: #335c69;
+  font-family: poppins;
+}
+.dark .ant-notification-notice-message {
+  color: white !important;
+  font-family: poppins;
+}
+.dark .ant-notification-notice-description {
+  color: white !important;
+  font-family: poppins;
+}
+.ant-notification-notice {
+  font-family: poppins;
+}
+.dark .ant-notification-notice-close-x {
+  color: rgba(209, 213, 219, 1);
+}

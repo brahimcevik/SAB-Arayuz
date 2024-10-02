@@ -1,0 +1,506 @@
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/appsettings.Development.json
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/appsettings.json
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/SABApi
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/SABApi.deps.json
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/SABApi.runtimeconfig.json
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/SABApi.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/SABApi.pdb
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/Microsoft.OpenApi.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/SABApi.csproj.AssemblyReference.cache
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/SABApi.GeneratedMSBuildEditorConfig.editorconfig
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/SABApi.AssemblyInfoInputs.cache
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/SABApi.AssemblyInfo.cs
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/SABApi.csproj.CoreCompileInputs.cache
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/SABApi.MvcApplicationPartsAssemblyInfo.cs
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/SABApi.MvcApplicationPartsAssemblyInfo.cache
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/staticwebassets.build.json
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/staticwebassets.development.json
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/scopedcss/bundle/SABApi.styles.css
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/SABApi.csproj.CopyComplete
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/SABApi.dll
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/refint/SABApi.dll
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/SABApi.pdb
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/SABApi.genruntimeconfig.cache
+/home/eray/Desktop/SABAPI/obj/Debug/net6.0/ref/SABApi.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/DnsClient.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/MongoDB.Bson.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/MongoDB.Driver.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/MongoDB.Driver.Core.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/MongoDB.Libmongocrypt.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/SharpCompress.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/Snappier.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/ZstdSharp.dll
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/runtimes/linux/native/libmongocrypt.so
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/runtimes/osx/native/libmongocrypt.dylib
+/home/eray/Desktop/SABAPI/bin/Debug/net6.0/runtimes/win/native/mongocrypt.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\appsettings.json
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\SABApi.exe
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\SABApi.deps.json
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\SABApi.runtimeconfig.json
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\SABApi.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\SABApi.pdb
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\DnsClient.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\SharpCompress.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\Snappier.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\ZstdSharp.dll
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Eray\SAB Robotics\Git\SABAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.AssemblyReference.cache
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\SABApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfoInputs.cache
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfo.cs
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.CoreCompileInputs.cache
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\scopedcss\bundle\SABApi.styles.css
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.CopyComplete
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\SABApi.dll
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\refint\SABApi.dll
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\SABApi.pdb
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\SABApi.genruntimeconfig.cache
+C:\Eray\SAB Robotics\Git\SABAPI\obj\Debug\net6.0\ref\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\appsettings.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.exe
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.deps.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.runtimeconfig.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.pdb
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\DnsClient.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\Snappier.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.AssemblyReference.cache
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfoInputs.cache
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfo.cs
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.CoreCompileInputs.cache
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\scopedcss\bundle\SABApi.styles.css
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.CopyComplete
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\refint\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.pdb
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.genruntimeconfig.cache
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\TEKNİK\Arayüz\Git\Git\SABAPI\obj\Debug\net6.0\ref\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\appsettings.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.exe
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.deps.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.runtimeconfig.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.pdb
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\DnsClient.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\Snappier.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.AssemblyReference.cache
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfoInputs.cache
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfo.cs
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.CoreCompileInputs.cache
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\scopedcss\bundle\SABApi.styles.css
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.CopyComplete
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\refint\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.pdb
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.genruntimeconfig.cache
+C:\Users\emreu\OneDrive\Desktop\SAB ROBTICS YAZILIM AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\ref\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\appsettings.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.exe
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.deps.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.runtimeconfig.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SABApi.pdb
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\DnsClient.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\Snappier.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.AssemblyReference.cache
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfoInputs.cache
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfo.cs
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.CoreCompileInputs.cache
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\scopedcss\bundle\SABApi.styles.css
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\refint\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.pdb
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.genruntimeconfig.cache
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\ref\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.sourcelink.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.SABApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.SABApi.props
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SABApi.props
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.SABApi.props
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\Git\Git\SABAPI\obj\Debug\net6.0\SABApi.csproj.Up2Date
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\appsettings.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\SABApi.exe
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\SABApi.deps.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\SABApi.runtimeconfig.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\SABApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\SABApi.pdb
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\DnsClient.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\Snappier.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.csproj.AssemblyReference.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfoInputs.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfo.cs
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.csproj.CoreCompileInputs.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.sourcelink.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.SABApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.SABApi.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SABApi.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.SABApi.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\scopedcss\bundle\SABApi.styles.css
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.csproj.Up2Date
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\refint\SABApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.pdb
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\SABApi.genruntimeconfig.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPI\SABAPI\obj\Debug\net6.0\ref\SABApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.csproj.AssemblyReference.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfoInputs.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfo.cs
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.csproj.CoreCompileInputs.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.sourcelink.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\refint\SABApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.pdb
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\appsettings.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\SABApi.exe
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\SABApi.deps.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\SABApi.runtimeconfig.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\SABApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\SABApi.pdb
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\DnsClient.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\Snappier.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.SABApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.SABApi.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SABApi.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.SABApi.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\scopedcss\bundle\SABApi.styles.css
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.csproj.Up2Date
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\SABApi.genruntimeconfig.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv2\SABAPI\obj\Debug\net6.0\ref\SABApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\appsettings.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\SABApi.exe
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\SABApi.deps.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\SABApi.runtimeconfig.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\SABApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\SABApi.pdb
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\DnsClient.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\Snappier.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.csproj.AssemblyReference.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfoInputs.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfo.cs
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.csproj.CoreCompileInputs.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.sourcelink.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.SABApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.SABApi.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SABApi.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.SABApi.props
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\scopedcss\bundle\SABApi.styles.css
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.csproj.Up2Date
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\refint\SABApi.dll
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.pdb
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\SABApi.genruntimeconfig.cache
+C:\Users\yakup\OneDrive\Masaüstü\SABAPIv3\SABAPI\obj\Debug\net6.0\ref\SABApi.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\appsettings.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.exe
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.deps.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.runtimeconfig.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.pdb
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\DnsClient.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Snappier.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.AssemblyReference.cache
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfoInputs.cache
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfo.cs
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.CoreCompileInputs.cache
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.sourcelink.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.SABApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.SABApi.props
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SABApi.props
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.SABApi.props
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\scopedcss\bundle\SABApi.styles.css
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.Up2Date
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\refint\SABApi.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.pdb
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.genruntimeconfig.cache
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\ref\SABApi.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\appsettings.json
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.exe
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.deps.json
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.runtimeconfig.json
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.pdb
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\DnsClient.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Snappier.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.AssemblyReference.cache
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfoInputs.cache
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfo.cs
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.CoreCompileInputs.cache
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.sourcelink.json
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.SABApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.SABApi.props
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SABApi.props
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.SABApi.props
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\scopedcss\bundle\SABApi.styles.css
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.Up2Date
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\refint\SABApi.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.pdb
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.genruntimeconfig.cache
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\obj\Debug\net6.0\ref\SABApi.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\AWSSDK.Core.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\AWSSDK.Core.dll
+C:\Users\yakup\OneDrive\Belgeler\GitHub\SABAPIv2\SABAPI_V2\SABAPI\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\appsettings.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.exe
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.deps.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.runtimeconfig.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.pdb
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\AWSSDK.Core.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\DnsClient.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Snappier.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.AssemblyReference.cache
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfoInputs.cache
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfo.cs
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.CoreCompileInputs.cache
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.sourcelink.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.SABApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.SABApi.props
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SABApi.props
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.SABApi.props
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\scopedcss\bundle\SABApi.styles.css
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.Up2Date
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\refint\SABApi.dll
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.pdb
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.genruntimeconfig.cache
+C:\Users\ibrah\OneDrive\Belgeler\GitHub\SABAPI_v2\SABAPI_V2\SABAPI\obj\Debug\net6.0\ref\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\appsettings.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.exe
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.deps.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.runtimeconfig.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\SABApi.pdb
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\AWSSDK.Core.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\DnsClient.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\Snappier.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.AssemblyReference.cache
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfoInputs.cache
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.AssemblyInfo.cs
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.CoreCompileInputs.cache
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\scopedcss\bundle\SABApi.styles.css
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.csproj.CopyComplete
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\refint\SABApi.dll
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.pdb
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\SABApi.genruntimeconfig.cache
+C:\Users\emreu\OneDrive\Desktop\SAB_ROBOTICS_YAZILIM_AS\Technical\Interface\SABAPIv2-main\SABAPIv2-main\SABAPI_V2\SABAPI\obj\Debug\net6.0\ref\SABApi.dll

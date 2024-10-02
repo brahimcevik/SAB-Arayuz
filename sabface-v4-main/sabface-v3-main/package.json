@@ -1,0 +1,60 @@
+{
+  "name": "sabface-v3",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@heroicons/react": "^2.1.3",
+    "@mui/icons-material": "^6.1.0",
+    "@mui/material": "^6.1.0",
+    "@react-google-maps/api": "^2.19.2",
+    "@reduxjs/toolkit": "^1.9.7",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.11.2",
+    "axios": "^1.7.5",
+    "lottie-react": "^2.4.0",
+    "openmeteo": "^1.1.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-lottie": "^1.2.4",
+    "react-modal": "^3.16.1",
+    "react-redux": "^8.1.3",
+    "react-router-dom": "^6.19.0",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.12.7",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontend\" \"npm run python\"",
+    "backend": "cd C:\\Users\\emreu\\OneDrive\\Desktop\\SAB_ROBOTICS_YAZILIM_AS\\Technical\\Interface\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI && dotnet run",
+    "frontend": "react-scripts start",
+    "python": "cd C:\\Users\\emreu\\OneDrive\\Desktop\\SAB_ROBOTICS_YAZILIM_AS\\Technical\\Interface\\python kodu && python \"interface_gamepad_control.py\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "tailwind-scrollbar": "^3.1.0",
+    "tailwindcss": "^3.4.3"
+  }
+}

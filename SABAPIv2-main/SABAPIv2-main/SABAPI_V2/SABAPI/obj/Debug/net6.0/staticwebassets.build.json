@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "m3WjkxSBtj5fZBPyeWMVaMQnKqNXLEIlJDqSsRTLWQ0=",
+  "Source": "SABApi",
+  "BasePath": "_content/SABApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

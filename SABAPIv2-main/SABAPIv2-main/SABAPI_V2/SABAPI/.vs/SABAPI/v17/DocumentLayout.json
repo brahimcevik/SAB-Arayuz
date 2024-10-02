@@ -1,0 +1,210 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\yakup\\onedrive\\belgeler\\github\\sabapiv2\\sabapi_v2\\sabapi\\controllers\\ugvrobotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:controllers\\ugvrobotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\yakup\\onedrive\\belgeler\\github\\sabapiv2\\sabapi_v2\\sabapi\\services\\ugvrobotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:services\\ugvrobotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\yakup\\onedrive\\belgeler\\github\\sabapiv2\\sabapi_v2\\sabapi\\models\\ugvrobot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:models\\ugvrobot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\yakup\\onedrive\\belgeler\\github\\sabapiv2\\sabapi_v2\\sabapi\\models\\directionupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:models\\directionupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\yakup\\onedrive\\belgeler\\github\\sabapiv2\\sabapi_v2\\sabapi\\models\\modupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:models\\modupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\yakup\\onedrive\\belgeler\\github\\sabapiv2\\sabapi_v2\\sabapi\\models\\speedupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:models\\speedupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\yakup\\onedrive\\belgeler\\github\\sabapiv2\\sabapi_v2\\sabapi\\models\\ugvrobotsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:models\\ugvrobotsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\yakup\\onedrive\\belgeler\\github\\sabapiv2\\sabapi_v2\\sabapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\yakup\\onedrive\\belgeler\\github\\sabapiv2\\sabapi_v2\\sabapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\yakup\\onedrive\\belgeler\\github\\sabapiv2\\sabapi_v2\\sabapi\\upgradelog.htm||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:upgradelog.htm||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DirectionUpdateRequest.cs",
+              "DocumentMoniker": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Models\\DirectionUpdateRequest.cs",
+              "RelativeDocumentMoniker": "Models\\DirectionUpdateRequest.cs",
+              "ToolTip": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Models\\DirectionUpdateRequest.cs",
+              "RelativeToolTip": "Models\\DirectionUpdateRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-10T14:52:02.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SpeedUpdateRequest.cs",
+              "DocumentMoniker": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Models\\SpeedUpdateRequest.cs",
+              "RelativeDocumentMoniker": "Models\\SpeedUpdateRequest.cs",
+              "ToolTip": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Models\\SpeedUpdateRequest.cs",
+              "RelativeToolTip": "Models\\SpeedUpdateRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T13:49:32.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T10:57:12.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UgvRobotSettings.cs",
+              "DocumentMoniker": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Models\\UgvRobotSettings.cs",
+              "RelativeDocumentMoniker": "Models\\UgvRobotSettings.cs",
+              "ToolTip": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Models\\UgvRobotSettings.cs",
+              "RelativeToolTip": "Models\\UgvRobotSettings.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T10:57:12.816Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UgvRobotService.cs",
+              "DocumentMoniker": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Services\\UgvRobotService.cs",
+              "RelativeDocumentMoniker": "Services\\UgvRobotService.cs",
+              "ToolTip": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Services\\UgvRobotService.cs",
+              "RelativeToolTip": "Services\\UgvRobotService.cs",
+              "ViewState": "AQIAALgAAAAAAAAAAAAAAMIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T10:57:12.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UgvRobotController.cs",
+              "DocumentMoniker": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Controllers\\UgvRobotController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UgvRobotController.cs",
+              "ToolTip": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Controllers\\UgvRobotController.cs",
+              "RelativeToolTip": "Controllers\\UgvRobotController.cs",
+              "ViewState": "AQIAAMsAAAAAAAAAAAAUwBABAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T10:57:12.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ModUpdateRequest.cs",
+              "DocumentMoniker": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Models\\ModUpdateRequest.cs",
+              "RelativeDocumentMoniker": "Models\\ModUpdateRequest.cs",
+              "ToolTip": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Models\\ModUpdateRequest.cs",
+              "RelativeToolTip": "Models\\ModUpdateRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T10:57:12.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UgvRobot.cs",
+              "DocumentMoniker": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Models\\UgvRobot.cs",
+              "RelativeDocumentMoniker": "Models\\UgvRobot.cs",
+              "ToolTip": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\Models\\UgvRobot.cs",
+              "RelativeToolTip": "Models\\UgvRobot.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAowE8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T10:57:12.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-06T10:57:12.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UpgradeLog.htm",
+              "DocumentMoniker": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\UpgradeLog.htm",
+              "RelativeDocumentMoniker": "UpgradeLog.htm",
+              "ToolTip": "C:\\Users\\yakup\\OneDrive\\Belgeler\\GitHub\\SABAPIv2\\SABAPI_V2\\SABAPI\\UpgradeLog.htm",
+              "RelativeToolTip": "UpgradeLog.htm",
+              "ViewState": "AQIAAB8AAAAAAAAAAEBVwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-09-06T10:57:12.835Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
