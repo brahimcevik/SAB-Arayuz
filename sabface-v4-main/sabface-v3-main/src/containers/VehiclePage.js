@@ -7,6 +7,7 @@ import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
 import { vehicleCardClick } from "../redux/navigationSlice";
 import { selectSelectedId } from "../redux/ugvSlice";
+import { setActiveCamera } from "../../src/redux/cameraSlice"; // Redux'tan setActiveCamera'ı import ettik
 
 function VehiclePage() {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ function VehiclePage() {
       });
   }, [selectId]);
 
-  // Online durum güncellemeleri 
+  // Online durum güncellemeleri
   useEffect(() => {
     const interval = setInterval(() => {
       fetch(`https://localhost:44315/api/UgvRobot/${selectId}`)
@@ -40,9 +41,9 @@ function VehiclePage() {
         .catch((error) => {
           console.error("Online durum güncellenirken bir hata oluştu:", error);
         });
-    }, 5000); 
+    }, 5000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, [selectId]);
 
   const geriDon = () => {
@@ -83,6 +84,11 @@ function VehiclePage() {
   const borderRadiusLeft = "1.5rem 0 0 1.5rem";
   const borderRadiusRight = "0 1.5rem 1.5rem 0";
 
+  // Ön kamera butonunu ayarlıyoruz
+  const handleFrontCameraClick = () => {
+    dispatch(setActiveCamera("front")); // Ön kamerayı aktif hale getir
+  };
+
   return (
     <Row
       style={{ width: "87vh", height: "80vh", position: "relative" }}
@@ -107,13 +113,25 @@ function VehiclePage() {
           style={{
             height: "100%",
             flexDirection: "column",
+            position: "relative",
           }}
         >
+
+          {/* Ön Kamera Butonu Yukarı Taşındı */}
+          <button
+            onClick={handleFrontCameraClick}
+            type="button"
+            className="w-full flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
+            style={{ marginBottom: "70px" }} // Butonlar arasındaki boşluk
+          >
+            Ön Kamera
+          </button>
+
           <button
             onClick={geriDon}
             type="button"
             className="w-full flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
-            style={{ marginBottom: "10px", marginTop: "100px" }} // "Geri Dön" butonu biraz aşağı alındı
+            style={{ marginBottom: "10px", marginTop: "10px" }} // "Geri Dön" butonu yukarı alındı
           >
             <ArrowUturnLeftIcon />
             <span>Geri Dön</span>

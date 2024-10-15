@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Stats from "../Stats";
-import { Flex } from "antd";
-import { useSelector } from "react-redux";
+import { Flex, Button } from "antd";  // Ant Design'dan buton bileşeni ekledik
+import { useSelector, useDispatch } from "react-redux";
 import { selectSelectedId } from "../../redux/ugvSlice";
+import { setActiveCamera } from "../../redux/cameraSlice";  // Kamera slice'ını import ettik
 
 function LeftCol() {
   const [distanceValue, setDistanceValue] = useState(null);
   const [missionValue, setMissionValue] = useState(null);
-  const [herbicideValue, setHerbicideValue] = useState(null); // Yeni state ekledik
-
+  const [herbicideValue, setHerbicideValue] = useState(null);
   const selectedId = useSelector(selectSelectedId);
+  const dispatch = useDispatch();
 
   const fetchData = async () => {
     try {
-      // UgvRobot bilgilerini çek
-      const ugvRobotResponse = await fetch(
-        `https://localhost:44315/api/UgvRobot`);
+      const ugvRobotResponse = await fetch(`https://localhost:44315/api/UgvRobot`);
       const ugvRobotData = await ugvRobotResponse.json();
 
       if (!ugvRobotData || !ugvRobotData.length) {
@@ -23,15 +22,13 @@ function LeftCol() {
         return;
       }
 
-      // Seçilen ID'ye göre veri bul
       const selectedData = ugvRobotData.find((item) => item.id === selectedId);
-      
+
       if (!selectedData) {
         console.error("Selected data not found");
         return;
       }
 
-      // Veri setlerini güncelle
       setDistanceValue(selectedData.ugvDistance || 0);
       setMissionValue(selectedData.ugvMission || null);
       setHerbicideValue(selectedData.ugvHerbicide || 0);
@@ -49,10 +46,14 @@ function LeftCol() {
         fetchData();
       }, 5000);
 
-      // Clean up interval on component unmount
       return () => clearInterval(intervalId);
     }
-  }, [selectedId]); // selectedId değiştiğinde fetchData yeniden çağrılır
+  }, [selectedId]);
+
+  // Sol kamera butonuna tıklama işlevi
+  const handleLeftCameraClick = () => {
+    dispatch(setActiveCamera("left"));  // Redux store'daki kamerayı "sol" olarak ayarla
+  };
 
   return (
     <Flex
@@ -61,8 +62,9 @@ function LeftCol() {
       align="center"
       style={{ height: "80vh", width: "50vh" }}
     >
+      <Button onClick={handleLeftCameraClick}>Sol Kamera</Button> {/* Sol kamera butonu */}
       <Stats title={"Mesafe"} value={distanceValue} suffix={"m"} />
-      <Stats title={"İlaç"} value={herbicideValue} suffix={"%"} /> 
+      <Stats title={"İlaç"} value={herbicideValue} suffix={"%"} />
       <Stats title={"Görev"} value={missionValue} suffix={""} />
     </Flex>
   );

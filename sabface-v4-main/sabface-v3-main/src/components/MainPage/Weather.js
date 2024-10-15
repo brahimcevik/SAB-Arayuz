@@ -40,6 +40,7 @@ function Weather() {
 
   return (
     <div>
+    
       <Flex justify="space-evenly" align="center" gap={24}>
         {weatherData &&
           weatherData
@@ -50,6 +51,7 @@ function Weather() {
                 weatherType={data.weatherType}
                 weatherData={weatherData.slice(index * 8, index * 8 + 8)}
                 day={data.day}
+              
               />
             ))}
       </Flex>

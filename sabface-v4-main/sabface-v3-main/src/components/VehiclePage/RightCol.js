@@ -4,6 +4,7 @@ import { Flex, Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { selectSelectedId } from "../../redux/ugvSlice";
 import { modeClick, selectisManuel } from "../../redux/modeSlice";
+import { setActiveCamera } from "../../redux/cameraSlice"; // cameraSlice'dan setActiveCamera fonksiyonunu import ettik
 
 function RightCol() {
   const [carLat, setCarLat] = useState(null);
@@ -80,6 +81,10 @@ function RightCol() {
     }
   }, [selectedId]);
 
+  const handleRightCameraClick = () => {
+    dispatch(setActiveCamera('right')); // Sağ kamerayı aktif hale getir
+  };
+
   return (
     <Flex
       vertical={true}
@@ -87,6 +92,25 @@ function RightCol() {
       align="center"
       style={{ height: "80vh", width: "50vh", position: "relative" }}
     >
+      <Button
+        type="primary"
+        style={{
+          position: "absolute",
+          top: "10px",  // Butonun üstte konumlanması için top değerini ayarladık
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "130px",
+          height: "30px",
+          fontSize: "10px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+        }}
+        onClick={handleRightCameraClick}  // Sağ kamera butonuna tıklandığında çağrılır
+      >
+        Sağ Kamera
+      </Button>
       <Stats title="Hız" value={carSpeed} suffix="m/s" />
       <Stats title="Enlem" value={carLat} suffix="" />
       <Stats title="Boylam" value={carLong} suffix="" />

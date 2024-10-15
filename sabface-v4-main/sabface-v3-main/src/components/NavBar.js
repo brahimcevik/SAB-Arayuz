@@ -1,3 +1,4 @@
+
 import React from "react";
 import logoYazili from "../img/logoYazili.png";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";

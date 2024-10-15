@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Card } from "antd";
 
@@ -147,6 +148,7 @@ const GoogleMaps = () => {
       className="bg-sabGreenDark dark:bg-sabGreenHardDark rounded-3xl border-sabGreenDark dark:border-sabGreenHardDark "
     >
       <div id="advanced-marker-map" style={containerStyle}></div>
+  
     </Card>
   );
 };

@@ -29,5 +29,5 @@ def get_robot_mod_info(no_value):
 
 
 # Test
-no_value = "9"  # Gerçek 'no' değeri ile değiştirin 
+no_value = "0"  # Gerçek 'no' değeri ile değiştirin 
 get_robot_mod_info(no_value)

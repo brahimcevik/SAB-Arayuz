@@ -27,9 +27,9 @@
   },
   "scripts": {
     "start": "concurrently \"npm run backend\" \"npm run frontend\" \"npm run python\"",
-    "backend": "cd C:\\Users\\emreu\\OneDrive\\Desktop\\SAB_ROBOTICS_YAZILIM_AS\\Technical\\Interface\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI && dotnet run",
+    "backend": "cd C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI && dotnet run",
     "frontend": "react-scripts start",
-    "python": "cd C:\\Users\\emreu\\OneDrive\\Desktop\\SAB_ROBOTICS_YAZILIM_AS\\Technical\\Interface\\python kodu && python \"interface_gamepad_control.py\"",
+    "python": "cd C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\python kodu && python \"interface_gamepad_control.py\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
