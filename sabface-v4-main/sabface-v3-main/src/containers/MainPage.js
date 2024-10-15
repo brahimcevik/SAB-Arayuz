@@ -5,9 +5,13 @@ import CarList from "../components/MainPage/CarList";
 import GoogleMaps from "../components/MainPage/GoogleMaps";
 import VehiclePage from "./VehiclePage";
 import ManuelMode from "../components/CameraPage/ManuelMode";
+import Camera from "../components/CameraPage/Camera";
+import LeftCamera from "../components/CameraPage/LeftCamera";
+import RightCamera from "../components/CameraPage/RightCamera";
 import { useSelector } from "react-redux";
 import { selectIsVehicleClicked } from "../redux/navigationSlice";
 import { selectisManuel } from "../redux/modeSlice";
+import { selectActiveCamera } from "../redux/cameraSlice";  // Redux'tan aktif kamera durumunu çekiyoruz
 
 function MainPage() {
   const [showVehiclePage, setShowVehiclePage] = useState(false);
@@ -15,10 +19,24 @@ function MainPage() {
   const isVehicleClicked = useSelector(selectIsVehicleClicked);
   const selectedId = useSelector((state) => state.ugv.selectedId); // UGV'den seçili robot ID'si
   const isManuel = useSelector((state) => selectisManuel(state, selectedId)); // Manuel mod durumu
+  const activeCamera = useSelector(selectActiveCamera); // Redux'tan aktif kamera bilgisi
 
   useEffect(() => {
     setShowVehiclePage(isVehicleClicked);
   }, [isVehicleClicked]);
+
+  // Aktif kameraya göre kamera bileşenini render eden fonksiyon
+  const renderCamera = () => {
+    switch (activeCamera) {
+      case "left":
+        return <LeftCamera />;
+      case "right":
+        return <RightCamera />;
+      case "front":
+      default:
+        return <Camera />;
+    }
+  };
 
   return (
     <Row gutter={[16, 16]}> {/* Sütunlar arasına boşluk eklemek için gutter */}
@@ -35,21 +53,20 @@ function MainPage() {
 
       <Col
         span={12}
-        className={isManuel ? "bg-sabGreenDark dark:bg-sabGreenHardDark rounded-3xl px-10" : ""} // Manuel modda yeşil arka plan
-        // style={
-        //   { borderRadius: "1.5rem", padding: "10px" }}  // Köşeleri yuvarlama ve padding
+        className={isManuel || activeCamera !== "front" ? "bg-sabGreenDark dark:bg-sabGreenHardDark rounded-3xl px-10" : ""} // Kamera sayfası veya manuel mod aktifse yeşil arka plan
       >
         {isManuel ? (
           // Manuel mod aktif olduğunda ManuelMode'u tam ortada hizala
-          <Flex
-            justify="center"
-            align="center"
-            
-          >
+          <Flex justify="center" align="center">
             <ManuelMode />  {/* Manuel Mode Bileşeni */}
           </Flex>
+        ) : activeCamera !== "front" ? (
+          // Eğer aktif kamera sol ya da sağ ise sadece kamera göster
+          <Flex justify="center" align="center" style={{ height: "calc(110% - 50px)" }}>
+            {renderCamera()} {/* Aktif kameraya göre kamera bileşeni */}
+          </Flex>
         ) : (
-          // Otomatik modda Weather ve Google Maps bileşenleri
+          // Otomatik modda hem hava durumu hem de Google Maps bileşenlerini göster
           <>
             <Row style={{ height: "30%", marginLeft: "1rem" }} className="w-full">
               <Flex
@@ -61,6 +78,7 @@ function MainPage() {
                 }}
               >
                 <Weather />
+              
               </Flex>
             </Row>
             <Row style={{ height: "70%" }}>
