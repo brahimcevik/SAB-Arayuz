@@ -1,0 +1,39 @@
+<div style={styles.speedControlContainer}>
+  <input
+    type="range"
+    min="0"
+    max="1"
+    step="0.01"
+    value={movements[0].speed}
+    onChange={handleSpeedChange}
+    style={styles.verticalSlider}
+  />
+  <div style={styles.speedDisplay}>
+    <span>Hız: {movements[0].speed.toFixed(2)}</span>
+  </div>
+
+  <div style={styles.sprayButtonContainer}>
+    <button
+      onClick={() => toggleSpray("leftSpray")}
+      style={{
+        ...styles.toggleButton,
+        backgroundColor: sprays.leftSpray ? 'red' : 'green',
+        width: '80px',
+        marginRight: '5px',
+      }}
+    >
+      Sol Püskürtme
+    </button>
+
+    <button
+      onClick={() => toggleSpray("rightSpray")}
+      style={{
+        ...styles.toggleButton,
+        backgroundColor: sprays.rightSpray ? 'red' : 'green',
+        width: '80px',
+      }}
+    >
+      Sağ Püskürtme
+    </button>
+  </div>
+</div> 

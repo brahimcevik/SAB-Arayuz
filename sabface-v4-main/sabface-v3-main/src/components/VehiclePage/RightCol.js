@@ -4,7 +4,7 @@ import { Flex, Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { selectSelectedId } from "../../redux/ugvSlice";
 import { modeClick, selectisManuel } from "../../redux/modeSlice";
-import { setActiveCamera } from "../../redux/cameraSlice"; // cameraSlice'dan setActiveCamera fonksiyonunu import ettik
+import { toggleCamera } from "../../redux/cameraSlice"; // setActiveCamera yerine toggleCamera kullanılıyor
 
 function RightCol() {
   const [carLat, setCarLat] = useState(null);
@@ -65,7 +65,6 @@ function RightCol() {
         console.error("Request error:", error);
       });
 
-    // Redux state'inde manuel mod durumunu güncelle
     dispatch(modeClick({ robotId: selectedId }));
   };
 
@@ -82,7 +81,7 @@ function RightCol() {
   }, [selectedId]);
 
   const handleRightCameraClick = () => {
-    dispatch(setActiveCamera('right')); // Sağ kamerayı aktif hale getir
+    dispatch(toggleCamera('right')); // Sağ kamerayı aktif hale getirmek için toggleCamera kullanılıyor
   };
 
   return (
@@ -96,7 +95,7 @@ function RightCol() {
         type="primary"
         style={{
           position: "absolute",
-          top: "10px",  // Butonun üstte konumlanması için top değerini ayarladık
+          top: "10px",  
           left: "50%",
           transform: "translateX(-50%)",
           width: "130px",

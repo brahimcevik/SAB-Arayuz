@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectSelectedId } from "../../redux/ugvSlice"; // Redux selector
 
 const ManuelMode = () => {
   const [movements, setMovements] = useState([
-    { speed: 0, direction: "İleri" },  // Ana hareket
-    { degree: 0, active: false },  // Sağ kamera
-    { degree: 0, active: false },  // Sol kamera
-    { degree: 0, active: false },  // Çapa mekanizması
-  ]); // Hareket ve yön bilgisi
+    { speed: 0, direction: "İleri" },  // Main movement
+    { degree: 0, active: false },      // Right camera
+    { degree: 0, active: false },      // Left camera
+    { degree: 0, active: false },      // CapaMek mechanism
+  ]);
 
-  const [lastAction, setLastAction] = useState(""); // Son hareket durumu
+  const [sprays, setSprays] = useState({ leftSpray: 0, rightSpray: 0 });
+  const [lastAction, setLastAction] = useState(""); // Last action for display
 
-  // Seçili ID'yi al
+  const [displayedMovements, setDisplayedMovements] = useState([]);
+
+  // Get the selected robot ID from Redux
   const selectedId = useSelector(selectSelectedId);
 
   const handleDegreeChange = (index, event) => {
@@ -20,27 +23,31 @@ const ManuelMode = () => {
     updatedMovements[index].degree = parseInt(event.target.value);
     setMovements(updatedMovements);
 
+    // Only update active mechanisms
     if (updatedMovements[index].active) {
-      const component = index === 1 ? "rightCamera" : index === 2 ? "leftCamera" : "capaMek";
-      setLastAction(`${component}, ${updatedMovements[index].degree}, 1`);
+      const component = index === 1 ? "leftCamera" : index === 2 ? "capaMek" : "rightCamera";
+      setLastAction(`${component}, ${updatedMovements[index].degree}, 1, [${sprays.leftSpray}, ${sprays.rightSpray}]`);
       sendMovementData(selectedId, updatedMovements);
     }
   };
-
+  useEffect(() => {
+    const updatedMovements = [...movements];
+    sendMovementData(selectedId, updatedMovements);
+  }, [selectedId]);
   const toggleActive = (index) => {
     const updatedMovements = [...movements];
     updatedMovements[index].active = !updatedMovements[index].active;
     setMovements(updatedMovements);
 
-    const component = index === 1 ? "rightCamera" : index === 2 ? "leftCamera" : "capaMek";
-    setLastAction(`${component}, ${updatedMovements[index].degree}, ${updatedMovements[index].active ? 1 : 0}`);
+    const component = index === 1 ? "leftCamera" : index === 2 ? "capaMek" : "rightCamera";
+    setLastAction(`${component}, ${updatedMovements[index].degree}, ${updatedMovements[index].active ? 1 : 0}, [${sprays.leftSpray}, ${sprays.rightSpray}]`);
+    
     sendMovementData(selectedId, updatedMovements);
   };
 
   const handleSpeedChange = (event) => {
     const updatedMovements = [...movements];
     updatedMovements[0] = { ...updatedMovements[0], speed: parseFloat(event.target.value) };
-
     setMovements(updatedMovements);
     sendMovementData(selectedId, updatedMovements);
   };
@@ -53,18 +60,38 @@ const ManuelMode = () => {
     sendMovementData(selectedId, updatedMovements);
   };
 
+  const toggleSpray = (sprayType) => {
+    setSprays(prev => {
+      const newSprayState = { ...prev, [sprayType]: prev[sprayType] === 1 ? 0 : 1 };
+  
+      // Tüm püskürtme durumlarını gönder
+      sendMovementData(selectedId, movements);
+      return newSprayState;
+    });
+  };
+  
+  
+
   const sendMovementData = (robotId, movementData) => {
     const apiUrl = `https://localhost:44315/api/UgvRobot/update-direction/${robotId}`;
-  
+
+    const filteredMovements = movementData.map((movement, index) => {
+      const isActive = movement.active ? 1 : 0;
+      const sprayState = isActive 
+        ? [sprays.leftSpray, sprays.rightSpray]  // Aktif bileşenler için her iki püskürtme değerini de gönder
+        : [0, 0];  // Pasif bileşenler için püskürtme kapalı
+      
+      return index === 0 
+        ? [Number(movement.speed.toFixed(2)), movement.direction] 
+        : [`${index === 1 ? "leftCamera" : index === 2 ? "capaMek" : "rightCamera"}`, movement.degree, isActive, sprayState];
+    });
+
+    setDisplayedMovements(filteredMovements);
+
     const requestBody = {
-      direction: JSON.stringify([
-        [Number(movementData[0].speed.toFixed(2)), movementData[0].direction],
-        ["leftCamera", movementData[1].degree, movementData[1].active ? 1 : 0],
-        ["capaMek", movementData[2].degree, movementData[2].active ? 1 : 0],
-        ["rightCamera", movementData[3].degree, movementData[3].active ? 1 : 0],
-      ]),
+      direction: JSON.stringify(filteredMovements),
     };
-  
+
     fetch(apiUrl, {
       method: 'PATCH',
       headers: {
@@ -72,20 +99,20 @@ const ManuelMode = () => {
       },
       body: JSON.stringify(requestBody),
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Sunucudan olumsuz bir yanıt alındı');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log('Başarılı:', data);
-      })
-      .catch((error) => {
-        console.error('Hata:', error);
-      });
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Received a negative response from the server');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   };
-  
+
   return (
     <div style={styles.container}>
       <div style={styles.cameraContainer}>
@@ -125,28 +152,57 @@ const ManuelMode = () => {
         </div>
 
         <div style={styles.speedControlContainer}>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={movements[0].speed}
-            onChange={handleSpeedChange}
-            style={styles.verticalSlider}
-          />
-          <div style={styles.speedDisplay}>
-            <span>Hız: {movements[0].speed.toFixed(2)}</span>
-          </div>
-        </div>
+  <input
+    type="range"
+    min="0"
+    max="1"
+    step="0.01"
+    value={movements[0].speed}
+    onChange={handleSpeedChange}
+    style={styles.verticalSlider}
+  />
+  <div style={styles.speedDisplay}>
+    <span>Hız: {movements[0].speed.toFixed(2)}</span>
+  </div>
+
+  {/* Left and Right Spray Buttons */}
+  <div style={styles.sprayButtonContainer}> {/* Yeni kapsayıcı eklendi */}
+    <button
+      onClick={() => toggleSpray("leftSpray")}
+      style={{
+        ...styles.toggleButton,
+        backgroundColor: sprays.leftSpray ? 'red' : 'green', // Sol püskürtme durumu
+        width: '80px', // Genişlik kısaltıldı
+        marginRight: '5px', // Sağdan boşluk eklendi
+      }}
+    >
+      Sol Püskürtme
+    </button>
+
+    <button
+      onClick={() => toggleSpray("rightSpray")}
+      style={{
+        ...styles.toggleButton,
+        backgroundColor: sprays.rightSpray ? 'red' : 'green', // Sağ püskürtme durumu
+        width: '80px', // Genişlik kısaltıldı
+      }}
+    >
+      Sağ Püskürtme
+    </button>
+  </div>
+</div>
       </div>
 
       <div style={styles.movementContainer}>
         <div style={styles.movementBox}>
           <p style={styles.movementText}>
-            Gönderilen Hareketler:<br></br> [[{movements[0].speed.toFixed(2)}, "{movements[0].direction}"];
-            ["leftCamera", {movements[1].degree}, {movements[1].active ? 1 : 0}];
-            ["capaMek", {movements[2].degree}, {movements[2].active ? 1 : 0}];
-            ["rightCamera", {movements[3].degree}, {movements[3].active ? 1 : 0}]]
+            Gönderilen Hareketler:<br />
+            {displayedMovements.length > 0 && (
+              `[[${displayedMovements[0][0]}, "${displayedMovements[0][1]}"], ` +
+              `["${displayedMovements[1][0]}", ${displayedMovements[1][1]}, ${displayedMovements[1][2]}, [${displayedMovements[1][3].join(', ')}]], ` +
+              `["${displayedMovements[2][0]}", ${displayedMovements[2][1]}, ${displayedMovements[2][2]}, [${displayedMovements[2][3].join(', ')}]], ` +
+              `["${displayedMovements[3][0]}", ${displayedMovements[3][1]}, ${displayedMovements[3][2]}, [${displayedMovements[3][3].join(', ')}]]]`
+            )}
           </p>
         </div>
       </div>
@@ -323,7 +379,7 @@ const styles = {
     WebkitAppearance: 'slider-vertical', // Webkit tarayıcılar için dikey kaydırma
     height: '110px', // Yükseklik
     width: '8px', // Genişlik
-    margin: '10px 0', // Üstten ve alttan boşluk
+    margin: '10px 0', // stten ve alttan boşluk
   },
   
   /* toggleButton - Kamera ve çapa mekanizması için aktif/pasif düğmeleri */

@@ -7,7 +7,7 @@ import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
 import { vehicleCardClick } from "../redux/navigationSlice";
 import { selectSelectedId } from "../redux/ugvSlice";
-import { setActiveCamera } from "../../src/redux/cameraSlice"; // Redux'tan setActiveCamera'ı import ettik
+import { toggleCamera } from "../../src/redux/cameraSlice"; // Redux'tan toggleCamera'ı import ettik
 
 function VehiclePage() {
   const dispatch = useDispatch();
@@ -86,7 +86,7 @@ function VehiclePage() {
 
   // Ön kamera butonunu ayarlıyoruz
   const handleFrontCameraClick = () => {
-    dispatch(setActiveCamera("front")); // Ön kamerayı aktif hale getir
+    dispatch(toggleCamera("front")); // Ön kamerayı toggle et
   };
 
   return (
@@ -117,12 +117,12 @@ function VehiclePage() {
           }}
         >
 
-          {/* Ön Kamera Butonu Yukarı Taşındı */}
+          {/* Ön Kamera Butonu */}
           <button
             onClick={handleFrontCameraClick}
             type="button"
             className="w-full flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
-            style={{ marginBottom: "70px" }} // Butonlar arasındaki boşluk
+            style={{ marginBottom: "70px" }}
           >
             Ön Kamera
           </button>
@@ -131,24 +131,22 @@ function VehiclePage() {
             onClick={geriDon}
             type="button"
             className="w-full flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
-            style={{ marginBottom: "10px", marginTop: "10px" }} // "Geri Dön" butonu yukarı alındı
+            style={{ marginBottom: "10px", marginTop: "10px" }}
           >
             <ArrowUturnLeftIcon />
             <span>Geri Dön</span>
           </button>
 
-          {/* Araç Bileşeni (Robot) */}
           <Vehicle />
 
-          {/* Online/Offline Durumu - Robotun Altına Taşındı */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginTop: "10px", // Robot ile durumu arasında boşluk
-              marginBottom: "5px", // Durum ile buton arasında boşluk
-              width: "50%", // Butonlarla aynı genişlikte
+              marginTop: "10px",
+              marginBottom: "5px",
+              width: "50%",
               backgroundColor: "#fff",
               borderRadius: "8px",
               padding: "10px 0",
@@ -169,14 +167,13 @@ function VehiclePage() {
             </span>
           </div>
 
-          {/* Dur/Devam Et Butonu */}
           <button
             onClick={statusDegistir}
             type="button"
             style={{
-              width: "50%", // Online/Offline durumu ile aynı genişlikte
-              padding: "10px", // Boyut ayarı
-              marginTop: "10px", // Durum ile buton arasında boşluk
+              width: "50%",
+              padding: "10px",
+              marginTop: "10px",
             }}
             className={`text-sm font-medium border rounded-lg ${
               buttonStatus

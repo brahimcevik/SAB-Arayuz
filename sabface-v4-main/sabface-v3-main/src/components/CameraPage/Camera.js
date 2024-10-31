@@ -12,7 +12,7 @@ const Camera = () => {
           src={robot}
         ></img>
         <button className=" font-poppins absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  bg-sabGreenDark dark:bg-sabYellow dark:text-sabDarkBlack text-white py-2 px-4 rounded-lg shadow-lg hover:bg-sabGreenLight  dark:hover:bg-sabHardYellow">
-          Görüntülemeye Başla
+          ÖN KAMERA
         </button>
         <div class=" px-1 flex font-poppins bg-white py-2 dark:bg-sabDarkBlack dark:text-white font-poppins">
           <div class="flex-1 text-left">

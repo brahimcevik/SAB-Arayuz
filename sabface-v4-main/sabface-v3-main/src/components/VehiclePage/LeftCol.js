@@ -3,7 +3,7 @@ import Stats from "../Stats";
 import { Flex, Button } from "antd";  // Ant Design'dan buton bileşeni ekledik
 import { useSelector, useDispatch } from "react-redux";
 import { selectSelectedId } from "../../redux/ugvSlice";
-import { setActiveCamera } from "../../redux/cameraSlice";  // Kamera slice'ını import ettik
+import { toggleCamera } from "../../redux/cameraSlice";  // toggleCamera işlevini import ettik
 
 function LeftCol() {
   const [distanceValue, setDistanceValue] = useState(null);
@@ -52,7 +52,7 @@ function LeftCol() {
 
   // Sol kamera butonuna tıklama işlevi
   const handleLeftCameraClick = () => {
-    dispatch(setActiveCamera("left"));  // Redux store'daki kamerayı "sol" olarak ayarla
+    dispatch(toggleCamera("left"));  // Redux store'daki kamerayı "sol" olarak toggle et
   };
 
   return (
