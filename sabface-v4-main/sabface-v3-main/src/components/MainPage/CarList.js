@@ -21,6 +21,7 @@ function CarList() {
         <Flex wrap="wrap" gap="middle">
           {carData.map((car) => (
             <CarCard
+              key={car.id}
               id={car.id}
               ugvName={car.ugvName}
               ugvColor={car.ugvColor}

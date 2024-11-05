@@ -11,6 +11,7 @@ function LeftCol() {
   const [herbicideValue, setHerbicideValue] = useState(null);
   const selectedId = useSelector(selectSelectedId);
   const dispatch = useDispatch();
+  const [leftCameraStatus, setLeftCameraStatus] = useState(false); // New state for left camera status
 
   const fetchData = async () => {
     try {
@@ -52,6 +53,8 @@ function LeftCol() {
 
   // Sol kamera butonuna tıklama işlevi
   const handleLeftCameraClick = () => {
+    const newLeftCameraStatus = !leftCameraStatus;
+    setLeftCameraStatus(newLeftCameraStatus);
     dispatch(toggleCamera("left"));  // Redux store'daki kamerayı "sol" olarak toggle et
   };
 
@@ -60,9 +63,31 @@ function LeftCol() {
       vertical={true}
       justify="space-evenly"
       align="center"
-      style={{ height: "80vh", width: "50vh" }}
+      style={{ height: "80vh", width: "50vh", position: "relative" }}
     >
-      <Button onClick={handleLeftCameraClick}>Sol Kamera</Button> {/* Sol kamera butonu */}
+      <Button
+        onClick={handleLeftCameraClick}
+        type="button"
+        className="bg-sabGreenDark dark:bg-sabYellow dark:text-sabDarkBlack text-white py-2 px-4 rounded-lg shadow-lg hover:bg-sabGreenLight dark:hover:bg-sabHardYellow w-full flex items-center justify-center w-1/2 px-5 py-2 text-sm transition-colors duration-200 border rounded-lg gap-x-2 sm:w-auto"
+        style={{
+          marginBottom: "20px",
+          position: "absolute",
+          top: "10px",
+          borderColor: "#004d40", // Consistent border color
+        }}
+      >
+        <span
+          style={{
+            width: "12px",
+            height: "12px",
+            borderRadius: "50%",
+            backgroundColor: leftCameraStatus ? "#00A36C" : "#B22222",
+            display: "inline-block",
+            marginRight: "8px",
+          }}
+        ></span>
+        Sol Kamera
+      </Button>
       <Stats title={"Mesafe"} value={distanceValue} suffix={"m"} />
       <Stats title={"İlaç"} value={herbicideValue} suffix={"%"} />
       <Stats title={"Görev"} value={missionValue} suffix={""} />

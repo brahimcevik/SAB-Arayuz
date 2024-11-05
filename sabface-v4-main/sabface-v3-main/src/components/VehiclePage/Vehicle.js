@@ -28,6 +28,7 @@ function Vehicle() {
       </div>
       <Image width={200} src={Arac} preview={false} />
     </div>
+    
   );
 }
 

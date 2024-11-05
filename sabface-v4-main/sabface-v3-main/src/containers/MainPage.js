@@ -27,8 +27,28 @@ function MainPage() {
 
   // Kamera bileşenlerini render eden fonksiyon
   const renderCameras = () => {
-    const camerasToRender = activeCameras.length > 0 ? activeCameras : ["front"];
+    const camerasToRender = activeCameras.length > 0 ? [...activeCameras] : ["front"];
     const cameraCount = camerasToRender.length;
+
+    if (cameraCount === 3) {
+      // Ön kamerayı üst bölmeye yerleştirme
+      const frontCameraIndex = camerasToRender.indexOf("front");
+      if (frontCameraIndex !== -1) {
+        // Ön kamerayı üst bölmeye al
+        const [frontCamera] = camerasToRender.splice(frontCameraIndex, 1);
+        camerasToRender.unshift(frontCamera);
+      }
+    }
+    if (cameraCount === 2) {
+      // İkili bölmede ön kamerayı üst kısma yerleştirme
+      const frontCameraIndex = camerasToRender.indexOf("front");
+      if (frontCameraIndex !== -1 && frontCameraIndex !== 0) {
+        // Ön kamerayı üst bölmeye al
+        const [frontCamera] = camerasToRender.splice(frontCameraIndex, 1);
+        camerasToRender.unshift(frontCamera);
+      }
+    }
+
 
     const closeCamera = (camera) => {
       dispatch(removeCamera(camera)); // Kamera kaldırma işlemi

@@ -5,17 +5,15 @@ import { selectSelectedId } from "../../redux/ugvSlice"; // Redux selector
 const ManuelMode = () => {
   const [movements, setMovements] = useState([
     { speed: 0, direction: "İleri" },  // Main movement
-    { degree: 0, active: false },      // Right camera
     { degree: 0, active: false },      // Left camera
     { degree: 0, active: false },      // CapaMek mechanism
+    { degree: 0, active: false },      // Right camera
   ]);
 
-  const [sprays, setSprays] = useState({ leftSpray: 0, rightSpray: 0 });
-  const [lastAction, setLastAction] = useState(""); // Last action for display
-
+  const [sprays, setSprays] = useState({ leftSpray: 0, rightSpray: 0 }); // Initial spray states
+  const [lastAction, setLastAction] = useState("");
   const [displayedMovements, setDisplayedMovements] = useState([]);
 
-  // Get the selected robot ID from Redux
   const selectedId = useSelector(selectSelectedId);
 
   const handleDegreeChange = (index, event) => {
@@ -23,73 +21,77 @@ const ManuelMode = () => {
     updatedMovements[index].degree = parseInt(event.target.value);
     setMovements(updatedMovements);
 
-    // Only update active mechanisms
     if (updatedMovements[index].active) {
-      const component = index === 1 ? "leftCamera" : index === 2 ? "capaMek" : "rightCamera";
-      setLastAction(`${component}, ${updatedMovements[index].degree}, 1, [${sprays.leftSpray}, ${sprays.rightSpray}]`);
-      sendMovementData(selectedId, updatedMovements);
+      sendMovementData(selectedId, updatedMovements, sprays);
     }
   };
+
   useEffect(() => {
-    const updatedMovements = [...movements];
-    sendMovementData(selectedId, updatedMovements);
+    sendMovementData(selectedId, movements, sprays);
   }, [selectedId]);
+
   const toggleActive = (index) => {
     const updatedMovements = [...movements];
     updatedMovements[index].active = !updatedMovements[index].active;
     setMovements(updatedMovements);
 
-    const component = index === 1 ? "leftCamera" : index === 2 ? "capaMek" : "rightCamera";
-    setLastAction(`${component}, ${updatedMovements[index].degree}, ${updatedMovements[index].active ? 1 : 0}, [${sprays.leftSpray}, ${sprays.rightSpray}]`);
-    
-    sendMovementData(selectedId, updatedMovements);
+    sendMovementData(selectedId, updatedMovements, sprays);
   };
 
   const handleSpeedChange = (event) => {
     const updatedMovements = [...movements];
-    updatedMovements[0] = { ...updatedMovements[0], speed: parseFloat(event.target.value) };
+    updatedMovements[0].speed = parseFloat(event.target.value);
     setMovements(updatedMovements);
-    sendMovementData(selectedId, updatedMovements);
+    sendMovementData(selectedId, updatedMovements, sprays);
   };
 
   const handleDirection = (direction) => {
     const updatedMovements = [...movements];
     updatedMovements[0].direction = direction;
     setMovements(updatedMovements);
-    setLastAction(`${direction}, ${updatedMovements[0].speed.toFixed(2)}`);
-    sendMovementData(selectedId, updatedMovements);
+    sendMovementData(selectedId, updatedMovements, sprays);
   };
 
   const toggleSpray = (sprayType) => {
     setSprays(prev => {
-      const newSprayState = { ...prev, [sprayType]: prev[sprayType] === 1 ? 0 : 1 };
-  
-      // Tüm püskürtme durumlarını gönder
-      sendMovementData(selectedId, movements);
+      const newSprayState = {
+        ...prev,
+        [sprayType]: prev[sprayType] === 1 ? 0 : 1, // Toggle between 1 and 0
+      };
+
+      sendMovementData(selectedId, movements, newSprayState); 
       return newSprayState;
     });
   };
-  
-  
 
-  const sendMovementData = (robotId, movementData) => {
-    const apiUrl = `https://localhost:44315/api/UgvRobot/update-direction/${robotId}`;
-
+  const sendMovementData = (robotId, movementData, sprayState) => {
     const filteredMovements = movementData.map((movement, index) => {
       const isActive = movement.active ? 1 : 0;
-      const sprayState = isActive 
-        ? [sprays.leftSpray, sprays.rightSpray]  // Aktif bileşenler için her iki püskürtme değerini de gönder
-        : [0, 0];  // Pasif bileşenler için püskürtme kapalı
-      
-      return index === 0 
-        ? [Number(movement.speed.toFixed(2)), movement.direction] 
-        : [`${index === 1 ? "leftCamera" : index === 2 ? "capaMek" : "rightCamera"}`, movement.degree, isActive, sprayState];
+
+      // Return movements with active states
+      return index === 0
+        ? [Number(movement.speed.toFixed(2)), movement.direction]
+        : [
+            `${index === 1 ? "leftCamera" : index === 2 ? "capaMek" : "rightCamera"}`,
+            movement.degree,
+            isActive,
+          ];
     });
 
-    setDisplayedMovements(filteredMovements);
+    const leftSprayStatus = sprayState.leftSpray ? 1 : 0; // Left spray state
+    const rightSprayStatus = sprayState.rightSpray ? 1 : 0; // Right spray state
 
+    // Final movements array
+    const finalMovements = [
+      ...filteredMovements,
+      [leftSprayStatus, rightSprayStatus], // Add spray states at the end
+    ];
+
+    setDisplayedMovements(finalMovements);
+
+    const apiUrl = `https://localhost:44315/api/UgvRobot/update-direction/${robotId}`;
     const requestBody = {
-      direction: JSON.stringify(filteredMovements),
+      direction: JSON.stringify(finalMovements),
     };
 
     fetch(apiUrl, {
@@ -99,18 +101,18 @@ const ManuelMode = () => {
       },
       body: JSON.stringify(requestBody),
     })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Received a negative response from the server');
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Received a negative response from the server');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };
 
   return (
@@ -152,45 +154,44 @@ const ManuelMode = () => {
         </div>
 
         <div style={styles.speedControlContainer}>
-  <input
-    type="range"
-    min="0"
-    max="1"
-    step="0.01"
-    value={movements[0].speed}
-    onChange={handleSpeedChange}
-    style={styles.verticalSlider}
-  />
-  <div style={styles.speedDisplay}>
-    <span>Hız: {movements[0].speed.toFixed(2)}</span>
-  </div>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={movements[0].speed}
+            onChange={handleSpeedChange}
+            style={styles.verticalSlider}
+          />
+          <div style={styles.speedDisplay}>
+            <span>Hız: {movements[0].speed.toFixed(2)}</span>
+          </div>
 
-  {/* Left and Right Spray Buttons */}
-  <div style={styles.sprayButtonContainer}> {/* Yeni kapsayıcı eklendi */}
-    <button
-      onClick={() => toggleSpray("leftSpray")}
-      style={{
-        ...styles.toggleButton,
-        backgroundColor: sprays.leftSpray ? 'red' : 'green', // Sol püskürtme durumu
-        width: '80px', // Genişlik kısaltıldı
-        marginRight: '5px', // Sağdan boşluk eklendi
-      }}
-    >
-      Sol Püskürtme
-    </button>
+          <div style={styles.sprayButtonContainer}>
+            <button
+              onClick={() => toggleSpray("leftSpray")}
+              style={{
+                ...styles.toggleButton,
+                backgroundColor: sprays.leftSpray ? 'green' : 'red',
+                width: '80px',
+                marginRight: '5px',
+              }}
+            >
+              Sol Püskürtme
+            </button>
 
-    <button
-      onClick={() => toggleSpray("rightSpray")}
-      style={{
-        ...styles.toggleButton,
-        backgroundColor: sprays.rightSpray ? 'red' : 'green', // Sağ püskürtme durumu
-        width: '80px', // Genişlik kısaltıldı
-      }}
-    >
-      Sağ Püskürtme
-    </button>
-  </div>
-</div>
+            <button
+              onClick={() => toggleSpray("rightSpray")}
+              style={{
+                ...styles.toggleButton,
+                backgroundColor: sprays.rightSpray ? 'green' : 'red',
+                width: '80px',
+              }}
+            >
+              Sağ Püskürtme
+            </button>
+          </div>
+        </div>
       </div>
 
       <div style={styles.movementContainer}>
@@ -199,9 +200,10 @@ const ManuelMode = () => {
             Gönderilen Hareketler:<br />
             {displayedMovements.length > 0 && (
               `[[${displayedMovements[0][0]}, "${displayedMovements[0][1]}"], ` +
-              `["${displayedMovements[1][0]}", ${displayedMovements[1][1]}, ${displayedMovements[1][2]}, [${displayedMovements[1][3].join(', ')}]], ` +
-              `["${displayedMovements[2][0]}", ${displayedMovements[2][1]}, ${displayedMovements[2][2]}, [${displayedMovements[2][3].join(', ')}]], ` +
-              `["${displayedMovements[3][0]}", ${displayedMovements[3][1]}, ${displayedMovements[3][2]}, [${displayedMovements[3][3].join(', ')}]]]`
+              `["${displayedMovements[1][0]}", ${displayedMovements[1][1]}, ${displayedMovements[1][2]}], ` +
+              `["${displayedMovements[2][0]}", ${displayedMovements[2][1]}, ${displayedMovements[2][2]}], ` +
+              `["${displayedMovements[3][0]}", ${displayedMovements[3][1]}, ${displayedMovements[3][2]}], ` +
+              `[${displayedMovements[4][0]}, ${displayedMovements[4][1]}]]`
             )}
           </p>
         </div>
@@ -209,7 +211,6 @@ const ManuelMode = () => {
     </div>
   );
 };
-
 const styles = {
   /* container - ManuelMode bileşeninin ana kapsayıcısı */
   container: {
@@ -324,7 +325,7 @@ const styles = {
     marginLeft: "5px", // Soldan boşluk
   },
   
-  /* speedDisplay - Hız göstergesi */
+  /* speedDisplay - Hz göstergesi */
   speedDisplay: {
     fontSize: "18px", // Yazı boyutu
     marginTop: "10px", // Üstten boşluk

@@ -130,7 +130,7 @@ namespace SABApi.Services
                 updateDefinition);
         }
 
-                public async Task UpdateModAsync(int no, ModUpdateRequest request)
+        public async Task UpdateModAsync(int no, ModUpdateRequest request)
         {
             var updateDefinition = Builders<UgvRobot>.Update
                 .Set(x => x.SiraUzunlugu, request.SiraUzunlugu)
@@ -138,7 +138,7 @@ namespace SABApi.Services
                 .Set(x => x.ToplamSiraSayisi, request.ToplamSiraSayisi)
                 .Set(x => x.DonusDerecesi, request.DonusDerecesi)
                 .Set(x => x.IlkDonusAcisi, request.IlkDonusAcisi)
-                .Set(x => x.lastActiveMod,"mod1")
+                .Set(x => x.lastActiveMod, "mod1")
                 .Set(x => x.Status, true);
 
             await _ugvRobotCollection.UpdateOneAsync(
@@ -149,7 +149,7 @@ namespace SABApi.Services
         public async Task<UgvRobot?> GetModAsync(int no) =>
             await _ugvRobotCollection.Find(x => x.No == no).FirstOrDefaultAsync();
 
-            
+
         public async Task UpdateMod2Async(int no, ModUpdateRequest request)
         {
             var updateDefinition = Builders<UgvRobot>.Update

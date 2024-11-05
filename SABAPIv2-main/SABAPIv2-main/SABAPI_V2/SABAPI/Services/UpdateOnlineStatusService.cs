@@ -1,3 +1,4 @@
+
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SABApi.Models;
@@ -30,14 +31,14 @@ public class UpdateOnlineStatusService : BackgroundService
                 _logger.LogError(ex, "Robot durumlarını güncellerken bir hata oluştu.");
             }
 
-            await Task.Delay(TimeSpan.FromMinutes(0.1), stoppingToken); 
+            await Task.Delay(TimeSpan.FromMinutes(0.1), stoppingToken);
         }
     }
 
     private async Task UpdateRobotStatusesAsync()
     {
-        var robotlar = await _ugvRobotService.GetAsync(); 
-        var simdikiZaman = DateTime.UtcNow; 
+        var robotlar = await _ugvRobotService.GetAsync();
+        var simdikiZaman = DateTime.UtcNow;
 
         foreach (var robot in robotlar)
         {

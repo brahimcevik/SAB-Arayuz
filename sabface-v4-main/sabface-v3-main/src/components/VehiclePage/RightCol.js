@@ -4,17 +4,19 @@ import { Flex, Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { selectSelectedId } from "../../redux/ugvSlice";
 import { modeClick, selectisManuel } from "../../redux/modeSlice";
-import { toggleCamera } from "../../redux/cameraSlice"; // setActiveCamera yerine toggleCamera kullanılıyor
+import { toggleCamera, selectCameraStatus } from "../../redux/cameraSlice"; // Ensure selectCameraStatus is imported
 
 function RightCol() {
   const [carLat, setCarLat] = useState(null);
   const [carLong, setCarLong] = useState(null);
   const [carSpeed, setCarSpeed] = useState(null);
   const [selectedNo, setSelectedNo] = useState(null);
+  const [rightCameraStatus, setRightCameraStatus] = useState(false); // New state for right camera status
 
   const selectedId = useSelector(selectSelectedId);
   const isManuel = useSelector((state) => selectisManuel(state, selectedId)); // Seçili robotun manuel mod durumu
   const dispatch = useDispatch();
+  const cameraStatus = useSelector(selectCameraStatus);
 
   const fetchData = async () => {
     try {
@@ -81,7 +83,9 @@ function RightCol() {
   }, [selectedId]);
 
   const handleRightCameraClick = () => {
-    dispatch(toggleCamera('right')); // Sağ kamerayı aktif hale getirmek için toggleCamera kullanılıyor
+    const newRightCameraStatus = !rightCameraStatus;
+    setRightCameraStatus(newRightCameraStatus);
+    dispatch(toggleCamera('right')); // Sağ kamerayı toggle et
   };
 
   return (
@@ -92,22 +96,26 @@ function RightCol() {
       style={{ height: "80vh", width: "50vh", position: "relative" }}
     >
       <Button
-        type="primary"
+        onClick={handleRightCameraClick}
+        type="button"
+        className="bg-sabGreenDark dark:bg-sabYellow dark:text-sabDarkBlack text-white py-2 px-4 rounded-lg shadow-lg hover:bg-sabGreenLight dark:hover:bg-sabHardYellow w-full flex items-center justify-center w-1/2 px-5 py-2 text-sm transition-colors duration-200 border rounded-lg gap-x-2 sm:w-auto"
         style={{
+          marginBottom: "20px",
           position: "absolute",
-          top: "10px",  
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "130px",
-          height: "30px",
-          fontSize: "10px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
+          top: "10px",
+          borderColor: "#004d40", // Consistent border color
         }}
-        onClick={handleRightCameraClick}  // Sağ kamera butonuna tıklandığında çağrılır
       >
+        <span
+          style={{
+            width: "12px",
+            height: "12px",
+            borderRadius: "50%",
+            backgroundColor: cameraStatus.right ? "#00A36C" : "#B22222",
+            display: "inline-block",
+            marginRight: "8px",
+          }}
+        ></span>
         Sağ Kamera
       </Button>
       <Stats title="Hız" value={carSpeed} suffix="m/s" />
@@ -120,8 +128,6 @@ function RightCol() {
           bottom: "3px",
           left: "50%",
           transform: "translateX(-50%)",
-          backgroundColor: isManuel ? "#a5d6a7" : "#f7c04a",
-          borderColor: isManuel ? "#004d40" : "#f7c04a",
           width: "130px",
           height: "30px",
           fontSize: "10px",

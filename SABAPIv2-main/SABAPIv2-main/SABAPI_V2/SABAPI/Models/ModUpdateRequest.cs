@@ -7,8 +7,8 @@ namespace SABApi.Models
         public int ToplamSiraSayisi { get; set; }
         public double DonusDerecesi { get; set; }
         public string IlkDonusAcisi { get; set; }
-        public string Mod2 {  get; set; }
-        public Boolean Status {  get; set; }
+        public string Mod2 { get; set; }
+        public Boolean Status { get; set; }
         public Boolean OnlineStatus { get; set; }
 
     }

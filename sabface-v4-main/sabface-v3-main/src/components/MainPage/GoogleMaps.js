@@ -1,6 +1,7 @@
-
 import React, { useEffect, useState } from "react";
 import { Card } from "antd";
+import { useSelector } from "react-redux";
+import { selectSelectedId } from "../../redux/ugvSlice";
 
 const containerStyle = {
   width: "100%",
@@ -30,11 +31,32 @@ const thirdMarkerPosition = {
 const googleMapsApiKey = "AIzaSyDyMgwuK7JtmJiPjZx039AfYW7H5pyjS78"; // Gerçek Google Maps API anahtarınızı buraya ekleyin
 
 const GoogleMaps = () => {
+  const selectedId = useSelector(selectSelectedId);
+  const ugvName = useSelector((state) => state.ugv.ugvName); // Get the robot name from the state
   const [map, setMap] = useState(null);
   const [infoWindow, setInfoWindow] = useState(null);
   const [markers, setMarkers] = useState([]);
+  const [carLat, setCarLat] = useState(null); // New state for car latitude
+  const [carLong, setCarLong] = useState(null); // New state for car longitude
 
   useEffect(() => {
+    const fetchCarData = async () => {
+      try {
+        const response = await fetch("https://localhost:44315/api/UgvRobot");
+        const data = await response.json();
+        const selectedData = data.find((item) => item.id === selectedId);
+
+        if (selectedData) {
+          setCarLat(selectedData.carLat);
+          setCarLong(selectedData.carLong);
+        }
+      } catch (error) {
+        console.error("Error fetching car data:", error);
+      }
+    };
+
+    fetchCarData();
+
     const initMap = () => {
       const mapInstance = new window.google.maps.Map(
         document.getElementById("advanced-marker-map"),
@@ -60,6 +82,8 @@ const GoogleMaps = () => {
         scaledSize: new window.google.maps.Size(50, 50),
       };
 
+      const firstMarkerPosition = { lat: carLat, lng: carLong };
+
       const firstMarkerInstance = new window.google.maps.Marker({
         position: firstMarkerPosition,
         map: mapInstance,
@@ -84,7 +108,7 @@ const GoogleMaps = () => {
       firstMarkerInstance.addListener("click", () => {
         const content = `
           <div>
-            <h2>Robot1</h2>
+            <h2>${ugvName}</h2>
             <p>Enlem: ${firstMarkerPosition.lat}</p>
             <p>Boylam: ${firstMarkerPosition.lng}</p>
           </div>
@@ -136,7 +160,7 @@ const GoogleMaps = () => {
     } else {
       initMap();
     }
-  }, []);
+  }, [carLat, carLong, selectedId]);
 
   return (
     <Card

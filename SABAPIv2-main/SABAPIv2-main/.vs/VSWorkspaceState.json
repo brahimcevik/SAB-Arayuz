@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\SABAPI_V2",
-    "\\SABAPI_V2\\SABAPI"
+    "\\SABAPI_V2\\SABAPI",
+    "\\SABAPI_V2\\SABAPI\\Controllers",
+    "\\SABAPI_V2\\SABAPI\\Models",
+    "\\SABAPI_V2\\SABAPI\\Services"
   ],
-  "SelectedNode": "\\SABAPI_V2",
+  "SelectedNode": "\\SABAPI_V2\\SABAPI\\Controllers\\UgvRobotController.cs",
   "PreviewInSolutionExplorer": false
 }

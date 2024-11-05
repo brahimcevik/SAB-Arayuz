@@ -10,7 +10,7 @@ import { selectIsVehicleClicked } from "../redux/navigationSlice";
 import { selectisManuel } from "../redux/modeSlice";
 import ManuelMod from "../components/CameraPage/ManuelMode";
 import { selectSelectedId } from "../redux/ugvSlice";
-import { selectActiveCameras, removeCamera } from "../redux/cameraSlice"; // removeCamera eklenmiştir
+import { selectActiveCameras, removeCamera, toggleCamera } from "../redux/cameraSlice"; // toggleCamera eklenmiştir
 
 function CameraPage() {
   const [showVehiclePage, setShowVehiclePage] = useState(false);
@@ -22,15 +22,36 @@ function CameraPage() {
 
   useEffect(() => {
     setShowVehiclePage(isVehicleClicked);
-  }, [isVehicleClicked]);
+
+    // Eğer hiçbir kamera seçilmemişse, ön kamerayı varsayılan olarak aktif yap
+    if (activeCameras.length === 0) {
+      dispatch(toggleCamera("front"));
+    }
+  }, [isVehicleClicked, activeCameras, dispatch]);
 
   const closeCamera = (camera) => {
     dispatch(removeCamera(camera)); // Kamera kaldırma işlemi
   };
 
   const renderCameras = () => {
-    const camerasToRender = activeCameras.length > 0 ? activeCameras : ["front"];
+    const camerasToRender = activeCameras.length > 0 ? [...activeCameras] : ["front"];
     const cameraCount = camerasToRender.length;
+
+    if (cameraCount === 3) {
+      const frontCameraIndex = camerasToRender.indexOf("front");
+      if (frontCameraIndex !== -1) {
+        const [frontCamera] = camerasToRender.splice(frontCameraIndex, 1);
+        camerasToRender.unshift(frontCamera);
+      }
+    }
+
+    if (cameraCount === 2) {
+      const frontCameraIndex = camerasToRender.indexOf("front");
+      if (frontCameraIndex !== -1 && frontCameraIndex !== 0) {
+        const [frontCamera] = camerasToRender.splice(frontCameraIndex, 1);
+        camerasToRender.unshift(frontCamera);
+      }
+    }
 
     return (
       <div className="camera-container">
@@ -102,7 +123,7 @@ function CameraPage() {
           {isManuel ? (
             <ManuelMod />
           ) : (
-            <Row  justify="center" style={{ width: "100%", height: "100%" }}>
+            <Row justify="center" style={{ width: "100%", height: "100%" }}>
               {renderCameras()}
             </Row>
           )}

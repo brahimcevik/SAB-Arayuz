@@ -1,7 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  activeCameras: [],  // Aktif kameraların tutulduğu dizi
+  activeCameras: [],
+  cameraStatus: {
+    front: false,
+    left: false,
+    right: false,
+  },
 };
 
 const cameraSlice = createSlice({
@@ -11,29 +16,26 @@ const cameraSlice = createSlice({
     toggleCamera: (state, action) => {
       const camera = action.payload;
       if (state.activeCameras.includes(camera)) {
-        // Kamera zaten aktifse, diziden çıkar
         state.activeCameras = state.activeCameras.filter(item => item !== camera);
+        state.cameraStatus[camera] = false;
       } else {
-        // Kamera aktif değilse, dizinin sonuna ekle
         state.activeCameras.push(camera);
+        state.cameraStatus[camera] = true;
       }
     },
     removeCamera: (state, action) => {
       const cameraToRemove = action.payload;
-      // Belirtilen kamerayı diziden çıkar
       state.activeCameras = state.activeCameras.filter(camera => camera !== cameraToRemove);
+      state.cameraStatus[cameraToRemove] = false;
     },
     clearCameras: (state) => {
-      state.activeCameras = [];  // Tüm kameraları temizle
+      state.activeCameras = [];
+      state.cameraStatus = { front: false, left: false, right: false };
     },
   },
 });
 
-// Action'ları dışa aktarıyoruz
 export const { toggleCamera, removeCamera, clearCameras } = cameraSlice.actions;
-
-// Selector'ı dışa aktarıyoruz
 export const selectActiveCameras = (state) => state.camera.activeCameras;
-
-// Reducer'ı dışa aktarıyoruz
+export const selectCameraStatus = (state) => state.camera.cameraStatus;
 export default cameraSlice.reducer;
