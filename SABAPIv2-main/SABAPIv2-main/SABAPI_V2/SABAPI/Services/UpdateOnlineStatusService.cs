@@ -43,24 +43,25 @@ public class UpdateOnlineStatusService : BackgroundService
         {
             try
             {
-                if (robot.LastRunTime.HasValue && (simdikiZaman - robot.LastRunTime.Value).TotalMinutes > 0.25)
+                if (!robot.LastRunTime.HasValue ||
+                    (simdikiZaman - robot.LastRunTime.Value).TotalMinutes > 0.25)
                 {
                     var currentStatuses = (robot.OnlineStatus ?? "false,false,false,false").Split(',').ToList();
 
-                    // Array'i 4 elemana tamamla
                     while (currentStatuses.Count < 4)
                     {
                         currentStatuses.Add("false");
                     }
 
-                    // Sadece ilk elemanı false yap, diğerlerini koru
-                    currentStatuses[0] = "true";
+                    currentStatuses[0] = "false";
                     var newStatus = string.Join(",", currentStatuses);
 
                     await _ugvRobotService.UpdateOnlineStatusAsync(robot.No, new ModUpdateRequest
                     {
                         OnlineStatus = newStatus
                     });
+
+                    _logger.LogInformation($"Robot {robot.No} offline duruma geçti. Son çalışma: {robot.LastRunTime}");
                 }
             }
             catch (Exception ex)

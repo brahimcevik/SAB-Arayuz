@@ -184,7 +184,7 @@ namespace SABApi.Services
                 .Set(x => x.OnlineStatus, request.OnlineStatus);
 
             var statuses = request.OnlineStatus.Split(',');
-            if (statuses.Length > 0 && statuses[0] == "true")
+            if (statuses.Length > 0 && statuses[0].ToLower() == "true")
             {
                 updateDefinition = updateDefinition.Set(x => x.LastRunTime, DateTime.UtcNow);
             }
