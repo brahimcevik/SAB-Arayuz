@@ -3,15 +3,20 @@ import Stats from "../Stats";
 import { Flex, Button } from "antd";  // Ant Design'dan buton bileşeni ekledik
 import { useSelector, useDispatch } from "react-redux";
 import { selectSelectedId } from "../../redux/ugvSlice";
-import { toggleCamera } from "../../redux/cameraSlice";  // toggleCamera işlevini import ettik
+import { toggleCamera, selectCameraStatus } from "../../redux/cameraSlice";  // toggleCamera işlevini import ettik
 
-function LeftCol() {
+function LeftCol({ leftCameraStatus, setLeftCameraStatus, onCameraClick }) {
   const [distanceValue, setDistanceValue] = useState(null);
   const [missionValue, setMissionValue] = useState(null);
   const [herbicideValue, setHerbicideValue] = useState(null);
   const selectedId = useSelector(selectSelectedId);
   const dispatch = useDispatch();
-  const [leftCameraStatus, setLeftCameraStatus] = useState(false); // New state for left camera status
+  const cameraStatus = useSelector(selectCameraStatus);
+
+  // Update local state when Redux state changes
+  useEffect(() => {
+    setLeftCameraStatus(cameraStatus.left);
+  }, [cameraStatus.left, setLeftCameraStatus]);
 
   const fetchData = async () => {
     try {
@@ -55,7 +60,8 @@ function LeftCol() {
   const handleLeftCameraClick = () => {
     const newLeftCameraStatus = !leftCameraStatus;
     setLeftCameraStatus(newLeftCameraStatus);
-    dispatch(toggleCamera("left"));  // Redux store'daki kamerayı "sol" olarak toggle et
+    dispatch(toggleCamera("left"));
+    onCameraClick(newLeftCameraStatus);
   };
 
   return (

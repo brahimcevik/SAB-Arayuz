@@ -6,12 +6,11 @@ import { selectSelectedId } from "../../redux/ugvSlice";
 import { modeClick, selectisManuel } from "../../redux/modeSlice";
 import { toggleCamera, selectCameraStatus } from "../../redux/cameraSlice"; // Ensure selectCameraStatus is imported
 
-function RightCol() {
+function RightCol({ rightCameraStatus, setRightCameraStatus, onCameraClick }) {
   const [carLat, setCarLat] = useState(null);
   const [carLong, setCarLong] = useState(null);
   const [carSpeed, setCarSpeed] = useState(null);
   const [selectedNo, setSelectedNo] = useState(null);
-  const [rightCameraStatus, setRightCameraStatus] = useState(false); // New state for right camera status
 
   const selectedId = useSelector(selectSelectedId);
   const isManuel = useSelector((state) => selectisManuel(state, selectedId)); // Seçili robotun manuel mod durumu
@@ -85,7 +84,8 @@ function RightCol() {
   const handleRightCameraClick = () => {
     const newRightCameraStatus = !rightCameraStatus;
     setRightCameraStatus(newRightCameraStatus);
-    dispatch(toggleCamera('right')); // Sağ kamerayı toggle et
+    dispatch(toggleCamera('right'));
+    onCameraClick(newRightCameraStatus);
   };
 
   return (

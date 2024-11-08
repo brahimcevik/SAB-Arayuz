@@ -1,4 +1,3 @@
-
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SABApi.Models;
@@ -42,10 +41,31 @@ public class UpdateOnlineStatusService : BackgroundService
 
         foreach (var robot in robotlar)
         {
-            if (robot.LastRunTime.HasValue && (simdikiZaman - robot.LastRunTime.Value).TotalMinutes > 0.25)
+            try
             {
-                // LastRunTime 1 dakikadan fazla geçmişse OnlineStatus'u false yap
-                await _ugvRobotService.UpdateOnlineStatusAsync(robot.No, new ModUpdateRequest { OnlineStatus = false });
+                if (robot.LastRunTime.HasValue && (simdikiZaman - robot.LastRunTime.Value).TotalMinutes > 0.25)
+                {
+                    var currentStatuses = (robot.OnlineStatus ?? "false,false,false,false").Split(',').ToList();
+
+                    // Array'i 4 elemana tamamla
+                    while (currentStatuses.Count < 4)
+                    {
+                        currentStatuses.Add("false");
+                    }
+
+                    // Sadece ilk elemanı false yap, diğerlerini koru
+                    currentStatuses[0] = "true";
+                    var newStatus = string.Join(",", currentStatuses);
+
+                    await _ugvRobotService.UpdateOnlineStatusAsync(robot.No, new ModUpdateRequest
+                    {
+                        OnlineStatus = newStatus
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Robot {robot.No} durumu güncellenirken hata oluştu.");
             }
         }
     }

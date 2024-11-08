@@ -1,4 +1,4 @@
-﻿using SABApi.Models;
+using SABApi.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -31,7 +31,7 @@ namespace SABApi.Services
         {
             newUgvRobot.Status = false;
             newUgvRobot.ManuelStatus = false;
-
+            newUgvRobot.OnlineStatus = "false,false,false,false";
 
             var highestNo = await _ugvRobotCollection.Find(_ => true)
                 .SortByDescending(x => x.No)
@@ -175,13 +175,18 @@ namespace SABApi.Services
 
         public async Task UpdateOnlineStatusAsync(int no, ModUpdateRequest request)
         {
+            if (string.IsNullOrEmpty(request.OnlineStatus) || request.OnlineStatus == "string")
+            {
+                request.OnlineStatus = "false,false,false,false";
+            }
+
             var updateDefinition = Builders<UgvRobot>.Update
                 .Set(x => x.OnlineStatus, request.OnlineStatus);
 
-            if (request.OnlineStatus)
+            var statuses = request.OnlineStatus.Split(',');
+            if (statuses.Length > 0 && statuses[0] == "true")
             {
-                // Eğer OnlineStatus true ise, LastRunTime güncellenir
-                updateDefinition = updateDefinition.Set(x => x.LastRunTime, DateTime.Now);
+                updateDefinition = updateDefinition.Set(x => x.LastRunTime, DateTime.UtcNow);
             }
 
             await _ugvRobotCollection.UpdateOneAsync(

@@ -7,44 +7,20 @@
       "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:models\\ugvrobot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\controllers\\ugvrobotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:controllers\\ugvrobotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\services\\updateonlinestatusservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:services\\updateonlinestatusservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\services\\ugvrobotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:services\\ugvrobotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\services\\updateonlinestatusservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:services\\updateonlinestatusservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\models\\directionupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:models\\directionupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\controllers\\ugvrobotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:controllers\\ugvrobotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\models\\modupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:models\\modupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\models\\speedupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:models\\speedupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\models\\ugvrobotsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:models\\ugvrobotsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|c:\\users\\ibrah\\onedrive\\belgeler\\github\\sab-arayuz\\sabapiv2-main\\sabapiv2-main\\sabapi_v2\\sabapi\\upgradelog.htm||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{59E3FE64-2B68-45B0-96BE-4A387577230E}|SABApi.csproj|solutionrelative:upgradelog.htm||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,21 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UpdateOnlineStatusService.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Services\\UpdateOnlineStatusService.cs",
-              "RelativeDocumentMoniker": "Services\\UpdateOnlineStatusService.cs",
-              "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Services\\UpdateOnlineStatusService.cs",
-              "RelativeToolTip": "Services\\UpdateOnlineStatusService.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAAwCUAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T14:52:37.33Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -83,41 +46,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UgvRobotService.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Services\\UgvRobotService.cs",
-              "RelativeDocumentMoniker": "Services\\UgvRobotService.cs",
-              "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Services\\UgvRobotService.cs",
-              "RelativeToolTip": "Services\\UgvRobotService.cs",
-              "ViewState": "AQIAALQAAAAAAAAAAAAAwNYAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T10:57:12.82Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "UgvRobotController.cs",
               "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Controllers\\UgvRobotController.cs",
               "RelativeDocumentMoniker": "Controllers\\UgvRobotController.cs",
               "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Controllers\\UgvRobotController.cs",
               "RelativeToolTip": "Controllers\\UgvRobotController.cs",
-              "ViewState": "AQIAAP4AAAAAAAAAAAAAwCABAAABAAAA",
+              "ViewState": "AQIAAOYAAAAAAAAAAAAAwPcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T10:57:12.824Z",
+              "WhenOpened": "2024-11-06T12:55:46.564Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SpeedUpdateRequest.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Models\\SpeedUpdateRequest.cs",
-              "RelativeDocumentMoniker": "Models\\SpeedUpdateRequest.cs",
-              "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Models\\SpeedUpdateRequest.cs",
-              "RelativeToolTip": "Models\\SpeedUpdateRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T13:49:32.748Z"
             },
             {
               "$type": "Document",
@@ -127,82 +65,49 @@
               "RelativeDocumentMoniker": "Models\\UgvRobot.cs",
               "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Models\\UgvRobot.cs",
               "RelativeToolTip": "Models\\UgvRobot.cs",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAwwFMAAAABAAAA",
+              "ViewState": "AQIAADoAAAAAAAAAAAAowFQAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T10:57:12.83Z",
+              "WhenOpened": "2024-11-06T12:50:09.016Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UgvRobotSettings.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Models\\UgvRobotSettings.cs",
-              "RelativeDocumentMoniker": "Models\\UgvRobotSettings.cs",
-              "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Models\\UgvRobotSettings.cs",
-              "RelativeToolTip": "Models\\UgvRobotSettings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T10:57:12.816Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T10:57:12.812Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "DirectionUpdateRequest.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Models\\DirectionUpdateRequest.cs",
-              "RelativeDocumentMoniker": "Models\\DirectionUpdateRequest.cs",
-              "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Models\\DirectionUpdateRequest.cs",
-              "RelativeToolTip": "Models\\DirectionUpdateRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-10T14:52:02.657Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "ModUpdateRequest.cs",
               "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Models\\ModUpdateRequest.cs",
               "RelativeDocumentMoniker": "Models\\ModUpdateRequest.cs",
               "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Models\\ModUpdateRequest.cs",
               "RelativeToolTip": "Models\\ModUpdateRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T10:57:12.827Z"
+              "WhenOpened": "2024-11-06T12:48:50.399Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-06T10:57:12.789Z"
+              "DocumentIndex": 2,
+              "Title": "UgvRobotService.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Services\\UgvRobotService.cs",
+              "RelativeDocumentMoniker": "Services\\UgvRobotService.cs",
+              "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Services\\UgvRobotService.cs",
+              "RelativeToolTip": "Services\\UgvRobotService.cs",
+              "ViewState": "AQIAAKYAAAAAAAAAAADwv9cAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T12:48:24.413Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "UpgradeLog.htm",
-              "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\UpgradeLog.htm",
-              "RelativeDocumentMoniker": "UpgradeLog.htm",
-              "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\UpgradeLog.htm",
-              "RelativeToolTip": "UpgradeLog.htm",
-              "ViewState": "AQIAAB8AAAAAAAAAAEBVwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-09-06T10:57:12.835Z"
+              "DocumentIndex": 1,
+              "Title": "UpdateOnlineStatusService.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Services\\UpdateOnlineStatusService.cs",
+              "RelativeDocumentMoniker": "Services\\UpdateOnlineStatusService.cs",
+              "ToolTip": "C:\\Users\\ibrah\\OneDrive\\Belgeler\\GitHub\\SAB-Arayuz\\SABAPIv2-main\\SABAPIv2-main\\SABAPI_V2\\SABAPI\\Services\\UpdateOnlineStatusService.cs",
+              "RelativeToolTip": "Services\\UpdateOnlineStatusService.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAxwEgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T12:47:57.4Z",
+              "EditorCaption": ""
             }
           ]
         },

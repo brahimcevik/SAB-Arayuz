@@ -14,10 +14,10 @@ const center = {
   lng: 39.37325320122449,
 };
 
-const firstMarkerPosition = {
-  lat: 39.769633,
-  lng: 39.372979,
-};
+// const firstMarkerPosition = {
+//   lat: 39.769633,
+//   lng: 39.372979,
+// };
 
 const secondMarkerPosition = {
   lat: 39.769674,
@@ -44,8 +44,8 @@ const GoogleMaps = () => {
       try {
         const response = await fetch("https://localhost:44315/api/UgvRobot");
         const data = await response.json();
-        const selectedData = data.find((item) => item.id === selectedId);
-
+        const selectedData = data.find((item) => item.id === selectedId)
+        // alert(selectedData.carLat)
         if (selectedData) {
           setCarLat(selectedData.carLat);
           setCarLong(selectedData.carLong);
@@ -83,6 +83,7 @@ const GoogleMaps = () => {
       };
 
       const firstMarkerPosition = { lat: carLat, lng: carLong };
+      // const secondMarkerPosition = { lat: carLat, lng: carLong };
 
       const firstMarkerInstance = new window.google.maps.Marker({
         position: firstMarkerPosition,
@@ -174,6 +175,7 @@ const GoogleMaps = () => {
       <div id="advanced-marker-map" style={containerStyle}></div>
   
     </Card>
+
   );
 };
 

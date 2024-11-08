@@ -9,7 +9,7 @@ namespace SABApi.Models
         public string IlkDonusAcisi { get; set; }
         public string Mod2 { get; set; }
         public Boolean Status { get; set; }
-        public Boolean OnlineStatus { get; set; }
+        public string OnlineStatus { get; set; } = "false,false,false,false";
 
     }
 }

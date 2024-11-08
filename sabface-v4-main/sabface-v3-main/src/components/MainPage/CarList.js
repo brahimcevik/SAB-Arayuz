@@ -1,8 +1,9 @@
+// ../components/MainPage/CarList.js
 import React, { useState, useEffect } from "react";
 import { Card, Flex } from "antd";
 import CarCard from "./CarCard";
 
-function CarList() {
+function CarList({width = "87vh", height = "80vh"}) {  // default width and height
   const [carData, setCarData] = useState([]);
 
   useEffect(() => {
@@ -15,13 +16,12 @@ function CarList() {
   return (
     <div>
       <Card
-        style={{ width: "87vh", height: "80vh" }}
+        style={{ width, height }}  // apply the width and height props
         className="bg-sabGreenDark dark:bg-sabGreenHardDark rounded-3xl border-sabGreenDark dark:border-sabGreenHardDark overflow-y-auto"
       >
         <Flex wrap="wrap" gap="middle">
           {carData.map((car) => (
             <CarCard
-              key={car.id}
               id={car.id}
               ugvName={car.ugvName}
               ugvColor={car.ugvColor}

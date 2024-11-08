@@ -69,7 +69,7 @@ namespace SABApi.Models
         public Boolean Status { get; set; }
 
         [BsonElement("OnlineStatus")]
-        public Boolean OnlineStatus { get; set; }
+        public string OnlineStatus { get; set; } = "false,false,false,false";
 
         [BsonElement("LastRunTime")]
         public DateTime? LastRunTime { get; set; }
@@ -81,4 +81,5 @@ namespace SABApi.Models
         public Boolean ManuelStatus { get; set; }
 
     }
+
 }

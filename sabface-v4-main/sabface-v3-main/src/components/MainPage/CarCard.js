@@ -14,6 +14,7 @@ function CarCard({ id, ugvName, ugvColor }) {
   // Handle button click to change the route
   const handleButtonClick = () => {
     dispatch(vehicleCardClick());
+    //alert(id);
     dispatch(setSelectedId(id));
     dispatch(setUgvName(ugvName));
   };

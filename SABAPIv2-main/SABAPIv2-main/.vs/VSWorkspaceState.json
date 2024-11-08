@@ -7,6 +7,6 @@
     "\\SABAPI_V2\\SABAPI\\Models",
     "\\SABAPI_V2\\SABAPI\\Services"
   ],
-  "SelectedNode": "\\SABAPI_V2\\SABAPI\\Controllers\\UgvRobotController.cs",
+  "SelectedNode": "\\SABAPI_V2\\SABAPI\\Models\\ModUpdateRequest.cs",
   "PreviewInSolutionExplorer": false
 }
