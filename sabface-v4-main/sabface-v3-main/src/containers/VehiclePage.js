@@ -6,7 +6,7 @@ import RightCol from "../components/VehiclePage/RightCol";
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
 import { vehicleCardClick } from "../redux/navigationSlice";
-import { selectSelectedId } from "../redux/ugvSlice";
+import { selectSelectedId, setSelectedId } from "../redux/ugvSlice";
 import { toggleCamera } from "../../src/redux/cameraSlice"; // Redux'tan toggleCamera'ı import ettik
 import { selectCameraStatus } from "../../src/redux/cameraSlice";
 
@@ -63,41 +63,45 @@ function VehiclePage() {
   // Kamera durumu güncellemesi için fonksiyonu güncelle
   const updateCameraStatus = async (cameraIndex, newStatus) => {
     try {
-      const response = await fetch(`https://localhost:44315/api/UgvRobot/${selectId}`);
-      const data = await response.json();
-      let currentStatuses = data.onlineStatus.split(',');
-      
-      while (currentStatuses.length < 4) {
-        currentStatuses.push('false');
-      }
-      
-      currentStatuses[cameraIndex] = newStatus.toString();
-      const newStatusString = currentStatuses.join(',');
-      
-      const updateResponse = await fetch(`https://localhost:44315/api/UgvRobot/update-online-status/${data.no}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          onlineStatus: newStatusString,
-          siraUzunlugu: data.siraUzunlugu || 0,
-          ikiSiraArasiMesafe: data.ikiSiraArasiMesafe || 0,
-          toplamSiraSayisi: data.toplamSiraSayisi || 0,
-          donusDerecesi: data.donusDerecesi || 0,
-          ilkDonusAcisi: data.ilkDonusAcisi || "0",
-          mod2: data.mod2 || "default",
-          status: data.status || false
-        }),
-      });
+        const response = await fetch(`https://localhost:44315/api/UgvRobot/${selectId}`);
+        const data = await response.json();
+        let currentStatuses = data.onlineStatus.split(',');
 
-      if (!updateResponse.ok) {
-        throw new Error('Failed to update camera status');
-      }
+        while (currentStatuses.length < 4) {
+            currentStatuses.push('false');
+        }
 
-      console.log(`Camera ${cameraIndex} status updated to ${newStatus}`);
+        // Kamera isimlerini tanımla
+        const cameraNames = ["left", "leftCamera", "rightCamera", "onCamera"];
+        
+        // Durum ve isimleri birleştir
+        currentStatuses[cameraIndex] = `[${newStatus.toString()}-${cameraNames[cameraIndex]}]`;
+        const newStatusString = currentStatuses.join(',');
+
+        const updateResponse = await fetch(`https://localhost:44315/api/UgvRobot/update-online-status/${data.no}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                onlineStatus: newStatusString,
+                siraUzunlugu: data.siraUzunlugu || 0,
+                ikiSiraArasiMesafe: data.ikiSiraArasiMesafe || 0,
+                toplamSiraSayisi: data.toplamSiraSayisi || 0,
+                donusDerecesi: data.donusDerecesi || 0,
+                ilkDonusAcisi: data.ilkDonusAcisi || "0",
+                mod2: data.mod2 || "default",
+                status: data.status || false
+            }),
+        });
+
+        if (!updateResponse.ok) {
+            throw new Error('Failed to update camera status');
+        }
+
+        console.log(`Camera ${cameraNames[cameraIndex]} status updated to ${newStatus}`);
     } catch (error) {
-      console.error("Camera status update failed:", error);
+        console.error("Camera status update failed:", error);
     }
   };
 
@@ -124,6 +128,8 @@ function VehiclePage() {
 
   const geriDon = () => {
     dispatch(vehicleCardClick());
+    dispatch(setSelectedId(null));
+
   };
 
   const statusDegistir = () => {

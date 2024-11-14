@@ -53,15 +53,18 @@ public class UpdateOnlineStatusService : BackgroundService
                         currentStatuses.Add("false");
                     }
 
-                    currentStatuses[0] = "false";
-                    var newStatus = string.Join(",", currentStatuses);
-
-                    await _ugvRobotService.UpdateOnlineStatusAsync(robot.No, new ModUpdateRequest
+                    if (currentStatuses[0].ToLower() == "true")
                     {
-                        OnlineStatus = newStatus
-                    });
+                        currentStatuses[0] = "false";
+                        var newStatus = string.Join(",", currentStatuses);
 
-                    _logger.LogInformation($"Robot {robot.No} offline duruma geçti. Son çalışma: {robot.LastRunTime}");
+                        await _ugvRobotService.UpdateOnlineStatusAsync(robot.No, new ModUpdateRequest
+                        {
+                            OnlineStatus = newStatus
+                        });
+
+                        _logger.LogInformation($"Robot {robot.No} offline duruma geçti. Son çalışma: {robot.LastRunTime}");
+                    }
                 }
             }
             catch (Exception ex)

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SABApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e823f523f2c08bf6e5b47842f6a13684fab42f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+558db12ff02d83f5b62f3de313d9b87e8e0571b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("SABApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SABApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

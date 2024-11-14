@@ -6,7 +6,7 @@ import { selectSelectedId } from "../../redux/ugvSlice";
 const containerStyle = {
   width: "100%",
   height: "340px",
-  display: "flex", // İhtiyaca göre bu yüksekliği ayarlayın
+  display: "flex",
 };
 
 const center = {
@@ -14,141 +14,40 @@ const center = {
   lng: 39.37325320122449,
 };
 
-// const firstMarkerPosition = {
-//   lat: 39.769633,
-//   lng: 39.372979,
-// };
-
-const secondMarkerPosition = {
-  lat: 39.769674,
-  lng: 39.373085,
-};
-
-const thirdMarkerPosition = {
-  lat: 39.769834,
-  lng: 39.373418,
-};
 const googleMapsApiKey = "AIzaSyDyMgwuK7JtmJiPjZx039AfYW7H5pyjS78"; // Gerçek Google Maps API anahtarınızı buraya ekleyin
 
 const GoogleMaps = () => {
   const selectedId = useSelector(selectSelectedId);
-  const ugvName = useSelector((state) => state.ugv.ugvName); // Get the robot name from the state
   const [map, setMap] = useState(null);
-  const [infoWindow, setInfoWindow] = useState(null);
+  const [robots, setRobots] = useState([]);
   const [markers, setMarkers] = useState([]);
-  const [carLat, setCarLat] = useState(null); // New state for car latitude
-  const [carLong, setCarLong] = useState(null); // New state for car longitude
 
   useEffect(() => {
-    const fetchCarData = async () => {
+    const fetchAllRobots = async () => {
       try {
         const response = await fetch("https://localhost:44315/api/UgvRobot");
         const data = await response.json();
-        const selectedData = data.find((item) => item.id === selectedId)
-        // alert(selectedData.carLat)
-        if (selectedData) {
-          setCarLat(selectedData.carLat);
-          setCarLong(selectedData.carLong);
-        }
+        setRobots(data);
       } catch (error) {
-        console.error("Error fetching car data:", error);
+        console.error("Error fetching robot data:", error);
       }
     };
 
-    fetchCarData();
+    fetchAllRobots();
 
     const initMap = () => {
-      const mapInstance = new window.google.maps.Map(
-        document.getElementById("advanced-marker-map"),
-        {
-          zoom: 18.5,
-          center: center,
-          mapTypeId: "satellite", // Harita tipini uydu görünümü olarak ayarla
-          disableDefaultUI: true, // Tüm default kontrolleri kaldırır
-        }
-      );
-
-      const infoWindowInstance = new window.google.maps.InfoWindow();
-      const robot1Icon = {
-        url: "https://i.hizliresim.com/hh9lylh.png", // Özelleştirilmiş marker ikonunun URL'si
-        scaledSize: new window.google.maps.Size(50, 50), // Ikonun boyutunu ayarlayın
-      };
-      const robot2Icon = {
-        url: "https://i.hizliresim.com/7lzzkk1.png",
-        scaledSize: new window.google.maps.Size(50, 50),
-      };
-      const robot3Icon = {
-        url: "https://i.hizliresim.com/984m89w.png",
-        scaledSize: new window.google.maps.Size(50, 50),
-      };
-
-      const firstMarkerPosition = { lat: carLat, lng: carLong };
-      // const secondMarkerPosition = { lat: carLat, lng: carLong };
-
-      const firstMarkerInstance = new window.google.maps.Marker({
-        position: firstMarkerPosition,
-        map: mapInstance,
-        title: "Robot1",
-        icon: robot1Icon, // Özelleştirilmiş ikon
-      });
-
-      const secondMarkerInstance = new window.google.maps.Marker({
-        position: secondMarkerPosition,
-        map: mapInstance,
-        title: "Robot2",
-        icon: robot2Icon, // Özelleştirilmiş ikon
-      });
-
-      const thirdMarkerInstance = new window.google.maps.Marker({
-        position: thirdMarkerPosition,
-        map: mapInstance,
-        title: "Robot3",
-        icon: robot3Icon, // Özelleştirilmiş ikon
-      });
-
-      firstMarkerInstance.addListener("click", () => {
-        const content = `
-          <div>
-            <h2>${ugvName}</h2>
-            <p>Enlem: ${firstMarkerPosition.lat}</p>
-            <p>Boylam: ${firstMarkerPosition.lng}</p>
-          </div>
-        `;
-        infoWindowInstance.setContent(content);
-        infoWindowInstance.open(mapInstance, firstMarkerInstance);
-      });
-
-      secondMarkerInstance.addListener("click", () => {
-        const content = `
-          <div>
-            <h2>Robot2</h2>
-            <p>Enlem: ${secondMarkerPosition.lat}</p>
-            <p>Boylam: ${secondMarkerPosition.lng}</p>
-          </div>
-        `;
-        infoWindowInstance.setContent(content);
-        infoWindowInstance.open(mapInstance, secondMarkerInstance);
-      });
-
-      thirdMarkerInstance.addListener("click", () => {
-        const content = `
-          <div>
-            <h2>Robot3</h2>
-            <p>Enlem: ${thirdMarkerPosition.lat}</p>
-            <p>Boylam: ${thirdMarkerPosition.lng}</p>
-          </div>
-        `;
-        infoWindowInstance.setContent(content);
-        infoWindowInstance.open(mapInstance, thirdMarkerInstance);
-      });
-
-      setMap(mapInstance);
-      setInfoWindow(infoWindowInstance);
-      setMarkers([
-        firstMarkerInstance,
-        secondMarkerInstance,
-        thirdMarkerInstance,
-      ]);
+      if (!map) {
+        const mapInstance = new window.google.maps.Map(
+          document.getElementById("advanced-marker-map"),
+          {
+            zoom: 18.5,
+            center: center,
+            mapTypeId: "satellite",
+            disableDefaultUI: true,
+          }
+        );
+        setMap(mapInstance);
+      }
     };
 
     if (!window.google) {
@@ -161,7 +60,48 @@ const GoogleMaps = () => {
     } else {
       initMap();
     }
-  }, [carLat, carLong, selectedId]);
+  }, []);
+
+  useEffect(() => {
+    if (map && robots.length > 0) {
+      // Tüm eski marker'ları kaldır
+      markers.forEach((marker) => marker.setMap(null));
+
+      const newMarkers = robots.map((robot) => {
+        const marker = new window.google.maps.Marker({
+          position: { lat: robot.carLat, lng: robot.carLong },
+          map: map,
+          icon: robot.id === selectedId
+            ? {
+                url: "https://i.hizliresim.com/7lzzkk1.png", // Seçili robot için farklı ikon
+                scaledSize: new window.google.maps.Size(60, 60),
+              }
+            : {
+                url: "https://i.hizliresim.com/hh9lylh.png", // Diğer robotlar için ikon
+                scaledSize: new window.google.maps.Size(50, 50),
+              },
+          title: robot.ugvName || "Robot",
+        });
+
+        marker.addListener("click", () => {
+          const infoWindow = new window.google.maps.InfoWindow({
+            content: `
+              <div>
+                <h2>${robot.ugvName || "Robot"}</h2>
+                <p>Enlem: ${robot.carLat}</p>
+                <p>Boylam: ${robot.carLong}</p>
+              </div>
+            `,
+          });
+          infoWindow.open(map, marker);
+        });
+
+        return marker;
+      });
+
+      setMarkers(newMarkers);
+    }
+  }, [map, robots, selectedId]);
 
   return (
     <Card
@@ -173,9 +113,7 @@ const GoogleMaps = () => {
       className="bg-sabGreenDark dark:bg-sabGreenHardDark rounded-3xl border-sabGreenDark dark:border-sabGreenHardDark "
     >
       <div id="advanced-marker-map" style={containerStyle}></div>
-  
     </Card>
-
   );
 };
 
