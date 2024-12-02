@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Col, Row, Flex } from "antd";
 import Weather from "../components/MainPage/Weather";
-import CarList from "../components/ModePage/ModeCarList";
+import ModeCarList from "../components/ModePage/ModeCarList";
 import GoogleMaps from "../components/MainPage/GoogleMaps";
 import ModeCard from "../components/ModePage/ModeCard";
 
 function Mode() {
-  // selectedCarNo ve setSelectedCarNo state'lerini tanımlıyoruz
   const [selectedCarNo, setSelectedCarNo] = useState(null);
+  const [localCoordinates, setLocalCoordinates] = useState([]); // Eklenen koordinatlar için state
 
   return (
     <Row>
@@ -20,8 +20,7 @@ function Mode() {
               height: "100%",
             }}
           >
-            {/* CarList bileşenine selectedCarNo ve setSelectedCarNo prop'larını geçiriyoruz */}
-            <CarList
+            <ModeCarList
               selectedCarNo={selectedCarNo}
               setSelectedCarNo={setSelectedCarNo}
             />
@@ -35,10 +34,9 @@ function Mode() {
               width: "100%",
             }}
           >
-            {/* ModeCard bileşenine selectedCarNo ve setSelectedCarNo prop'larını geçiriyoruz */}
             <ModeCard
               selectedCarNo={selectedCarNo}
-              setSelectedCarNo={setSelectedCarNo}
+              setCoordinates={setLocalCoordinates} // Eklenen koordinatları aktar
             />
           </Flex>
         </Row>
@@ -64,7 +62,10 @@ function Mode() {
               width: "100%",
             }}
           >
-            <GoogleMaps />
+            <GoogleMaps 
+              selectedCarNo={selectedCarNo}
+              setSelectedCarNo={setSelectedCarNo}
+              />
           </Flex>
         </Row>
       </Col>

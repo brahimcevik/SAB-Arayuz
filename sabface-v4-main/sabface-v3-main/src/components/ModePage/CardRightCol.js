@@ -1,35 +1,41 @@
 import { Input, Button } from "antd";
 import { useState } from "react";
 
-const CardRightCol = (props) => {
+const CardRightCol = ({ setCoordinates, selectedCarNo }) => {
   const [count, setCount] = useState(0);
-  const [coordinates, setCoordinates] = useState([]);
-  const {selectedCarNo} = props;
+  const [localCoordinates, setLocalCoordinates] = useState([]);
+
 
   const handleCoordinateCountChange = (e) => {
-    const newCount = parseInt(e.target.value, 10);
+    const newCount = parseInt(e.target.value, 10) || 0;
     setCount(newCount);
-
     const newCoordinates = Array.from({ length: newCount }, (_, index) => ({
       latitude: "",
       longitude: "",
       id: index + 1,
     }));
-    setCoordinates(newCoordinates);
+    setLocalCoordinates(newCoordinates);
   };
 
   const handleCoordinateChange = (index, field, value) => {
-    const updatedCoordinates = [...coordinates];
+    const updatedCoordinates = [...localCoordinates];
     updatedCoordinates[index][field] = value;
-    setCoordinates(updatedCoordinates);
+    setLocalCoordinates(updatedCoordinates);
   };
 
   const handleSubmit = async () => {
     // Koordinat verilerini JSON formatına dönüştür
-    const mod2Data = coordinates.map(coord => [
+    const mod2Data = localCoordinates.map(coord => [
       parseFloat(coord.latitude),
       parseFloat(coord.longitude)
     ]);
+    const validCoordinates = localCoordinates.filter(
+      (coord) =>
+        !isNaN(parseFloat(coord.latitude)) &&
+        !isNaN(parseFloat(coord.longitude))
+    );
+  
+    setCoordinates(validCoordinates);
 
     // İstek verisini oluştur
     const requestData = {
@@ -65,6 +71,8 @@ const CardRightCol = (props) => {
     setCount(0);
     setCoordinates([]);
   };
+  
+  
 
   return (
     <div>
@@ -75,7 +83,7 @@ const CardRightCol = (props) => {
         className="dark:bg-sabDarkBlack p-2 border border-gray-300 rounded text-black dark:text-white mb-4"
         onChange={handleCoordinateCountChange}
       />
-      {coordinates.map((coordinate, index) => (
+      {localCoordinates.map((coordinate, index) => (
         <div key={index} className="flex space-x-2 mb-4">
           <Input
             type="text"

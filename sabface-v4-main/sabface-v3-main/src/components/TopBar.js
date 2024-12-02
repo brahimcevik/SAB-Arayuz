@@ -1,14 +1,8 @@
-
 import React, { useContext } from "react";
 import TopBarRow from "./TopBarRow";
-import { HomeIcon } from "@heroicons/react/24/solid";
-import { DocumentPlusIcon } from "@heroicons/react/24/solid";
-import { MoonIcon } from "@heroicons/react/24/solid";
-import { ChartBarIcon } from "@heroicons/react/24/solid";
-import { PlayCircleIcon } from "@heroicons/react/24/solid";
+import { HomeIcon, DocumentPlusIcon, MoonIcon, ChartBarIcon, ChatBubbleLeftIcon, SunIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../context/themeContenx";
-import { SunIcon } from "@heroicons/react/24/solid";
 
 const TopBar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -22,12 +16,11 @@ const TopBar = () => {
           <TopBarRow Icon={DocumentPlusIcon} />
         </Link>
         <Link to="/Camera">
-          <TopBarRow Icon={PlayCircleIcon} />
+          <TopBarRow Icon={ChatBubbleLeftIcon} />
         </Link>
         <Link to="/Graphic">
           <TopBarRow Icon={ChartBarIcon} />
         </Link>
-
         <button onClick={toggleTheme}>
           {theme === "dark" ? (
             <TopBarRow Icon={SunIcon} />

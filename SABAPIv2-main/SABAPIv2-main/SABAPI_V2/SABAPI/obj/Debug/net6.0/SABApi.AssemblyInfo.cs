@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SABApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+558db12ff02d83f5b62f3de313d9b87e8e0571b0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e1d240f18f96aa1e8438b3db54cc1dd07ee0332")]
 [assembly: System.Reflection.AssemblyProductAttribute("SABApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SABApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
