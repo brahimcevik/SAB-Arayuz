@@ -27,8 +27,9 @@ namespace SABApi.Services
         public async Task<UgvRobot?> GetAsync(string id) =>
             await _ugvRobotCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        public async Task CreateAsync(UgvRobot newUgvRobot)
+        public async Task CreateAsync(UgvRobot newUgvRobot, string userId)
         {
+            newUgvRobot.UserId = userId;
             newUgvRobot.Status = false;
             newUgvRobot.ManuelStatus = false;
             newUgvRobot.OnlineStatus = "false,false,false,false";
@@ -214,7 +215,8 @@ namespace SABApi.Services
                 updateDefinition);
         }
 
-
+        public async Task<List<UgvRobot>> GetByUserIdAsync(string userId) =>
+            await _ugvRobotCollection.Find(x => x.UserId == userId).ToListAsync();
 
     }
 }

@@ -31,11 +31,22 @@ namespace SABApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(UgvRobot newUgvRobot)
+        public async Task<IActionResult> Post(UgvRobot newUgvRobot, [FromQuery] string userId)
         {
-            await _ugvRobotService.CreateAsync(newUgvRobot);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("Kullanıcı kimliği gereklidir.");
+            }
 
-            return CreatedAtAction(nameof(Get), new { id = newUgvRobot.Id }, newUgvRobot);
+            try
+            {
+                await _ugvRobotService.CreateAsync(newUgvRobot, userId);
+                return CreatedAtAction(nameof(Get), new { id = newUgvRobot.Id }, newUgvRobot);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpPut("{id:length(24)}")]
@@ -145,10 +156,6 @@ namespace SABApi.Controllers
             return NoContent();
         }
 
-
-
-
-
         [HttpDelete("{id:length(24)}")]
         public async Task<IActionResult> Delete(string id)
         {
@@ -160,7 +167,6 @@ namespace SABApi.Controllers
             }
 
             await _ugvRobotService.RemoveAsync(id);
-
             return NoContent();
         }
 
@@ -176,7 +182,6 @@ namespace SABApi.Controllers
 
             return ugvRobot;
         }
-
 
         [HttpPatch("update-mod/{no}")]
         public async Task<IActionResult> UpdateMod(int no, [FromBody] ModUpdateRequest request)
@@ -205,7 +210,6 @@ namespace SABApi.Controllers
 
             return ugvRobot;
         }
-
 
         [HttpPatch("update-mod2/{no}")]
         public async Task<IActionResult> UpdateMod2(int no, [FromBody] ModUpdateRequest request)
@@ -267,8 +271,6 @@ namespace SABApi.Controllers
             return NoContent();
         }
 
-
-
         [HttpPatch("update-manuel-status/{no}")]
         public async Task<IActionResult> UpdateManuelStatus(int no, [FromBody] ManuelStatusUpdateRequests request)
         {
@@ -284,6 +286,11 @@ namespace SABApi.Controllers
             return NoContent();
         }
 
-
+        [HttpGet("user/{userId}")]
+        public async Task<ActionResult<List<UgvRobot>>> GetByUserId(string userId)
+        {
+            var robots = await _ugvRobotService.GetByUserIdAsync(userId);
+            return Ok(robots);
+        }
     }
 }

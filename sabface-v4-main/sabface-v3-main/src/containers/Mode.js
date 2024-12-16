@@ -8,7 +8,8 @@ import ModeCard from "../components/ModePage/ModeCard";
 function Mode() {
   const [selectedCarNo, setSelectedCarNo] = useState(null);
   const [localCoordinates, setLocalCoordinates] = useState([]); // Eklenen koordinatlar için state
-
+  const [selectedCoordinates, setSelectedCoordinates] = useState({ lat: 39.1377, lng: 43.9244 }); // Default coordinates
+  const [robots, setRobots] = useState([]);
   return (
     <Row>
       <Col span={12}>
@@ -51,7 +52,7 @@ function Mode() {
               width: "100%",
             }}
           >
-            <Weather />
+            <Weather coordinates={selectedCoordinates} selectedCarNo={selectedCarNo} robots={robots} />
           </Flex>
         </Row>
         <Row style={{ height: "70%" }}>

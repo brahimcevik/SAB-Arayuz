@@ -5,6 +5,7 @@ import CardLeftCol from "./CardLeftCol";
 
 function ModeCard({ selectedCarNo }) {
   const [currentPage, setCurrentPage] = useState(null);
+  const [coordinates, setCoordinates] = useState([]);
 
   const handleCardClick = (page) => {
     setCurrentPage(page);
@@ -49,7 +50,7 @@ function ModeCard({ selectedCarNo }) {
           </h2>
         }
       >
-        {currentPage === "CardRightCol" && <CardRightCol  selectedCarNo={selectedCarNo} />}
+        {currentPage === "CardRightCol" && <CardRightCol setCoordinates={setCoordinates} selectedCarNo={selectedCarNo} />}
         {currentPage === "CardLeftCol" && (
           <CardLeftCol selectedCarNo={selectedCarNo} />
         )}

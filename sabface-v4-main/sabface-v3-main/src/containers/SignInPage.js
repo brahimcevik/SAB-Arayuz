@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Form, Input, Button, message } from "antd"; 
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import SABLogo from "../img/LogoBeyaz.png";
@@ -8,6 +8,7 @@ import { signIn } from "../redux/authSlice";
 import { ThemeContext } from "../context/themeContenx";
 import { SunIcon } from "@heroicons/react/24/solid";
 import { MoonIcon } from "@heroicons/react/24/solid";
+import axios from 'axios';
 
 const SignInPage = ({ setIsAuthenticated }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -18,20 +19,43 @@ const SignInPage = ({ setIsAuthenticated }) => {
   const handleButtonClick = () => {
     setIsAuthenticated(true);
     // Use the navigate function to change the route
-    navigate("/MainPage"); // Change '/vehicle' to the desired route
+    navigate("/MainPage"); // Change '/MainPage' to the desired route
   };
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     const { username, password } = values;
 
-    // Check if the username and password match the specified values
-    if (username === "admin" && password === "123456") {
-      handleButtonClick();
-      dispatch(signIn());
-    } else {
-      message.error("Kullanıcı adı veya şifre hatalı!"); 
+    try {
+        const response = await axios.post('https://localhost:44315/api/User/login', {
+            "id": "",
+            "username": username,
+            "password": password,
+            "createdAt": new Date().toISOString(),
+            "roles": ["User"]
+        });
+
+        if (response.status === 200) {
+            const { token, userId } = response.data; // Yanıtın içinden UserId'yi al
+            localStorage.setItem('token', token); // Token'ı kaydet
+            localStorage.setItem('userId', userId); // UserId'yi kaydet
+            handleButtonClick();
+            dispatch(signIn());
+        }
+    } catch (error) {
+        console.error("Giriş hatası:", error);
+        message.error("Kullanıcı adı veya şifre hatalı!");
     }
   };
+
+  // Kullanıcının zaten kimlik doğrulaması yapılmış mı kontrol etmek için bu effect'i ekleyin
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      // Kullanıcı zaten giriş yapmışsa, doğrudan ana sayfaya yönlendirmeyin
+      // setIsAuthenticated(true);
+      // navigate("/MainPage");
+    }
+  }, [setIsAuthenticated, navigate]);
 
   const containerStyle = {
     display: "flex",
@@ -74,12 +98,12 @@ const SignInPage = ({ setIsAuthenticated }) => {
         {/* Username input */}
         <Form.Item
           name="username"
-          rules={[
-            { required: true, message: "Lütfen kullanıcı adınızı giriniz!" },
+          rules={[ 
+            { required: true, message: "Lütfen kullanıcı adınızı giriniz!" }
           ]}
         >
           <Input
-            prefix={
+            prefix={ 
               <UserOutlined className="text-black text-opacity-25 dark:text-gray-300" />
             }
             placeholder="Kullanıcı adı"
@@ -89,10 +113,12 @@ const SignInPage = ({ setIsAuthenticated }) => {
         {/* Password input */}
         <Form.Item
           name="password"
-          rules={[{ required: true, message: "Lütfen şifrenizi giriniz!" }]}
+          rules={[ 
+            { required: true, message: "Lütfen şifrenizi giriniz!" }
+          ]}
         >
           <Input
-            prefix={
+            prefix={ 
               <LockOutlined className="text-black text-opacity-25 dark:text-gray-300" />
             }
             type="password"

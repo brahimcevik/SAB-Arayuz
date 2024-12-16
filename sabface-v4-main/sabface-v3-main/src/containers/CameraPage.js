@@ -21,6 +21,9 @@ function CameraPage() {
   // Chatbot state
   const [messages, setMessages] = useState([]); // Mesajları tutmak için state
   const [input, setInput] = useState(""); // Kullanıcı girişi için state
+  const [selectedCarNo, setSelectedCarNo] = useState(null);
+  const [robots, setRobots] = useState([]);
+
   const [responses, setResponses] = useState([
     "Merhaba! Size nasıl yardımcı olabilirim?",
     "Beni buraya çağırdığınız için teşekkürler!",
@@ -118,7 +121,7 @@ function CameraPage() {
     <Row style={{ height: "80vh" }}>
       <Col span={12}>
         <Flex justify="center" align="center" style={{ height: "100%" }} className="scroll-pl-6 snap-x">
-          {showVehiclePage ? <VehiclePage /> : <CarList />}
+          {showVehiclePage ? <VehiclePage setSelectedCarNo={setSelectedCarNo} /> : <CarList selectedCarNo={selectedCarNo} setSelectedCarNo={setSelectedCarNo} />}
         </Flex>
       </Col>
       <Col

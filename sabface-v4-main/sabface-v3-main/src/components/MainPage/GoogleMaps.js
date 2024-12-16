@@ -22,18 +22,21 @@ const GoogleMaps = ({ selectedCarNo, setSelectedCarNo }) => {
   const [markers, setMarkers] = useState([]);
   const [mod2Markers, setMod2Markers] = useState([]);
 
-  // Backend'den robotları çek
+  // Robotları çek
   const fetchRobots = async () => {
-    try {
-      const response = await fetch("https://localhost:44315/api/UgvRobot");
-      const data = await response.json();
-      setRobots(data);
-    } catch (error) {
-      console.error("Error fetching robot data:", error);
+    const userId = localStorage.getItem('userId'); // Local storage'dan userId'yi al
+    if (userId) {
+      try {
+        const response = await fetch(`https://localhost:44315/api/UgvRobot/user/${userId}`);
+        const data = await response.json();
+        setRobots(data);
+      } catch (error) {
+        console.error("Error fetching robot data:", error);
+      }
     }
   };
 
-  // Mod2 koordinatlarını çek
+  // Mod2 koordinatların çek
   const fetchMod2Coordinates = async (carNo) => {
     try {
       const response = await fetch(
@@ -47,6 +50,24 @@ const GoogleMaps = ({ selectedCarNo, setSelectedCarNo }) => {
     } catch (error) {
       console.error("Error fetching mod2 data:", error);
       return [];
+    }
+  };
+
+  const fetchWeatherDataWithCoordinates = async (coordinates) => {
+    const apiKey = "0c0dcdc7e9b2975a7e115ed4ec2ae3ab";
+    const { lat, lng } = coordinates;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`;
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("API request failed");
+      }
+      const data = await response.json();
+      // Hava durumu verisini işleme
+      // ... (veri işleme kodu)
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
     }
   };
 
@@ -90,25 +111,25 @@ const GoogleMaps = ({ selectedCarNo, setSelectedCarNo }) => {
 
   useEffect(() => {
     if (map) {
-      // Önceki marker'ları temizle
+      // Clear previous markers
       markers.forEach((marker) => marker.setMap(null));
       mod2Markers.forEach((marker) => marker.setMap(null));
   
       if (selectedCarNo === null) {
-        // Tüm robotları göster
+        // Show all robots
         const newMarkers = robots.map((robot) => {
           const marker = new window.google.maps.Marker({
             position: { lat: robot.carLat, lng: robot.carLong },
             map: map,
             icon: {
-              url: "https://i.hizliresim.com/hh9lylh.png", // Normal ikon
+              url: "https://i.hizliresim.com/hh9lylh.png", // Normal icon
               scaledSize: new window.google.maps.Size(50, 50),
             },
             title: robot.ugvName || "Robot",
           });
   
           marker.addListener("click", () => {
-            setSelectedCarNo(robot.no); // Robot seçildiğinde no'yu ayarla
+            setSelectedCarNo(robot.no); // Set selected car number
           });
   
           return marker;
@@ -116,40 +137,40 @@ const GoogleMaps = ({ selectedCarNo, setSelectedCarNo }) => {
   
         setMarkers(newMarkers);
       } else {
-        // Sadece seçilen robotu göster
+        // Show only the selected robot
         const selectedRobot = robots.find((robot) => robot.no === selectedCarNo);
         if (selectedRobot) {
           const robotMarker = new window.google.maps.Marker({
             position: { lat: selectedRobot.carLat, lng: selectedRobot.carLong },
             map: map,
             icon: {
-              url: "https://i.hizliresim.com/7lzzkk1.png", // Özel ikon
+              url: "https://i.hizliresim.com/7lzzkk1.png", // Special icon
               scaledSize: new window.google.maps.Size(60, 60),
             },
             title: selectedRobot.ugvName || "Robot",
           });
   
           robotMarker.addListener("click", () => {
-            setSelectedCarNo(null); // Aynı robota tıklanınca seçim kaldır
+            setSelectedCarNo(null); // Deselect on click
           });
   
           setMarkers([robotMarker]);
   
-          // Mod2 koordinatlarını haritaya ekle
+          // Add Mod2 coordinates to the map
           fetchMod2Coordinates(selectedCarNo).then((coordinates) => {
             const newMod2Markers = coordinates.map(([lat, lng]) => {
               const marker = new window.google.maps.Marker({
                 position: { lat, lng },
                 map: map,
-                title: `Koordinat: ${lat}, ${lng}`,
+                title: `Coordinate: ${lat}, ${lng}`,
               });
   
               marker.addListener("click", () => {
                 const infoWindow = new window.google.maps.InfoWindow({
                   content: `
                     <div>
-                      <p>Enlem: ${lat}</p>
-                      <p>Boylam: ${lng}</p>
+                      <p>Latitude: ${lat}</p>
+                      <p>Longitude: ${lng}</p>
                     </div>
                   `,
                 });

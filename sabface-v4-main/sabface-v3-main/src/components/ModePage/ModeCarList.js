@@ -8,11 +8,14 @@ function ModeCarList(props) {
   const {selectedCarNo, setSelectedCarNo} = props;
 
   useEffect(() => {
-    fetch("https://localhost:44315/api/UgvRobot")
-      .then((response) => response.json())
-      .then((data) => setCarData(data))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []); 
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      fetch(`https://localhost:44315/api/UgvRobot/user/${userId}`)
+        .then((response) => response.json())
+        .then((data) => setCarData(data))
+        .catch((error) => console.error("Error fetching data:", error));
+    }
+  }, []);
 
   const handleCarClick = (id, no) => {
     setSelectedCarId(id);

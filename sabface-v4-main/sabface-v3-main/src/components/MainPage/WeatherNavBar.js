@@ -6,8 +6,8 @@ function WeatherNavbar() {
 
   useEffect(() => {
     const apiKey = "0c0dcdc7e9b2975a7e115ed4ec2ae3ab";
-    const latitude = 40.828955150025024; // Sabit enlem değeri
-    const longitude = 29.802852888259416; // Sabit boylam değeri
+   const latitude = 39.1377; // Sabit enlem değeri
+    const longitude = 43.9244; // Sabit boylam değeri
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
     const fetchData = async () => {

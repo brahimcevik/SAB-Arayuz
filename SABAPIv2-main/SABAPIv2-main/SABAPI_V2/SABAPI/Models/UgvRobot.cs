@@ -80,6 +80,9 @@ namespace SABApi.Models
         [BsonElement("manuelStatus")]
         public Boolean ManuelStatus { get; set; }
 
+        [BsonElement("userId")]
+        public string UserId { get; set; } = null!;
+
     }
 
 }

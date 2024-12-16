@@ -9,16 +9,29 @@ import { vehicleCardClick } from "../redux/navigationSlice";
 import { selectSelectedId, setSelectedId } from "../redux/ugvSlice";
 import { toggleCamera } from "../../src/redux/cameraSlice"; // Redux'tan toggleCamera'ı import ettik
 import { selectCameraStatus } from "../../src/redux/cameraSlice";
+import { setCityCoordinates } from "../redux/ugvCoordinatesSlice"; // Import setCityCoordinates
+import { selectCityCoordinates } from "../redux/ugvCoordinatesSlice"; // selectCityCoordinates'ı içe aktar
 
-function VehiclePage() {
+function VehiclePage({ setSelectedCarNo }) {
   const dispatch = useDispatch();
   const selectId = useSelector(selectSelectedId);
+  const cityCoordinates = useSelector(selectCityCoordinates); // Redux'tan şehir koordinatlarını al
   const [buttonStatus, setButtonStatus] = useState(false);
   const [currentData, setCurrentData] = useState(null);
   const [onlineStatus, setOnlineStatus] = useState("true");
   const cameraStatus = useSelector(selectCameraStatus);
   const [leftCameraStatus, setLeftCameraStatus] = useState(false);
   const [rightCameraStatus, setRightCameraStatus] = useState(false);
+  
+
+  // Varsayılan koordinatları kullan
+  useEffect(() => {
+    if (cityCoordinates.latitude && cityCoordinates.longitude) {
+      // Koordinatlar mevcutsa, gerekli işlemleri yap
+    
+      console.log("Varsayılan Koordinatlar:", cityCoordinates);
+    }
+  }, [cityCoordinates]);
 
   // Fetch initial data
   useEffect(() => {
@@ -127,10 +140,12 @@ function VehiclePage() {
   }, [selectId]);
 
   const geriDon = () => {
-    dispatch(vehicleCardClick());
-    dispatch(setSelectedId(null));
+  dispatch(vehicleCardClick());
+  dispatch(setSelectedId(null));
 
-  };
+
+  setSelectedCarNo(null); // Seçili aracı sıfırla
+};
 
   const statusDegistir = () => {
     const yeniStatus = !buttonStatus;

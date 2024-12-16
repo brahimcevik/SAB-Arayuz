@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectIsVehicleClicked } from "../redux/navigationSlice";
 import { selectisManuel } from "../redux/modeSlice";
 import { selectActiveCameras, removeCamera } from "../redux/cameraSlice"; // removeCamera ekleniyor
-
+import { selectCityCoordinates } from "../redux/ugvCoordinatesSlice"; // selectCityCoordinates'ı içe aktar
 function MainPage() {
   const [showVehiclePage, setShowVehiclePage] = useState(false);
   const dispatch = useDispatch(); // useDispatch ekleniyor
@@ -20,6 +20,9 @@ function MainPage() {
   const selectedId = useSelector((state) => state.ugv.selectedId);
   const isManuel = useSelector((state) => selectisManuel(state, selectedId));
   const activeCameras = useSelector(selectActiveCameras);
+  const [selectedCarNo, setSelectedCarNo] = useState(null);
+  const [robots, setRobots] = useState([]);
+  const cityCoordinates = useSelector(selectCityCoordinates); // Redux store'dan koordinatları al
 
   useEffect(() => {
     setShowVehiclePage(isVehicleClicked);
@@ -110,40 +113,39 @@ function MainPage() {
 
   return (
     <Row style={{ height: "80vh" }}>
-      <Col span={12}>
-        <Flex justify="center" align="center" style={{ height: "100%" }} className="scroll-pl-6 snap-x">
-          {showVehiclePage ? <VehiclePage /> : <CarList />}
-        </Flex>
-      </Col>
+    <Col span={12}>
+  <Flex justify="center" align="center" style={{ height: "100%" }}>
+    {showVehiclePage ? <VehiclePage setSelectedCarNo={setSelectedCarNo} /> : <CarList selectedCarNo={selectedCarNo} setSelectedCarNo={setSelectedCarNo} />}
+  </Flex>
+</Col>
 
-      <Col
-        span={12}
-        className={isManuel || activeCameras.length ? "bg-sabGreenDark dark:bg-sabGreenHardDark rounded-3xl px-10" : ""}
-        style={{ height: "100%" }}
-      >
-        {isManuel ? (
-          <Flex justify="center" align="center" style={{ height: "100%" }}>
-            <ManuelMode />
-          </Flex>
-        ) : activeCameras.length > 0 ? (
-          <Flex justify="center" align="center"  style={{ width: "100%", height: "100%" }}>
-            {renderCameras()} {/* Aktif kameraları render et */}
-          </Flex>
-        ) : (
-          <>
-            <Row style={{ height: "30%", marginLeft: "1rem" }} className="w-full">
-              <Flex justify="center" align="center" style={{ height: "100%", width: "100%" }}>
-                <Weather />
-              </Flex>
-            </Row>
-            <Row style={{ height: "70%" }}>
-              <Flex justify="center" style={{ height: "100%", width: "100%" }}>
-                <GoogleMaps />
-              </Flex>
-            </Row>
-          </>
-        )}
-      </Col>
+<Col span={12} className={isManuel || activeCameras.length ? "bg-sabGreenDark dark:bg-sabGreenHardDark rounded-3xl px-10" : ""} style={{ height: "100%" }}>
+  {isManuel ? (
+    <Flex justify="center" align="center" style={{ height: "100%" }}>
+      <ManuelMode />
+    </Flex>
+  ) : activeCameras.length > 0 ? (
+    <Flex justify="center" align="center" style={{ width: "100%", height: "100%" }}>
+      {renderCameras()} {/* Render active cameras */}
+    </Flex>
+  ) : (
+    <>
+      <Row style={{ height: "30%", marginLeft: "1rem" }} className="w-full">
+        <Flex justify="center" align="center" style={{ height: "100%", width: "100%" }}>
+          <Weather selectedCarNo={selectedCarNo} robots={robots}  cityCoordinates={cityCoordinates}/>
+        </Flex>
+      </Row>
+      <Row style={{ height: "70%" }}>
+        <Flex justify="center" style={{ height: "100%", width: "100%" }}>
+          <GoogleMaps 
+            selectedCarNo={selectedCarNo} 
+            setSelectedCarNo={setSelectedCarNo} 
+          />
+        </Flex>
+      </Row>
+    </>
+  )}
+</Col>
     </Row>
   );
 }
