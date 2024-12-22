@@ -1,16 +1,17 @@
-import React, { useState, useContext } from "react"; // React kütüphanesinden gerekli bileşenleri import ediyor.
-import { ReactComponent as Clear } from "../../img/sun.svg"; // SVG formatındaki bir resmi bir React bileşeni olarak import ediyor.
-import { ReactComponent as Clouds } from "../../img/clouds.svg"; // Bulutlu hava durumu ikonunu import ediyor.
-import { ReactComponent as Rain } from "../../img/rainy-2.svg"; // Yağmurlu hava durumu ikonunu import ediyor.
-import { BellIcon, SunIcon, MoonIcon } from "@heroicons/react/24/solid"; // Heroicons kütüphanesinden ikonları import ediyor.
-import pp from "../../img/pp.jpg"; // Profil fotoğrafı için bir resmi import ediyor.
-import Lottie from "lottie-react"; // Animasyonlu Lottie dosyalarını kullanmak için Lottie kütüphanesini import ediyor.
-import Cloudy from "../../img/cloudy.json"; // Bulutlu hava için Lottie animasyon dosyasını import ediyor.
-import sunny from "../../img/sunny.json"; // Güneşli hava için Lottie animasyon dosyasını import ediyor.
-import { Modal } from "antd"; // Ant Design kütüphanesinden Modal bileşenini import ediyor.
-import { ThemeContext } from "../../context/themeContenx"; // Tema bilgilerini almak için ThemeContext'i import ediyor.
-import { useDispatch } from "react-redux"; // Redux dispatch fonksiyonunu import ediyoruz.
-import { setCoordinates, setCityCoordinates } from "../../redux/ugvCoordinatesSlice"; // Eylemleri import ediyoruz.
+import React, { useState, useContext, useEffect } from "react"; // React bileşenlerini toplu şekilde import ediyoruz.
+import { ReactComponent as Clear } from "../../img/sun.svg";
+import { ReactComponent as Clouds } from "../../img/clouds.svg";
+import { ReactComponent as Rain } from "../../img/rainy-2.svg";
+import { BellIcon, SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import pp from "../../img/pp.jpg";
+import Lottie from "lottie-react";
+import Cloudy from "../../img/cloudy.json";
+import sunny from "../../img/sunny.json";
+import { Modal } from "antd";
+import { ThemeContext } from "../../context/themeContenx";
+import { useDispatch } from "react-redux";
+import { setCoordinates, setCityCoordinates } from "../../redux/ugvCoordinatesSlice";
+
 
 // Tema renklerini yönetmek için bir sınıf oluşturuyor.
 class ThemeStyles {
@@ -57,6 +58,24 @@ function WeatherStatsNavbar({ value, weatherType, day }) {
   const [cityName, setCityName] = useState(""); // Şehir ismini tutmak için
   const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null }); // Enlem ve boylamı tutmak için
   const dispatch = useDispatch(); // Dispatch fonksiyonunu tanımlıyoruz.
+  const [error, setError] = useState(null); // Hata mesajını tutmak için state
+  const [countries, setCountries] = useState([]);
+const [cities, setCities] = useState([]);
+const [selectedCountry, setSelectedCountry] = useState("");
+
+useEffect(() => {
+  // Ülkeleri çek
+  fetch("https://countriesnow.space/api/v0.1/countries")
+    .then((response) => response.json())
+    .then((data) => setCountries(data.data))
+    .catch((error) => console.error("Ülke verileri alınamadı:", error));
+}, []);
+
+const handleCountryChange = (country) => {
+  setSelectedCountry(country);
+  const countryData = countries.find((c) => c.country === country);
+  setCities(countryData ? countryData.cities : []);
+};
 
   // Hava durumu türüne göre doğru ikonu ayarlıyor.
   let WeatherIcon;
@@ -192,27 +211,31 @@ function WeatherStatsNavbar({ value, weatherType, day }) {
   };
 
   // Koordinatları almak için fonksiyon
-  const getCoordinates = async (city) => {
-    const apiKey = "0c0dcdc7e9b2975a7e115ed4ec2ae3ab"; // API anahtarınızı buraya girin
-    const url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+ // Backend'den koordinatları almak için fonksiyon
+ const getCoordinates = async (city) => {
+  const url = `https://localhost:44315/get-coordinates?cityName=${city}`; // Şehir adını dinamik ekle
 
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Şehir bulunamadı.");
-      const data = await response.json();
-      if (data.length > 0) {
-        const { lat, lon } = data[0];
-        setCoordinates({ latitude: lat, longitude: lon }); // Enlem ve boylamı güncelle
-        dispatch(setCityCoordinates({ latitude: lat, longitude: lon })); // Koordinatları Redux'a gönder
-        // Hava durumu bileşenini güncelle
-        
-      } else {
-        console.log("Şehir bulunamadı.");
-      }
-    } catch (error) {
-      console.error("Bir hata oluştu:", error);
-    }
-  };
+  try {
+    const response = await fetch(url); // GET isteği gönder
+    if (!response.ok) throw new Error("Şehir bulunamadı veya bir hata oluştu."); // Hata kontrolü
+
+    const data = await response.json(); // JSON yanıtını al
+
+    // Redux'a gelen koordinatları yönlendirme
+    dispatch(setCityCoordinates({ latitude: data.latitude, longitude: data.longitude }));
+
+    // Yerel state güncelleme
+    setCoordinates({ latitude: data.latitude, longitude: data.longitude }); 
+    setError(null); // Hata mesajını sıfırla
+  } catch (err) {
+    // Hata durumu
+    setError(err.message); 
+    setCoordinates({ latitude: null, longitude: null }); // Koordinatları sıfırla
+  }
+};
+
+
+
 
   // Modal içeriğini dinamik olarak render eden fonksiyon
   const renderModalContent = () => {
@@ -306,22 +329,72 @@ function WeatherStatsNavbar({ value, weatherType, day }) {
     } else if (modalContentKey === "Sistem Ayarları ") {
       return (
         <div>
-          <div style={{ marginBottom: '10px' }}>
-            <label style={{ color: themeStyles.textColor }}><strong>Şehir:</strong></label>
-            <input
-              type="text"
-              placeholder="Şehir ismi"
-              value={cityName}
-              onChange={(e) => setCityName(e.target.value)} // Şehir ismini güncelle
-              style={{ marginBottom: '10px', width: '50%' }}
-            />
-            <button onClick={() => getCoordinates(cityName)} style={{ marginLeft: '10px' }}>Koordinatları Al</button>
-          </div>
-          {coordinates.latitude && coordinates.longitude && (
-            <div style={{ color: themeStyles.textColor }}>
-              <p>{cityName} şehrinin koordinatları: Enlem {coordinates.latitude}, Boylam {coordinates.longitude}</p>
-            </div>
-          )}
+      <div style={{ margin: "20px" }}>
+  {/* Ülke ve Şehir Seçimi */}
+  <label htmlFor="countrySelect" style={{ marginBottom: "10px" }}>
+    <strong>Ülke Seç:</strong>
+  </label>
+  <select
+    id="countrySelect"
+    value={selectedCountry}
+    onChange={(e) => handleCountryChange(e.target.value)}
+    style={{
+      width: "50%",
+      marginBottom: "10px",
+      padding: "5px",
+      borderRadius: "5px",
+    }}
+  >
+    <option value="">--Ülke Seç--</option>
+    {countries.map((country) => (
+      <option key={country.country} value={country.country}>
+        {country.country}
+      </option>
+    ))}
+  </select>
+
+  <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+    <label htmlFor="citySelect" style={{ marginRight: "10px" }}>
+      <strong>Şehir Seç:</strong>
+    </label>
+    <select
+      id="citySelect"
+      value={cityName}
+      onChange={(e) => setCityName(e.target.value)}
+      style={{
+        width: "50%",
+        padding: "5px",
+        borderRadius: "5px",
+      }}
+      disabled={!selectedCountry}
+    >
+      <option value="">--Şehir Seç--</option>
+      {cities.map((city) => (
+        <option key={city} value={city}>
+          {city}
+        </option>
+      ))}
+    </select>
+  </div>
+
+  {/* Butonu sağa kaydırmak için flex kullanımı */}
+  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+    <button
+      onClick={() => getCoordinates(cityName)}
+      style={{
+        padding: "5px 10px",
+        borderRadius: "5px",
+        backgroundColor: themeStyles.buttonBackgroundColor,
+        color: themeStyles.textColor,
+      }}
+    >
+      Kaydet
+    </button>
+  </div>
+</div>
+
+
+
           <div style={{ display: 'flex', justifyContent: 'space-between' }}> {/* Flexbox for alignment */}
             <div style={{ flex: 1 }}> {/* LanguageToggle on the left */}
               <LanguageToggle /> {/* Dinamik dil seçimi */}

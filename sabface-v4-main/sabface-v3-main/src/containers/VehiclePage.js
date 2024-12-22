@@ -108,9 +108,9 @@ function VehiclePage({ setSelectedCarNo }) {
             }),
         });
 
-        if (!updateResponse.ok) {
-            throw new Error('Failed to update camera status');
-        }
+        // if (!updateResponse.ok) {
+        //     throw new Error('Failed to update camera status');
+        // }
 
         console.log(`Camera ${cameraNames[cameraIndex]} status updated to ${newStatus}`);
     } catch (error) {
