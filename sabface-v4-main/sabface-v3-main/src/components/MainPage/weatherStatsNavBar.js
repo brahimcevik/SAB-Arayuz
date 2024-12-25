@@ -11,6 +11,9 @@ import { Modal } from "antd";
 import { ThemeContext } from "../../context/themeContenx";
 import { useDispatch } from "react-redux";
 import { setCoordinates, setCityCoordinates } from "../../redux/ugvCoordinatesSlice";
+import axios from 'axios';
+import { message } from 'antd';
+
 
 
 // Tema renklerini yönetmek için bir sınıf oluşturuyor.
@@ -50,7 +53,7 @@ function WeatherStatsNavbar({ value, weatherType, day }) {
   const [selectedLanguage, setSelectedLanguage] = useState("TR"); // Seçili dil bilgisini tutuyor.
   const { theme, toggleTheme } = useContext(ThemeContext); // ThemeContext'ten tema ve tema değiştirme fonksiyonunu alıyor.
   const themeStyles = new ThemeStyles(theme); // Tema renklerini almak için ThemeStyles sınıfını kullanıyor.
-  const username = "ibrahimCevik018"; // Kullanıcı adını tanımlıyor.
+  const [kullaniciAdı, setkullaniciAdı] = useState("ibrahimCevik018"); // Kullanıcı adını tanımlıyor.
   const [userName, setUserName] = useState("Ahmet Yılmaz"); // İsim soyisim durumu
   const [email, setEmail] = useState("ahmet.yilmaz@example.com"); // Eposta durumu
   const [phone, setPhone] = useState("+90 555 123 4567"); // Telefon durumu
@@ -62,6 +65,21 @@ function WeatherStatsNavbar({ value, weatherType, day }) {
   const [countries, setCountries] = useState([]);
 const [cities, setCities] = useState([]);
 const [selectedCountry, setSelectedCountry] = useState("");
+const [userId, setUserId] = useState(null);
+const [savedCity, setSavedCity] = useState(localStorage.getItem('city') || '');
+
+
+const handleSaveCityAndCoordinates = (cityName) => {
+  // cityName'i localStorage'a kaydet ve state'i güncelle
+  localStorage.setItem('city', cityName);
+  setSavedCity(cityName);
+  
+  // Koordinatları güncelle
+  updateCityAndGetCoordinates(cityName);
+};
+
+
+
 
 useEffect(() => {
   // Ülkeleri çek
@@ -209,30 +227,47 @@ const handleCountryChange = (country) => {
     setModalContentKey(content); // İçeriği tanımlamak için sadece bir anahtar sakla
     setIsModalVisible(true); // Modal'ı görünür yap
   };
+  
+
 
   // Koordinatları almak için fonksiyon
  // Backend'den koordinatları almak için fonksiyon
- const getCoordinates = async (city) => {
-  const url = `https://localhost:44315/get-coordinates?cityName=${city}`; // Şehir adını dinamik ekle
+ const updateCityAndGetCoordinates = async (cityName) => {
+  const userId = localStorage.getItem("userId"); // localStorage'dan userId al
+  const url = `https://localhost:44315/api/User/update-city/${userId}`;
 
   try {
-    const response = await fetch(url); // GET isteği gönder
-    if (!response.ok) throw new Error("Şehir bulunamadı veya bir hata oluştu."); // Hata kontrolü
+    const response = await axios.patch(url, `"${cityName}"`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-    const data = await response.json(); // JSON yanıtını al
+    if (response.status === 200) {
+      const data = response.data;
 
-    // Redux'a gelen koordinatları yönlendirme
-    dispatch(setCityCoordinates({ latitude: data.latitude, longitude: data.longitude }));
+      // Redux'a gelen koordinatları yönlendirme
+      dispatch(setCityCoordinates({
+        latitude: data.coordinates.latitude,
+        longitude: data.coordinates.longitude,
+      }));
 
-    // Yerel state güncelleme
-    setCoordinates({ latitude: data.latitude, longitude: data.longitude }); 
-    setError(null); // Hata mesajını sıfırla
+      setCoordinates({
+        latitude: data.coordinates.latitude,
+        longitude: data.coordinates.longitude,
+      });
+      setError(null); // Hata mesajını sıfırla
+      message.success("Şehir başarıyla güncellendi!");
+
+      
+    }
   } catch (err) {
-    // Hata durumu
-    setError(err.message); 
-    setCoordinates({ latitude: null, longitude: null }); // Koordinatları sıfırla
+    console.error("Şehir güncelleme hatası:", err);
+    setError("Şehir güncellenemedi.");
   }
 };
+
+
 
 
 
@@ -243,7 +278,7 @@ const handleCountryChange = (country) => {
       return (
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <div style={{ flex: 1, whiteSpace: 'nowrap', color: themeStyles.textColor, transition: 'color 0.3s ease' }}>
-            <p><strong>Kullanıcı Adı:</strong> {username}</p>
+            <p><strong>Kullanıcı Adı:</strong> {kullaniciAdı}</p>
             <p><strong>İsim Soyisim:</strong> {userName}</p> {/* Güncellenmiş isim soyisim */}
             <p><strong>Eposta:</strong> {email}</p> {/* Güncellenmiş eposta */}
             <p><strong>Telefon:</strong> {phone}</p> {/* Güncellenmiş telefon */}
@@ -266,6 +301,16 @@ const handleCountryChange = (country) => {
     } else if (modalContentKey === "Düzenle Profil") {
       return (
         <div>
+          <div style={{ marginBottom: '10px' }}>
+            <label style={{ width: '20%', display: 'inline-block', color: themeStyles.textColor }}><strong>Kullanıcı Adı:</strong></label>
+            <input
+              type="text"
+              placeholder="İsim Soyisim"
+              value={kullaniciAdı}
+              onChange={(e) => setkullaniciAdı(e.target.value)} // İsim soyisim güncelleme
+              style={{ marginBottom: '10px', width: '40%' }}
+            />
+          </div>
           <div style={{ marginBottom: '10px' }}>
             <label style={{ width: '20%', display: 'inline-block', color: themeStyles.textColor }}><strong>İsim Soyisim:</strong></label>
             <input
@@ -327,71 +372,88 @@ const handleCountryChange = (country) => {
         </div>
       );
     } else if (modalContentKey === "Sistem Ayarları ") {
+    
+
+
       return (
         <div>
-      <div style={{ margin: "20px" }}>
-  {/* Ülke ve Şehir Seçimi */}
-  <label htmlFor="countrySelect" style={{ marginBottom: "10px" }}>
-    <strong>Ülke Seç:</strong>
-  </label>
-  <select
-    id="countrySelect"
-    value={selectedCountry}
-    onChange={(e) => handleCountryChange(e.target.value)}
+   <div style={{ margin: "10px", display: 'flex', flexDirection: 'column', gap: '5px' }}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <label htmlFor="countrySelect" style={{ marginBottom: "0" }}>
+        <strong>Ülke Seç:</strong>
+      </label>
+      <select
+        id="countrySelect"
+        value={selectedCountry}
+        onChange={(e) => handleCountryChange(e.target.value)}
+        style={{
+          width: "100px",
+          padding: "5px",
+          borderRadius: "5px",
+        }}
+      >
+        <option value="">--Ülke Seç--</option>
+        {countries.map((country) => (
+          <option key={country.country} value={country.country}>
+            {country.country}
+          </option>
+        ))}
+      </select>
+    </div>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <label htmlFor="citySelect" style={{ marginBottom: "0" }}><strong>Şehir Seç:</strong></label>
+      <select
+        id="citySelect"
+        value={cityName}
+        onChange={(e) => setCityName(e.target.value)}
+        style={{ width: "100px", padding: "5px", borderRadius: "5px" }}
+      >
+        <option value="">--Şehir Seç--</option>
+        {cities.map((city) => (
+          <option key={city} value={city}>
+            {city}
+          </option>
+        ))}
+      </select>
+    </div>
+  </div>
+  <button
+    onClick={() =>  handleSaveCityAndCoordinates(cityName)}
+    
+   
     style={{
-      width: "50%",
-      marginBottom: "10px",
-      padding: "5px",
+      padding: "5px 15px",
       borderRadius: "5px",
+      backgroundColor: themeStyles.buttonBackgroundColor,
+      color: themeStyles.textColor,
+      fontSize: "14px",
+      alignSelf: "flex-start",
+      marginLeft:"380px",
+      
     }}
   >
-    <option value="">--Ülke Seç--</option>
-    {countries.map((country) => (
-      <option key={country.country} value={country.country}>
-        {country.country}
-      </option>
-    ))}
-  </select>
-
-  <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
-    <label htmlFor="citySelect" style={{ marginRight: "10px" }}>
-      <strong>Şehir Seç:</strong>
-    </label>
-    <select
-      id="citySelect"
-      value={cityName}
-      onChange={(e) => setCityName(e.target.value)}
-      style={{
-        width: "50%",
-        padding: "5px",
-        borderRadius: "5px",
-      }}
-      disabled={!selectedCountry}
-    >
-      <option value="">--Şehir Seç--</option>
-      {cities.map((city) => (
-        <option key={city} value={city}>
-          {city}
-        </option>
-      ))}
-    </select>
-  </div>
-
-  {/* Butonu sağa kaydırmak için flex kullanımı */}
-  <div style={{ display: "flex", justifyContent: "flex-end" }}>
-    <button
-      onClick={() => getCoordinates(cityName)}
-      style={{
-        padding: "5px 10px",
-        borderRadius: "5px",
-        backgroundColor: themeStyles.buttonBackgroundColor,
-        color: themeStyles.textColor,
-      }}
-    >
-      Kaydet
-    </button>
-  </div>
+    Kaydet
+  </button>
+  <button
+    
+    style={{
+      padding: "5px 15px",
+      borderRadius: "5px",
+      backgroundColor: themeStyles.buttonBackgroundColor,
+      color: themeStyles.textColor,
+      fontSize: "14px",
+      alignSelf: "flex-start",
+      marginLeft:"0px",
+      
+    }}
+  >
+    <strong>Seçilen Şehir:</strong> {savedCity}
+  </button>
 </div>
+
+
+
 
 
 
@@ -448,6 +510,8 @@ const handleCountryChange = (country) => {
   const handleCancel = () => {
     setIsModalVisible(false); // Modal'ı kapatıyor.
     // Form verilerini sıfırlama
+
+    setkullaniciAdı("Ahmet Yılmaz"); // Varsayılan isim soyisim
     setUserName("Ahmet Yılmaz"); // Varsayılan isim soyisim
     setEmail("ahmet.yilmaz@example.com"); // Varsayılan eposta
     setPhone("+90 555 123 4567"); // Varsayılan telefon
@@ -483,9 +547,11 @@ const handleCountryChange = (country) => {
           alt="Profile"
           title="Hesap"
         />
+
+
         {isMenuOpen && ( // Menü açıldığında gösterilecek içerik.
           <div className="absolute right-8 bg-white dark:bg-gray-700 shadow-md rounded-lg p-6 mt-2 border border-gray-300 dark:border-gray-600" style={{ zIndex: 10, borderRadius: '40px' }}>
-            <p className="mb-2" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: '300' }}> {username}</p>
+            <p className="mb-2" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: '300' }}> {kullaniciAdı}</p>
             <button className="block w-full text-left mb-1" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: 'bold' }} onClick={() => showModal("Profil ")}>Profil</button>
             <button className="block w-full text-left mb-1" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: 'bold' }} onClick={() => showModal("Eğitim Videoları ")}>Eğitim Videoları</button>
             <button className="block w-full text-left mb-1" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: 'bold' }} onClick={() => showModal("Sistem Ayarları ")}>Ayarlar</button>

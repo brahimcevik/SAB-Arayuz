@@ -9,11 +9,13 @@ import { ThemeContext } from "../context/themeContenx";
 import { SunIcon } from "@heroicons/react/24/solid";
 import { MoonIcon } from "@heroicons/react/24/solid";
 import axios from 'axios';
+import { setCoordinates, setCityCoordinates } from "../redux/ugvCoordinatesSlice";
 
 const SignInPage = ({ setIsAuthenticated }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
 
   // Handle button click to change the route
   const handleButtonClick = () => {
@@ -21,41 +23,49 @@ const SignInPage = ({ setIsAuthenticated }) => {
     // Use the navigate function to change the route
     navigate("/MainPage"); // Change '/MainPage' to the desired route
   };
-
   const onFinish = async (values) => {
     const { username, password } = values;
 
     try {
-        const response = await axios.post('https://localhost:44315/api/User/login', {
-            "id": "",
-            "username": username,
-            "password": password,
-            "createdAt": new Date().toISOString(),
-            "roles": ["User"]
-        });
+      const response = await axios.post('https://localhost:44315/api/User/login', {
+        id: "",
+        username,
+        password,
+        createdAt: new Date().toISOString(),
+        roles: ["User"],
+        city: "string",
+      });
 
-        if (response.status === 200) {
-            const { token, userId } = response.data; // Yanıtın içinden UserId'yi al
-            localStorage.setItem('token', token); // Token'ı kaydet
-            localStorage.setItem('userId', userId); // UserId'yi kaydet
-            handleButtonClick();
-            dispatch(signIn());
+      if (response.status === 200) {
+        const { token, userId, coordinates,city } = response.data;
+        localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('city', city);
+       
+        
+
+        // Redux store'a koordiantları kaydet
+        if (coordinates) {
+          dispatch(setCityCoordinates(coordinates));
         }
+      
+
+        handleButtonClick();
+        dispatch(signIn());
+      }
     } catch (error) {
-        console.error("Giriş hatası:", error);
-        message.error("Kullanıcı adı veya şifre hatalı!");
+      console.error("Giriş hatası:", error);
+      message.error("Kullanıcı adı veya şifre hatalı!");
     }
   };
 
-  // Kullanıcının zaten kimlik doğrulaması yapılmış mı kontrol etmek için bu effect'i ekleyin
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       // Kullanıcı zaten giriş yapmışsa, doğrudan ana sayfaya yönlendirmeyin
-      // setIsAuthenticated(true);
-      // navigate("/MainPage");
     }
   }, [setIsAuthenticated, navigate]);
+
 
   const containerStyle = {
     display: "flex",

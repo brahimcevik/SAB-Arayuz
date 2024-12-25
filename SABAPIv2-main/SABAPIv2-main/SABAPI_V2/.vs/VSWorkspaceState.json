@@ -6,6 +6,6 @@
     "\\SABAPI\\Models",
     "\\SABAPI\\Services"
   ],
-  "SelectedNode": "\\SABAPI\\SABAPI.sln",
+  "SelectedNode": "\\SABAPI\\Controllers\\UserController.cs",
   "PreviewInSolutionExplorer": false
 }

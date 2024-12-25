@@ -20,5 +20,8 @@ namespace SABApi.Models
 
         [BsonElement("roles")]
         public List<string> Roles { get; set; } = new List<string> { "User" };
+
+        [BsonElement("city")]
+        public string City { get; set; } = null!; // Kullanýcýya atanmýþ þehir bilgisi
     }
 }

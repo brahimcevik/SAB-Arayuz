@@ -1,4 +1,3 @@
-
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -20,19 +19,25 @@ namespace SABApi.Services
             _userCollection = database.GetCollection<User>(settings.Value.UserCollectionName);
         }
 
+        // Tüm kullanıcıları getir
         public async Task<List<User>> GetAsync() =>
             await _userCollection.Find(_ => true).ToListAsync();
 
+        // Kullanıcı adı ile kullanıcıyı getir
         public async Task<User?> GetByUsernameAsync(string username) =>
             await _userCollection.Find(x => x.Username == username).FirstOrDefaultAsync();
 
+        // Kullanıcı ID ile kullanıcıyı getir
+        public async Task<User?> GetByIdAsync(string userId) =>
+            await _userCollection.Find(u => u.Id == userId).FirstOrDefaultAsync();
+
+        // Yeni kullanıcı oluştur
         public async Task CreateAsync(User newUser)
         {
-            // Şifreyi hashlemeden doğrudan kaydet
-            // newUser.Password = BCrypt.Net.BCrypt.HashPassword(newUser.Password); // Bu satırı kaldırdık
             await _userCollection.InsertOneAsync(newUser);
         }
 
+        // Kullanıcı adı ve şifre ile kullanıcıyı doğrula
         public async Task<User?> AuthenticateAsync(string username, string password)
         {
             var user = await GetByUsernameAsync(username);
@@ -44,6 +49,7 @@ namespace SABApi.Services
             return null;
         }
 
+        // JWT token oluştur
         public string GenerateJwtToken(User user)
         {
             var claims = new[]
@@ -64,6 +70,20 @@ namespace SABApi.Services
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        // Kullanıcıyı güncelle
+        public async Task UpdateUserAsync(User updatedUser)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u.Id, updatedUser.Id);
+            await _userCollection.ReplaceOneAsync(filter, updatedUser);
+        }
+
+        // Kullanıcıyı sil
+        public async Task DeleteUserAsync(string userId)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+            await _userCollection.DeleteOneAsync(filter);
         }
     }
 }
