@@ -73,11 +73,68 @@ namespace SABApi.Services
         }
 
         // Kullanıcıyı güncelle
-        public async Task UpdateUserAsync(User updatedUser)
+        public async Task UpdateUserAsync(User user)
         {
-            var filter = Builders<User>.Filter.Eq(u => u.Id, updatedUser.Id);
-            await _userCollection.ReplaceOneAsync(filter, updatedUser);
+            var filter = Builders<User>.Filter.Eq(u => u.Id, user.Id);
+
+            var updateDefinition = new List<UpdateDefinition<User>>();
+
+            // Değiştirilen alanları kontrol et
+            if (!string.IsNullOrEmpty(user.Username))
+            {
+                updateDefinition.Add(Builders<User>.Update.Set(u => u.Username, user.Username));
+            }
+            if (!string.IsNullOrEmpty(user.Password))
+            {
+                updateDefinition.Add(Builders<User>.Update.Set(u => u.Password, user.Password));
+            }
+            if (!string.IsNullOrEmpty(user.City))
+            {
+                updateDefinition.Add(Builders<User>.Update.Set(u => u.City, user.City));
+            }
+            if (user.Roles != null && user.Roles.Any())
+            {
+                updateDefinition.Add(Builders<User>.Update.Set(u => u.Roles, user.Roles));
+            }
+
+            // Profil bilgilerini kontrol et
+            if (user.Profile != null)
+            {
+                if (!string.IsNullOrEmpty(user.Profile.FirstName))
+                {
+                    updateDefinition.Add(Builders<User>.Update.Set(u => u.Profile.FirstName, user.Profile.FirstName));
+                }
+                if (!string.IsNullOrEmpty(user.Profile.LastName))
+                {
+                    updateDefinition.Add(Builders<User>.Update.Set(u => u.Profile.LastName, user.Profile.LastName));
+                }
+                if (!string.IsNullOrEmpty(user.Profile.Email))
+                {
+                    updateDefinition.Add(Builders<User>.Update.Set(u => u.Profile.Email, user.Profile.Email));
+                }
+                if (!string.IsNullOrEmpty(user.Profile.Phone))
+                {
+                    updateDefinition.Add(Builders<User>.Update.Set(u => u.Profile.Phone, user.Profile.Phone));
+                }
+                if (!string.IsNullOrEmpty(user.Profile.ProfilePicture))
+                {
+                    updateDefinition.Add(Builders<User>.Update.Set(u => u.Profile.ProfilePicture, user.Profile.ProfilePicture));
+                }
+                if (!string.IsNullOrEmpty(user.Profile.Ulke))
+                {
+                    updateDefinition.Add(Builders<User>.Update.Set(u => u.Profile.Ulke, user.Profile.Ulke));
+                }
+            }
+
+            // Eğer herhangi bir güncelleme varsa, update işlemini yap
+            if (updateDefinition.Any())
+            {
+                var update = Builders<User>.Update.Combine(updateDefinition);
+                await _userCollection.UpdateOneAsync(filter, update);
+            }
         }
+
+
 
         // Kullanıcıyı sil
         public async Task DeleteUserAsync(string userId)
@@ -85,5 +142,7 @@ namespace SABApi.Services
             var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
             await _userCollection.DeleteOneAsync(filter);
         }
+       
+
     }
 }

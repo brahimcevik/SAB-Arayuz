@@ -1,4 +1,4 @@
-using MongoDB.Bson;
+ï»¿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace SABApi.Models
@@ -22,6 +22,9 @@ namespace SABApi.Models
         public List<string> Roles { get; set; } = new List<string> { "User" };
 
         [BsonElement("city")]
-        public string City { get; set; } = null!; // Kullanýcýya atanmýþ þehir bilgisi
+        public string City { get; set; } = null!; // KullanÄ±cÄ±ya atanmÄ±ÅŸ ÅŸehir bilgisi
+
+        [BsonElement("profile")]
+        public Profile Profile { get; set; } = new Profile();
     }
 }

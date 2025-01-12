@@ -8,8 +8,15 @@ function CarList({ selectedCarNo, setSelectedCarNo, width = "87vh", height = "80
 
   useEffect(() => {
     const userId = localStorage.getItem('userId'); // Local storage'dan userId'yi al
+    const roles = JSON.parse(sessionStorage.getItem("roles")); // Kullanıcının rollerini al
+    const isAdmin = roles && roles.includes("Admin"); // Admin olup olmadığını kontrol et
+
     if (userId) {
-        fetch(`https://localhost:44315/api/UgvRobot/user/${userId}`) // Kullanıcıya ait robotları al
+        const url = isAdmin 
+            ? `https://localhost:44315/api/UgvRobot` // Admin için istek
+            : `https://localhost:44315/api/UgvRobot/user/${userId}`; // Normal kullanıcı için istek
+
+        fetch(url) // Kullanıcıya ait robotları al
             .then((response) => response.json())
             .then((data) => setCarData(data))
             .catch((error) => console.error("Veri alırken hata:", error));

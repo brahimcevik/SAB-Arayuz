@@ -41,9 +41,11 @@ function VehiclePage({ setSelectedCarNo }) {
         setCurrentData(data);
         setButtonStatus(data.status);
         setOnlineStatus(data.onlineStatus);
+        const { heading } = data;
+        localStorage.setItem('heading', heading);
       })
       .catch((error) => {
-        console.error("Mevcut veriler alınırken bir hata oluştu:", error);
+        console.error("Veri alınırken bir hata oluştu:", error);
       });
   }, [selectId]);
 

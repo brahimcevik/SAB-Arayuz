@@ -5,10 +5,11 @@ import ModeCarList from "../components/ModePage/ModeCarList";
 import GoogleMaps from "../components/MainPage/GoogleMaps";
 import ModeCard from "../components/ModePage/ModeCard";
 
+
 function Mode() {
   const [selectedCarNo, setSelectedCarNo] = useState(null);
   const [localCoordinates, setLocalCoordinates] = useState([]); // Eklenen koordinatlar için state
-  const [selectedCoordinates, setSelectedCoordinates] = useState({ lat: 39.1377, lng: 43.9244 }); // Default coordinates
+  const [selectedCoordinates, setSelectedCoordinates] = useState({  latitude:70.787345, longitude:126.187801}); // Default coordinates
   const [robots, setRobots] = useState([]);
   return (
     <Row>
@@ -24,6 +25,7 @@ function Mode() {
             <ModeCarList
               selectedCarNo={selectedCarNo}
               setSelectedCarNo={setSelectedCarNo}
+              setCoordinates={setLocalCoordinates} // Eklenen koordinatları aktar
             />
           </Flex>
         </Row>

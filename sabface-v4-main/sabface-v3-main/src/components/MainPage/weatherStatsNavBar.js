@@ -13,6 +13,8 @@ import { useDispatch } from "react-redux";
 import { setCoordinates, setCityCoordinates } from "../../redux/ugvCoordinatesSlice";
 import axios from 'axios';
 import { message } from 'antd';
+import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -41,6 +43,15 @@ class ThemeStyles {
   get buttonBackgroundColor() {
     return this.theme === "dark" ? '#333' : '#ddd';
   }
+
+  // Yeni eklenen input alanları için renkler
+  get inputTextColor() {
+    return this.theme === "dark" ? '#fff' : '#000'; // Input metin rengi
+  }
+
+  get inputBackgroundColor() {
+    return this.theme === "dark" ? '#000' : '#fff'; // Input arka plan rengi
+  }
 }
 
 // Ana bileşeni tanımlıyor.
@@ -53,21 +64,30 @@ function WeatherStatsNavbar({ value, weatherType, day }) {
   const [selectedLanguage, setSelectedLanguage] = useState("TR"); // Seçili dil bilgisini tutuyor.
   const { theme, toggleTheme } = useContext(ThemeContext); // ThemeContext'ten tema ve tema değiştirme fonksiyonunu alıyor.
   const themeStyles = new ThemeStyles(theme); // Tema renklerini almak için ThemeStyles sınıfını kullanıyor.
-  const [kullaniciAdı, setkullaniciAdı] = useState("ibrahimCevik018"); // Kullanıcı adını tanımlıyor.
-  const [userName, setUserName] = useState("Ahmet Yılmaz"); // İsim soyisim durumu
-  const [email, setEmail] = useState("ahmet.yilmaz@example.com"); // Eposta durumu
-  const [phone, setPhone] = useState("+90 555 123 4567"); // Telefon durumu
-  const [profilePicture, setProfilePicture] = useState(pp); // Profil fotoğrafını tutuyor
+
+  
+ 
   const [cityName, setCityName] = useState(""); // Şehir ismini tutmak için
   const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null }); // Enlem ve boylamı tutmak için
   const dispatch = useDispatch(); // Dispatch fonksiyonunu tanımlıyoruz.
   const [error, setError] = useState(null); // Hata mesajını tutmak için state
   const [countries, setCountries] = useState([]);
 const [cities, setCities] = useState([]);
-const [selectedCountry, setSelectedCountry] = useState("");
+
 const [userId, setUserId] = useState(null);
 const [savedCity, setSavedCity] = useState(localStorage.getItem('city') || '');
+const [ulke, setUlke] = useState(localStorage.getItem('ulke') || '');
+const [userName, setUserName] = useState(localStorage.getItem('userName')|| ''); // Kullanıcı adını tanımlıyor.
+const [firstName, setfirstname] = useState(localStorage.getItem('firstName') || ''); // İsim soyisim durumu
+const [lastName, setlastName] = useState(localStorage.getItem('lastName') || ''); // İsim soyisim durumu
+const [email, setEmail] = useState(localStorage.getItem('email') || ''); // Eposta durumu
+const [phone, setPhone] = useState(localStorage.getItem('phone') || ''); // Telefon durumu
+const [profilePicture, setProfilePicture] = useState(localStorage.getItem('profilePicture') || ''); // Profil fotoğrafını tutuyor
 
+const navigate = useNavigate(); // useNavigate hook'unu burada tanımlıyoruz.
+
+const [robotName, setRobotName] = useState("");
+const [robotColor, setRobotColor] = useState("");
 
 const handleSaveCityAndCoordinates = (cityName) => {
   // cityName'i localStorage'a kaydet ve state'i güncelle
@@ -90,7 +110,7 @@ useEffect(() => {
 }, []);
 
 const handleCountryChange = (country) => {
-  setSelectedCountry(country);
+  setUlke(country);
   const countryData = countries.find((c) => c.country === country);
   setCities(countryData ? countryData.cities : []);
 };
@@ -200,14 +220,16 @@ const handleCountryChange = (country) => {
           {notifications.map((notification) => (
             <div
               key={notification.code}
-              onClick={() => toggleNotification(notification.code)} // Seçimi günceller.
+              onClick={() => {
+                toggleNotification(notification.code); // Bildirim seçimini günceller.
+              }}
               style={{
                 flex: 1,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontWeight: selectedNotifications.includes(notification.code) ? 'bold' : 'normal',
-                color: selectedNotifications.includes(notification.code) ? themeStyles.textColor : '#666',
+                color: themeStyles.textColor,
                 backgroundColor: selectedNotifications.includes(notification.code) ? themeStyles.buttonBackgroundColor : 'transparent',
                 opacity: selectedNotifications.includes(notification.code) ? 1 : 0.5,
                 transition: 'all 0.3s ease'
@@ -217,6 +239,97 @@ const handleCountryChange = (country) => {
             </div>
           ))}
         </div>
+      </div>
+    );
+  };
+
+  // Yeni bir bileşen oluşturuyoruz: ProfileSettings
+  const ProfileSettings = () => {
+    return (
+      <div style={{ marginTop: '20px' }}>
+        <input
+          type="text"
+          placeholder="Kullanıcı Adı"
+          style={{
+            color: themeStyles.inputTextColor,
+            backgroundColor: themeStyles.inputBackgroundColor,
+            border: `1px solid ${themeStyles.borderColor}`,
+            borderRadius: '5px',
+            padding: '5px'
+          }}
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="İsim"
+          style={{
+            color: themeStyles.inputTextColor,
+            backgroundColor: themeStyles.inputBackgroundColor,
+            border: `1px solid ${themeStyles.borderColor}`,
+            borderRadius: '5px',
+            padding: '5px',
+            marginTop: '10px'
+          }}
+          value={firstName}
+          onChange={(e) => setfirstname(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Soyisim"
+          style={{
+            color: themeStyles.inputTextColor,
+            backgroundColor: themeStyles.inputBackgroundColor,
+            border: `1px solid ${themeStyles.borderColor}`,
+            borderRadius: '5px',
+            padding: '5px',
+            marginTop: '10px'
+          }}
+          value={lastName}
+          onChange={(e) => setlastName(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="E-posta"
+          style={{
+            color: themeStyles.inputTextColor,
+            backgroundColor: themeStyles.inputBackgroundColor,
+            border: `1px solid ${themeStyles.borderColor}`,
+            borderRadius: '5px',
+            padding: '5px',
+            marginTop: '10px'
+          }}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="tel"
+          placeholder="Telefon"
+          style={{
+            color: themeStyles.inputTextColor,
+            backgroundColor: themeStyles.inputBackgroundColor,
+            border: `1px solid ${themeStyles.borderColor}`,
+            borderRadius: '5px',
+            padding: '5px',
+            marginTop: '10px'
+          }}
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Profil Fotoğrafı"
+          style={{
+            color: themeStyles.inputTextColor,
+            backgroundColor: themeStyles.inputBackgroundColor,
+            border: `1px solid ${themeStyles.borderColor}`,
+            borderRadius: '5px',
+            padding: '5px',
+            marginTop: '10px'
+          }}
+          value={profilePicture}
+          onChange={(e) => setProfilePicture(e.target.value)}
+        />
       </div>
     );
   };
@@ -278,8 +391,9 @@ const handleCountryChange = (country) => {
       return (
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <div style={{ flex: 1, whiteSpace: 'nowrap', color: themeStyles.textColor, transition: 'color 0.3s ease' }}>
-            <p><strong>Kullanıcı Adı:</strong> {kullaniciAdı}</p>
-            <p><strong>İsim Soyisim:</strong> {userName}</p> {/* Güncellenmiş isim soyisim */}
+            <p><strong>Kullanıcı Adı:</strong> {userName}</p>
+            <p><strong>İsim :</strong> {firstName}</p> {/* Güncellenmiş isim soyisim */}
+            <p><strong> Soyisim :</strong> {lastName}</p> {/* Güncellenmiş isim soyisim */}
             <p><strong>Eposta:</strong> {email}</p> {/* Güncellenmiş eposta */}
             <p><strong>Telefon:</strong> {phone}</p> {/* Güncellenmiş telefon */}
             <button onClick={() => showModal("Düzenle Profil")} style={{
@@ -305,40 +419,50 @@ const handleCountryChange = (country) => {
             <label style={{ width: '20%', display: 'inline-block', color: themeStyles.textColor }}><strong>Kullanıcı Adı:</strong></label>
             <input
               type="text"
-              placeholder="İsim Soyisim"
-              value={kullaniciAdı}
-              onChange={(e) => setkullaniciAdı(e.target.value)} // İsim soyisim güncelleme
-              style={{ marginBottom: '10px', width: '40%' }}
-            />
-          </div>
-          <div style={{ marginBottom: '10px' }}>
-            <label style={{ width: '20%', display: 'inline-block', color: themeStyles.textColor }}><strong>İsim Soyisim:</strong></label>
-            <input
-              type="text"
-              placeholder="İsim Soyisim"
+              placeholder="Kullanıcı Adı"
               value={userName}
               onChange={(e) => setUserName(e.target.value)} // İsim soyisim güncelleme
-              style={{ marginBottom: '10px', width: '40%' }}
+              style={{ marginBottom: '10px', width: '30%', backgroundColor: themeStyles.backgroundColor, color: themeStyles.inputTextColor || '#ffffff',  borderRadius: '5px'  }}
             />
           </div>
           <div style={{ marginBottom: '10px' }}>
-            <label style={{ width: '11%', display: 'inline-block', color: themeStyles.textColor }}><strong>Eposta:</strong></label>
+            <label style={{ width: '20%', display: 'inline-block', color: themeStyles.textColor }}><strong>İsim :</strong></label>
+            <input
+              type="text"
+              placeholder="İsim "
+              value={firstName}
+              onChange={(e) => setfirstname(e.target.value)} // İsim soyisim güncelleme
+              style={{ marginBottom: '10px', width: '30%', backgroundColor: themeStyles.backgroundColor, color: themeStyles.inputTextColor || '#ffffff',  borderRadius: '5px'  }}
+            />
+          </div>
+          <div style={{ marginBottom: '10px' }}>
+            <label style={{ width: '20%', display: 'inline-block', color: themeStyles.textColor }}><strong>Soyisim:</strong></label>
+            <input
+              type="text"
+              placeholder=" Soyisim"
+              value={lastName}
+              onChange={(e) => setlastName(e.target.value)} // İsim soyisim güncelleme
+              style={{ marginBottom: '10px', width: '30%', backgroundColor: themeStyles.backgroundColor, color: themeStyles.inputTextColor || '#ffffff',  borderRadius: '5px'  }}
+            />
+          </div>
+          <div style={{ marginBottom: '10px' }}>
+            <label style={{ width: '20%', display: 'inline-block', color: themeStyles.textColor }}><strong>Eposta:</strong></label>
             <input
               type="email"
               placeholder="Eposta"
               value={email.trim()} // Boşlukları kaldırmak için trim() kullanıldı
               onChange={(e) => setEmail(e.target.value.trim())} // Boşlukları kaldırmak için trim() kullanıldı
-              style={{ marginBottom: '10px', width: '50%' }}
+              style={{ marginBottom: '10px', width: '30%', backgroundColor: themeStyles.backgroundColor, color: themeStyles.inputTextColor || '#ffffff',  borderRadius: '5px'  }}
             />
           </div>
           <div style={{ marginBottom: '10px' }}>
-            <label style={{ width: '12%', display: 'inline-block', color: themeStyles.textColor }}><strong>Telefon:</strong></label>
+            <label style={{ width: '20%', display: 'inline-block', color: themeStyles.textColor }}><strong>Telefon:</strong></label>
             <input
               type="tel"
               placeholder="Telefon"
               value={phone}
               onChange={(e) => setPhone(e.target.value)} // Telefon güncelleme
-              style={{ marginBottom: '10px', width: '50%' }}
+              style={{ marginBottom: '10px', width: '30%', backgroundColor: themeStyles.backgroundColor, color: themeStyles.inputTextColor || '#ffffff',  borderRadius: '5px'  }}
             />
           </div>
           <div style={{ marginBottom: '10px' }}>
@@ -356,7 +480,7 @@ const handleCountryChange = (country) => {
                   reader.readAsDataURL(file);
                 }
               }} // Profil fotoğrafı güncelleme
-              style={{ marginBottom: '0', width: '50%' }}
+              style={{ marginBottom: '10px', width: '40%', backgroundColor: themeStyles.backgroundColor, color: themeStyles.inputTextColor || '#ffffff',  borderRadius: '5px'  }}
             />
           </div>
           <button onClick={handleUpdateProfile} style={{
@@ -377,20 +501,23 @@ const handleCountryChange = (country) => {
 
       return (
         <div>
-   <div style={{ margin: "10px", display: 'flex', flexDirection: 'column', gap: '5px' }}>
+   <div style={{ margin: "10px", display: 'flex', flexDirection: 'column', gap: '5px' ,}}>
   <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-      <label htmlFor="countrySelect" style={{ marginBottom: "0" }}>
+      <label htmlFor="countrySelect" style={{ marginBottom: "0",color: themeStyles.textColor, }}>
         <strong>Ülke Seç:</strong>
       </label>
       <select
         id="countrySelect"
-        value={selectedCountry}
+        value={ulke}
         onChange={(e) => handleCountryChange(e.target.value)}
         style={{
           width: "100px",
           padding: "5px",
           borderRadius: "5px",
+          backgroundColor: themeStyles.backgroundColor,
+          color: themeStyles.textColor,
+          border: `1px solid ${themeStyles.borderColor}`,
         }}
       >
         <option value="">--Ülke Seç--</option>
@@ -402,12 +529,19 @@ const handleCountryChange = (country) => {
       </select>
     </div>
     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-      <label htmlFor="citySelect" style={{ marginBottom: "0" }}><strong>Şehir Seç:</strong></label>
+      <label htmlFor="citySelect" style={{ marginBottom: "0",color: themeStyles.textColor, }}><strong>Şehir Seç:</strong></label>
       <select
         id="citySelect"
         value={cityName}
         onChange={(e) => setCityName(e.target.value)}
-        style={{ width: "100px", padding: "5px", borderRadius: "5px" }}
+        style={{
+          width: "100px",
+          padding: "5px",
+          borderRadius: "5px",
+          backgroundColor: themeStyles.backgroundColor,
+          color: themeStyles.textColor,
+          border: `1px solid ${themeStyles.borderColor}`,
+        }}
       >
         <option value="">--Şehir Seç--</option>
         {cities.map((city) => (
@@ -419,9 +553,10 @@ const handleCountryChange = (country) => {
     </div>
   </div>
   <button
-    onClick={() =>  handleSaveCityAndCoordinates(cityName)}
-    
-   
+    onClick={() => {
+      handleSaveCityAndCoordinates(cityName);
+      handleUpdateProfile();
+    }}
     style={{
       padding: "5px 15px",
       borderRadius: "5px",
@@ -429,27 +564,41 @@ const handleCountryChange = (country) => {
       color: themeStyles.textColor,
       fontSize: "14px",
       alignSelf: "flex-start",
-      marginLeft:"380px",
-      
+      marginLeft: "380px",
     }}
   >
     Kaydet
   </button>
-  <button
-    
-    style={{
-      padding: "5px 15px",
-      borderRadius: "5px",
-      backgroundColor: themeStyles.buttonBackgroundColor,
-      color: themeStyles.textColor,
-      fontSize: "14px",
-      alignSelf: "flex-start",
-      marginLeft:"0px",
-      
-    }}
-  >
-    <strong>Seçilen Şehir:</strong> {savedCity}
-  </button>
+
+  <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+    <button
+      style={{
+        padding: "5px 15px",
+        borderRadius: "5px",
+        backgroundColor: themeStyles.buttonBackgroundColor,
+        color: themeStyles.textColor,
+        fontSize: "14px",
+        alignSelf: "flex-start",
+        marginLeft: "0px",
+      }}
+    >
+      <strong>Seçilen Ülke:</strong> {ulke}
+    </button>
+
+    <button
+      style={{
+        padding: "5px 15px",
+        borderRadius: "5px",
+        backgroundColor: themeStyles.buttonBackgroundColor,
+        color: themeStyles.textColor,
+        fontSize: "14px",
+        alignSelf: "flex-start",
+        marginLeft: "0px",
+      }}
+    >
+      <strong>Seçilen Şehir:</strong> {savedCity}
+    </button>
+  </div>
 </div>
 
 
@@ -493,9 +642,66 @@ const handleCountryChange = (country) => {
         </div>
       );
     } else if (modalContentKey === "Çıkış") {
+      const handleLogoutConfirmation = () => {
+        // Kullanıcı bilgilerini temizle
+        window.location.href = '/signin';
+        // localStorage.clear();
+        sessionStorage.removeItem("isAuthenticated");
+
+        
+      };
+       
+      
+
       return (
         <div style={{ color: themeStyles.textColor, transition: 'color 0.3s ease' }}>
-          <p>Çıkmak istediğinizden emin misiniz?</p> {/* Çıkış onay mesajı */}
+          <p>Çıkmak istediğinizden emin misiniz?</p>
+          <button onClick={handleLogoutConfirmation} style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '10px',
+            padding: '10px',
+            borderRadius: '10px',
+            backgroundColor: themeStyles.buttonBackgroundColor,
+            color: themeStyles.textColor
+          }}>Çıkış Yap</button>
+        </div>
+      );
+    } else if (modalContentKey === "Robot Ekle") {
+      
+      return (
+        <div>
+          <div style={{ marginBottom: '10px' }}>
+            <label style={{ width: '20%', display: 'inline-block', color: themeStyles.textColor }}><strong>Robot İsmi:</strong></label>
+            <input
+              type="text"
+              placeholder="Robot İsmi"
+              value={robotName}
+              onChange={(e) => setRobotName(e.target.value)}
+              style={{ marginBottom: '10px', width: '30%', backgroundColor: themeStyles.backgroundColor, color: themeStyles.inputTextColor || '#ffffff', borderRadius: '5px' }}
+            />
+          </div>
+          <div style={{ marginBottom: '10px' }}>
+            <label style={{ width: '20%', display: 'inline-block', color: themeStyles.textColor }}><strong>Robot Rengi:</strong></label>
+            <input
+              type="text"
+              placeholder="Robot Rengi"
+              value={robotColor}
+              onChange={(e) => setRobotColor(e.target.value)}
+              style={{ marginBottom: '10px', width: '30%', backgroundColor: themeStyles.backgroundColor, color: themeStyles.inputTextColor || '#ffffff', borderRadius: '5px' }}
+            />
+          </div>
+          <button onClick={handleAddRobot} style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '10px',
+            padding: '10px',
+            borderRadius: '10px',
+            backgroundColor: themeStyles.buttonBackgroundColor,
+            color: themeStyles.textColor
+          }}>Ekle</button> {/* Ekle butonu */}
         </div>
       );
     } else {
@@ -511,23 +717,114 @@ const handleCountryChange = (country) => {
     setIsModalVisible(false); // Modal'ı kapatıyor.
     // Form verilerini sıfırlama
 
-    setkullaniciAdı("Ahmet Yılmaz"); // Varsayılan isim soyisim
-    setUserName("Ahmet Yılmaz"); // Varsayılan isim soyisim
-    setEmail("ahmet.yilmaz@example.com"); // Varsayılan eposta
-    setPhone("+90 555 123 4567"); // Varsayılan telefon
-    setProfilePicture(pp); // Varsayılan profil fotoğrafı
+   
   };
 
   // Profil güncelleme fonksiyonu
-  const handleUpdateProfile = () => {
-    // Burada güncellemeleri kaydedebilirsiniz
-    setModalContentKey("Profil "); // Profil kısmına geri dön
-    setModalTitle("Profil"); // Başlığı "Profil" olarak güncelle
-  };
+  const handleAddRobot = () => {
+    const userId = localStorage.getItem("userId"); // localStorage'dan userId al
+    const url = `https://localhost:44315/api/UgvRobot?userId=${userId}`;
 
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: "",
+        ugvName: robotName,
+        ugvColor: robotColor,
+        ugvDistance: 0,
+        ugvHerbicide: 0,
+        carLat: 0,
+        carLong: 0,
+        carLoc: "string",
+        ugvMission: "string",
+        ugvSpeed: 0,
+        infoDate: new Date().toISOString(),
+        no: 0,
+        siraUzunlugu: 0,
+        ikiSiraArasiMesafe: 0,
+        toplamSiraSayisi: 0,
+        donusDerecesi: 0,
+        ilkDonusAcisi: "string",
+        mod2: "string",
+        lastActiveMod: "string",
+        status: true,
+        onlineStatus: "string",
+        lastRunTime: new Date().toISOString(),
+        direction: "string",
+        manuelStatus: true,
+        heading: 0,
+        userId: userId
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        message.success("Robıt başarıyla eklendi!");// Log success message if operation is successful
+      }
+    })
+    .catch(error => console.error('Error:', error));
+  };
+  
+    const handleUpdateProfile = async () => {
+     
+      const userId = localStorage.getItem("userId"); // localStorage'dan userId al
+    
+      const apiUrl = `https://localhost:44315/api/User/${userId}`;
+    
+      const requestBody = {
+        id: userId,
+        username:userName ,
+        password: "", // Varsayılan veya boş bırakılan bir değer.
+        createdAt: new Date().toISOString(), // Oluşturma zamanı (isteğe bağlı, sunucu kontrolü varsa gerekmez).
+        roles: ["user"], // Roller (doldurmanız gerekirse değiştirin).
+        city: cityName, // Şehir bilgisi (gerekliyse doldurun).
+        profile: {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phone: phone,
+          profilePicture: profilePicture, // Base64 formatında profil fotoğrafı.
+          ulke:ulke,
+          
+        },
+      };
+    
+      try {
+        const response = await fetch(apiUrl, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "*/*",
+          },
+          body: JSON.stringify(requestBody),
+        });
+    
+        if (response.ok) {
+          const result = await response.json();
+          message.success("profil başarıyla güncellendi!");
+          // alert("Profil başarıyla güncellendi.");
+         
+        } else {
+          console.error("Profil güncellenirken hata oluştu:", response.status);
+          // alert("Profil güncellenirken bir hata oluştu.");
+        }
+      } catch (error) {
+        console.error("Bir hata oluştu:", error);
+        // alert("Profil güncellenirken bir hata oluştu.");
+      }
+   // Burada güncellemeleri kaydedebilirsiniz
+   
+   
+ };
+
+    
+
+    
   // Bileşenin JSX çıktısı.
   return (
-    <div className={`flex items-center gap-9 mr-16 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"}`}>
+    <div className={`flex items-center gap-9 mr-16 ${"bg-white dark:bg-sabDarkBG p-0"}`}>
       <div className="bg-sabGreenDark dark:bg-sabDarkBlack rounded-full p-3">
         {WeatherIcon && <div>{WeatherIcon}</div>} {/* Hava durumu ikonunu gösteriyor. */}
       </div>
@@ -550,11 +847,12 @@ const handleCountryChange = (country) => {
 
 
         {isMenuOpen && ( // Menü açıldığında gösterilecek içerik.
-          <div className="absolute right-8 bg-white dark:bg-gray-700 shadow-md rounded-lg p-6 mt-2 border border-gray-300 dark:border-gray-600" style={{ zIndex: 10, borderRadius: '40px' }}>
-            <p className="mb-2" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: '300' }}> {kullaniciAdı}</p>
+          <div className="absolute right-8 bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mt-2 border border-gray-300 dark:border-gray-600" style={{ zIndex: 10, borderRadius: '40px' }}>
+            <p className="mb-2" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: '300' }}> {userName}</p>
             <button className="block w-full text-left mb-1" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: 'bold' }} onClick={() => showModal("Profil ")}>Profil</button>
             <button className="block w-full text-left mb-1" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: 'bold' }} onClick={() => showModal("Eğitim Videoları ")}>Eğitim Videoları</button>
             <button className="block w-full text-left mb-1" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: 'bold' }} onClick={() => showModal("Sistem Ayarları ")}>Ayarlar</button>
+            <button className="block w-full text-left mb-1" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: 'bold' }} onClick={() => showModal("Robot Ekle")}>Robot Ekle</button>
             <button className="block w-full text-left mb-1" style={{ color: themeStyles.textColor, transition: 'color 0.3s ease', fontWeight: 'bold' }} onClick={() => showModal("Çıkış")}>Çıkış</button>
           </div>
        )}
@@ -566,6 +864,7 @@ const handleCountryChange = (country) => {
         onCancel={handleCancel} // İptal butonu için fonksiyon
         okText="Tamam"
         cancelText="İptal"
+
       >
         {renderModalContent()} {/* Dinamik içeriği çağır */}
       </Modal>

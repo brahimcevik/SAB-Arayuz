@@ -1,0 +1,7 @@
+nltk
+tensorflow
+numpy
+matplotlib
+scikit-learn
+colorama
+flask

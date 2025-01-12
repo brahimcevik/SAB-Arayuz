@@ -1,9 +1,9 @@
-
+ï»¿
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using SABApi.Models;
 using SABApi.Services;
-using SABApi.Services; // WeatherService'i dahil ettiðiniz namespace
+using SABApi.Services; // WeatherService'i dahil ettiÃ°iniz namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +14,7 @@ builder.Services.Configure<UgvRobotSettings>(
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddScoped<UgvRobotService>();
 
-// WeatherService için HttpClient ekliyoruz
+// WeatherService iÃ§in HttpClient ekliyoruz
 builder.Services.AddHttpClient<WeatherService>();
 
 builder.Services.AddControllers();
@@ -44,8 +44,3 @@ app.UseCors("AllowAll"); // Ensure CORS is used
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
-
-
-
-
-

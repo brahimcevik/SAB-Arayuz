@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot Uygulaması</title>
+    <link rel="icon" href="/static/images/logo.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/static/Css/index.css" />
+  </head>
+  <body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand logo" href="https://intellium.com.tr/">
+        <img src="/static/images/logo.png" alt="Şirket Logo" />
+      </a>
+      <span class="navbar-text">Intellium Chatbot Uygulaması</span>
+    </nav>
+    <div id="context-display"></div>
+    <div class="container mt-4">
+      <div id="chatbox" class="d-flex flex-column"></div>
+
+      <div id="buttonOptions" class="mt-2 d-none">
+        <button
+          onclick="sendButtonResponse('evet')"
+          class="btn custom-btn-yes mr-2"
+        >
+          Evet
+        </button>
+        <button onclick="sendButtonResponse('hayır')" class="btn custom-btn-no">
+          Hayır
+        </button>
+      </div>
+
+      <div class="input-group mt-2">
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Mesajınızı yazın..."
+          class="form-control"
+        />
+        <div class="input-group-append">
+          <button id="sendBtn" class="btn btn-primary">Gönder</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("sendBtn").onclick = sendMessage;
+
+      document
+        .getElementById("userInput")
+        .addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            sendMessage();
+          }
+        });
+
+      function sendMessage() {
+        let userInput = document.getElementById("userInput").value;
+        if (userInput) {
+          addMessage(userInput, "user");
+          sendToChatbot(userInput);
+          document.getElementById("userInput").value = "";
+        }
+      }
+
+      function sendButtonResponse(response) {
+        addMessage(response, "user");
+        sendToChatbot(response);
+      }
+
+      function sendToChatbot(message) {
+        fetch("/chatbot", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ msg: message }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              addMessage(data.error, "error");
+            } else {
+              addMessage(data.response, "bot");
+              if (data.showOptions) {
+                document
+                  .getElementById("buttonOptions")
+                  .classList.remove("d-none");
+              } else {
+                document
+                  .getElementById("buttonOptions")
+                  .classList.add("d-none");
+              }
+            }
+          })
+          .catch((err) => {
+            addMessage("Bir hata oluştu. Lütfen tekrar deneyin.", "error");
+          });
+      }
+
+      function addMessage(message, type) {
+        const chatbox = document.getElementById("chatbox");
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add("message");
+        if (type === "user") {
+          messageDiv.classList.add("user-message");
+        } else if (type === "bot") {
+          messageDiv.classList.add("bot-message");
+        } else if (type === "error") {
+          messageDiv.classList.add("error-message");
+        }
+        messageDiv.innerText = message;
+        chatbox.appendChild(messageDiv);
+        chatbox.scrollTop = chatbox.scrollHeight;
+      }
+    </script>
+  </body>
+</html>

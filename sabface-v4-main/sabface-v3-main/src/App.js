@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,9 +16,18 @@ import MainPage from "./containers/MainPage";
 import Camera from "./containers/CameraPage";
 import Mode from "./containers/Mode";
 import Graphic from "./containers/GrapichPage";
+import ChatbotIcon from "./components/ChatbotIcon";
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const authState = sessionStorage.getItem("isAuthenticated");
+    if (authState === "true") {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   return (
     <ThemeProvider theme>
@@ -58,6 +67,7 @@ function App() {
                 </div>
               )}
             </div>
+            {isAuthenticated && <ChatbotIcon />}
           </div>
         </Router>
       </Provider>

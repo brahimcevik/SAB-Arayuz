@@ -9,8 +9,12 @@ const ugvCoordinatesSlice = createSlice({
   reducers: {
     
     setCityCoordinates: (state, action) => {
-      console.log(action)
-      state.cityCoordinates = action.payload;
+      console.log(action);
+      if (action.payload && action.payload.latitude !== undefined && action.payload.longitude !== undefined) {
+        state.cityCoordinates = action.payload;
+      } else {
+        console.error("Invalid payload for setCityCoordinates:", action.payload);
+      }
     },
   },
 });

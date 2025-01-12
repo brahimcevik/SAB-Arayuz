@@ -37,14 +37,14 @@ function WeatherNavbar() {
 
   return (
     <flex>
-      {weatherData &&
+      {weatherData && 
         weatherData.map((data, index) => (
           <WeatherStatsNavBar
             key={index}
             value={data.temperature}
             weatherType={data.weatherType}
             day={data.day}
-          />
+          /> 
         ))}
     </flex>
   );

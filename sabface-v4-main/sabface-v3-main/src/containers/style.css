@@ -1,0 +1,199 @@
+/* Chatbot Container */
+.chatbotContainer {
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  border-radius: 24px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 550px; /* Sabit genişlik */
+  height: 70vh;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  position: relative;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Chatbot Message Container */
+.messageContainer {
+  width: 100%;
+  min-height: 40vh;
+  max-height: 60vh;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
+}
+
+/* Kullanıcı Mesajı */
+.userMessage {
+background-color: #d7e8e1;
+align-self: flex-end;
+border-radius: 20px 20px 0 20px;
+padding: 12px 16px;
+color: #333;
+font-family: 'Poppins', sans-serif;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+max-width: 100%; /* Mesaj kutularının genişliği container'a göre belirlenecek */
+word-wrap: break-word;
+box-sizing: border-box;
+}
+
+/* Bot Mesajı */
+.botMessage {
+background-color: #d7e8e1;
+align-self: flex-start;
+border-radius: 20px 20px 20px 0;
+padding: 12px 16px;
+color: #333;
+font-family: 'Poppins', sans-serif;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+max-width: 70%;
+word-wrap: break-word;
+box-sizing: border-box;
+}
+
+/* Chat Input */
+.chatbotInput {
+width: 100%;
+padding: 14px 20px;
+border: 2px solid #aa7597;
+border-radius: 30px;
+font-size: 16px;
+color: #333;
+font-family: 'Poppins', sans-serif;
+outline: none;
+transition: border 0.3s ease;
+box-sizing: border-box;
+}
+
+.chatbotInputFocus {
+border-color: #6a11cb;
+box-shadow: 0 0 10px rgba(106, 17, 203, 0.2);
+}
+
+/* Gönder Butonu */
+.chatbotButton {
+background: linear-gradient(to right, #6a11cb, #2575fc);
+color: #fff;
+border: none;
+border-radius: 30px;
+padding: 12px 20px;
+cursor: pointer;
+font-family: 'Poppins', sans-serif;
+font-size: 16px;
+font-weight: bold;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+box-sizing: border-box;
+}
+
+.chatbotButtonHover {
+transform: scale(1.05);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Robot List Container */
+.robotListContainer {
+  position: fixed; /* Sabit konum */
+  top: 350px; /* Yükseklik için sayfanın ortasına yerleştir */
+  right: 150px; /* Sayfanın daha sağında olmak için sağa kaydır */
+  width: 550px; /* İstenilen genişlik */
+  height: 500px; /* Yükseklik */
+  background-color: #63b995; /* Yeşil renk */
+  border-radius: 30px;
+  transform: translateY(-50%); /* Dikeyde ortalamak için */
+  z-index: 5;
+}
+
+.robotInfoContainer {
+  background-color: #f0f0f0;
+  padding: 20px;
+  right: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;}
+
+.robotInfoTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;}
+.robotInfoText {
+  margin-top: 10px;
+  color: #666;
+}
+
+
+
+
+/* Robot Info Container */
+.robotInfoContainer {
+  background-color: #f0f0f0;
+  padding: 20px;
+  right: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.robotInfoTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.robotInfoText {
+  margin-top: 10px;
+  color: #666;
+}
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+/* Bot Mesajı */
+.botMessage {
+  background-color: #d7e8e1;
+  align-self: flex-start;
+  border-radius: 20px 20px 20px 0;
+  padding: 12px 16px;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 70%;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+/* Message Icons */
+.messageIcon {
+  width: 24px; /* İkon genişliği */
+  height: 24px; /* İkon yüksekliği */
+  margin-right: 10px; /* İkon ile metin arasındaki boşluk */
+}
+
+

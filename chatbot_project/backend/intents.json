@@ -1,0 +1,758 @@
+{
+    "intents": [
+        
+            
+              {
+                "tag": "mod1_guncelleme",
+                "patterns": [
+                  "mod1 güncelle",
+                  "mod1 parametrelerini güncelle",
+                  "tarla modu güncelle",
+                  "tarla parametrelerini güncelle",
+                  "sıra uzunluğunu güncelle",
+                  "sıra mesafesini güncelle",
+                  "dönüş derecesini güncelle",
+                  "mod1 ayarlarını değiştir",
+                  "tarla modu ayarlarını değiştir"
+                ],
+                "responses": [
+                  "Mod1 parametrelerini güncellemek için önce bir araç seçmelisiniz. Lütfen listeden bir araç seçin:",
+                  "Tarla modu güncellemesi için araç seçimi yapmalısınız. Mevcut araçlar:",
+                  "Parametreleri güncellemek istediğiniz aracı seçin:"
+                ],
+                "context_set": "waiting_for_mod1_parameters"
+              },
+              {
+                "tag": "mod1_parameters",
+                "patterns": [
+                  "sıra uzunluğu {length}, mesafe {distance}, sıra sayısı {rows}, dönüş derecesi {degree}, dönüş açısı {direction}",
+                  "{length},{distance},{rows},{degree},{direction}"
+                ],
+                "responses": [
+                  "Mod1 parametreleri güncelleniyor:\nSıra Uzunluğu: {length}\nİki Sıra Arası Mesafe: {distance}\nToplam Sıra Sayısı: {rows}\nDönüş Derecesi: {degree}\nİlk Dönüş Açısı: {direction}",
+                  "Parametreler alındı, güncelleme yapılıyor..."
+                ],
+                "context_filter": "waiting_for_mod1_parameters",
+                "variables": {
+                  "length": "length",
+                  "distance": "distance",
+                  "rows": "rows",
+                  "degree": "degree",
+                  "direction": "direction"
+                }},
+              
+            
+        
+            
+        {
+            "tag": "koordinat_guncelleme",
+            "patterns": [
+              "koordinat güncellemek istiyorum",
+              "koordinatları güncelle",
+              "yeni koordinat gir",
+              "koordinat değiştir",
+              "konum güncelle",
+              "yeni konum gir",
+              "koordinat ekle",
+              "konum ekle",
+              "rota güncelle",
+              "yeni rota belirle"
+            ],
+            "responses": [
+              "Kaç adet koordinat çifti girmek istiyorsunuz?",
+              "Koordinat güncellemesi için önce kaç nokta gireceğinizi belirtin.",
+              "Kaç koordinat noktası eklemek istiyorsunuz?"
+            ],
+            "context_set": "waiting_for_coordinate_count"
+          },
+          {
+            "tag": "arac_secimi",
+            "patterns": [
+              "araç seç",
+              "araç seçmek istiyorum",
+              "araçları göster",
+              "hangi araçlar var",
+              "araç listesi",
+              "mevcut araçlar",
+              "araçları listele",
+              "robot seç",
+              "robot listesi"
+            ],
+            "responses": [
+              "Lütfen aşağıdaki araçlardan birini seçin:",
+              "İşte mevcut araçlarımız. Hangisini seçmek istersiniz?",
+              "Araç listemiz aşağıda. Lütfen birini seçin:"
+            ],
+            "context_set": "robot_sorgulama"
+          },
+              
+              {
+                "tag": "robot_selected",
+                "patterns": ["seçilen araç ID: {robot_id}", "aracı seç: {robot_id}"],
+                "responses": ["Seçilen araç: {robot_id}. Lütfen yeni enlem ve boylam değerlerini giriniz."],
+                "context_set": "awaiting_coordinates",
+                "variables": {
+                  "robot_id": "robot_id"
+                }
+              },
+              {
+                "tag": "coordinates_provided",
+                "patterns": ["enlem: {latitude}, boylam: {longitude}", "enlem: {latitude} boylam: {longitude}"],
+                "responses": ["Enlem ve boylam güncellendi. Teşekkürler!"],
+                "context_filter": "awaiting_coordinates"
+              },
+          
+              {
+                "tag": "coordinates_provided",
+                "patterns": ["enlem: {latitude}, boylam: {longitude}", "enlem: {latitude} boylam: {longitude}"],
+                "responses": ["Enlem ve boylam güncellendi. Teşekkürler!"],
+                "context_filter": "awaiting_coordinates"
+              },          
+        {
+            "tag": "greetings",
+            "patterns": [
+                "merhaba",
+                "selam",
+                "selamlar",
+                "hey",
+                "naber?",
+                "iyi günler",
+                "neler yapıyorsun?",
+                "orada kimse var mı?",
+                "nasılsınız?",
+                "gününüz nasıl geçti?",
+                "nasılsın?",
+                "günaydın",
+                "iyi akşamlar",
+                "selam, nasılsınız?",
+                "ne haber?",
+                "merhaba, ne var ne yok?",
+                "hey, her şey yolunda mı?",
+                "selam dostum",
+                "iyi misin?",
+                "selamlar, nasıl gidiyor?",
+                "herkese merhaba!",
+                "merhabalar",
+                "selam millet!",
+                "naber"
+            ],
+            "responses": [
+                "Merhaba!",
+                "Selam!",
+                "Hey!",
+                "Hey! Yardımıma ihtiyacınız var mı?",
+                "Ben iyiyim! Yardıma ihtiyacınız var mı?",
+                "Ben iyiyim! Size nasıl yardımcı olabilirim?"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "robot_sorgulama",
+            "patterns": [
+                "Robot bilgilerini alabilir miyim?",
+                "Robot bilgisi ver.",
+                "rapor",
+                "rapor bilgisi ver"
+            ],
+            "responses": [
+                "Robot {ugvName} bilgileri:\nRenk: {ugvColor}\nHız: {ugvSpeed} km/h\nKonum: {carLat}, {carLong}\nSon Çalıştırılma: {lastRunTime}\nDurum: {status}."
+            ],
+            "context_set": "robot_sorgulama",
+            "variables": {
+                "ugvName": "ugvName",
+                "ugvColor": "ugvColor",
+                "ugvSpeed": "ugvSpeed",
+                "carLat": "carLat",
+                "carLong": "carLong",
+                "lastRunTime": "lastRunTime",
+                "status": "status"
+            }
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "ayrılıyorum",
+                "görüşürüz",
+                "sonra görüşürüz",
+                "hoşça kal",
+                "iyi günler",
+                "güle güle",
+                "cao",
+                "gidiyorum",
+                "bye",
+                "exit",
+                "quit",
+                "kendine iyi bak",
+                "sonra konuşuruz",
+                "hoşçakal",
+                "yakında görüşmek üzere",
+                "sonra görüşürüz, hoşça kal",
+                "ben çıkıyorum",
+                "çıkmam gerek",
+                "şimdilik hoşça kal",
+                "sonra konuşuruz"
+            ],
+            "responses": [
+                "Gidişini görmek üzücü :(",
+                "Sonra tekrar konuşalım!",
+                "Güle güle!",
+                "Umarım tekrar görüşürüz!"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "about",
+            "patterns": [
+                "sen kimsin?",
+                "sen nesin?",
+                "ne yapıyorsun?",
+                "kimsin sen?",
+                "ne iş yapıyorsun?",
+                "hangi asistan?",
+                "ne üzerine çalışıyorsun?",
+                "ne iş yaparsın?",
+                "hangi bot?",
+                "bu platformda ne işin var?",
+                "görevin nedir?",
+                "burada ne yapıyorsun?",
+                "senin görevin ne?",
+                "asistan mısın?",
+                "ne tür bir bot?",
+                "bu platforma ne katkı sağlıyorsun?",
+                "sana neden danışmalıyım?",
+                "neyi biliyorsun?",
+                "ne tür sorunları çözersin?",
+                "bu platformun asistanı mısın?"
+            ],
+            "responses": [
+                "Ben, bu platformun asistanıyım.",
+                "Sorunları çözmek için buradayım.",
+                "Merak ettiğiniz konuları öğrenmeye ve size yardımcı olmaya adanmış bir yapay zekayım.",
+                "Ben burada sizin sorularınızı yanıtlamak ve yardımcı olmak için varım."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "name",
+            "patterns": [
+                "Adın ne",
+                "Seni nasıl çağırmalıyım",
+                "seni nasıl çağırabilirim?",
+                "ismin ne?",
+                "adın neydi?",
+                "size nasıl hitap etmeliyim?",
+                "sana nasıl seslenmeliyim?",
+                "seni nasıl çağırmalıyım?",
+                "asistanın adı ne?",
+                "bu platformdaki adın ne?",
+                "hangi isimle hitap edebilirim?",
+                "size nasıl hitap edebilirim?",
+                "adın nedir?",
+                "senin ismin ne?",
+                "sana nasıl ulaşabilirim?",
+                "senin adın ne?",
+                "asistan adın ne?",
+                "hangi isimle çalışıyorsun?",
+                "adını öğrenebilir miyim?",
+                "nasıl çağırmalıyım seni?"
+            ],
+            "responses": [
+                "Beni Portal olarak çağırabilirsiniz.",
+                "Ben, bu platformun asistanı Portal.",
+                "İsmim Portal, size yardımcı olmaktan mutluluk duyarım.",
+                "Adım Portal ve sorularınızı yanıtlamak için buradayım."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "age",
+            "patterns": [
+                "kaç yaşındasın",
+                "Portal kaç yaşında",
+                "yaşın ne",
+                "kaç yaşındasınız",
+                "yaşınız?",
+                "ne zamandır buradasın?",
+                "kaç yaşında bir bot?",
+                "bu platformda kaç yıldır varsın?",
+                "ne kadar yaşlısın?",
+                "botlar yaşlanır mı?",
+                "yaşın önemli mi?",
+                "botların yaşı olur mu?",
+                "kaç yıllık deneyimin var?",
+                "ne zamandan beri buradasın?",
+                "kaç yıldır çalışıyorsun?",
+                "bu platforma ne zaman geldin?",
+                "bu platformda ne kadar süredir çalışıyorsun?",
+                "botların yaşı var mı?",
+                "yaşın ne kadar önemli?",
+                "botlar yaşlanır mı?"
+            ],
+            "responses": [
+                "Bu konuda bilgi veremiyorum :)"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "help",
+            "patterns": [
+                "yardım",
+                "yardım edin",
+                "destek",
+                "Sorunları çözmek istiyorum",
+                "bir sorun var",
+                "ne önerirsin?",
+                "nasıl kullanmalıyım?",
+                "yardım et",
+                "bilgi almak istiyorum",
+                "destek almak istiyorum",
+                "bir sorum var",
+                "bir sorunla karşılaştım",
+                "nasıl yardımcı olabilirsin?",
+                "yardıma ihtiyacım var",
+                "yardımcı olabilir misin?",
+                "sorunum var",
+                "problemlerim var",
+                "nasıl çözüm bulurum?",
+                "bana yol göster",
+                "sorunum hakkında yardım edebilir misin?"
+            ],
+            "responses": [
+                "Sorunları çözmek için buradayım, konu nedir?",
+                "Size yardımcı olmaktan mutluluk duyarım, konu nedir?",
+                "Sorun nedir?"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "annual_leave_eligibility",
+            "patterns": [
+                "Ne zaman yıllık ücretli izne hak kazanabilirim?",
+                "Yıllık ücretli izne ne zaman hak kazanırım?",
+                "Yıllık izin hakkım ne zaman oluşur?",
+                "Yıllık izin hakkımı ne zaman elde ederim?",
+                "Yıllık izin kullanmaya ne zaman başlayabilirim?",
+                "İlk yıllık izin hakkım ne zaman başlar?",
+                "Yıllık ücretli izin hakkım için ne kadar çalışmam gerekir?",
+                "Yıllık izne hak kazanmak için ne kadar süre çalışmalıyım?",
+                "Yıllık izin süremi nasıl hesaplayabilirim?",
+                "Yıllık izin süresi ne kadar?",
+                "Yıllık iznim kaç gün olur?",
+                "Yıllık izin hakkım ne kadardır?",
+                "İzin süremi nasıl öğrenirim?",
+                "Yıllık izin süresi nasıl belirlenir?",
+                "Kıdeme göre yıllık izin süresi ne kadar?",
+                "Yıllık izin sürem kıdeme göre nasıl hesaplanır?"
+            ],
+            "responses": [
+                "İşe başladığınız tarihten itibaren, deneme süreniz de dâhil en az bir yıl çalışmanız halinde yıllık ücretli izne hak kazanırsınız."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "annual_leave_age",
+            "patterns": [
+                "Yıllık izin süreleri ile ilgili yaş düzenlemesi var mı?",
+                "Yaş grubuma göre yıllık izin hakkım nedir?",
+                "Yaşa göre yıllık izin süresi değişir mi?",
+                "Belirli yaşlarda yıllık izin süresi farklı mı?",
+                "18 yaş altı için yıllık izin süresi farklı mı?",
+                "Yaşım yıllık izin hakkımı etkiler mi?",
+                "50 yaş üstü için yıllık izin hakkı nasıl hesaplanır?",
+                "Yaşa göre yıllık izin süresi nasıl belirlenir?"
+            ],
+            "responses": [
+                "18 yaşında veya daha küçük ya da 50 yaşında veya daha büyük Çalışan iseniz, yıllık ücretli izin süreniz en az 20 gün olmalıdır. Bu durumda örneğin 16 yaşında bir çalışan, 19 yaşına gelinceye kadar yıllık izinlerini 20 gün olarak kullanacaktır."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "annual_leave_splitting",
+            "patterns": [
+                "Yıllık iznimi bölerek kullanabilir miyim?",
+                "Yıllık iznimi parça parça kullanabilir miyim?",
+                "Yıllık izni bölmek mümkün mü?",
+                "İznimi bölebilir miyim?",
+                "Yıllık izin süremi ikiye bölebilir miyim?",
+                "Yıllık izni kaç parçaya bölebilirim?",
+                "Yıllık izni bölüm bölüm kullanabilir miyim?",
+                "İzin süresini birden fazla parçaya bölebilir miyim?"
+            ],
+            "responses": [
+                "İşvereninizle anlaşmanız halinde yıllık izninizi bir parçası 10 günden az olmamak üzere istediğiniz kadar bölerek kullanabilirsiniz."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "unused_annual_leave",
+            "patterns": [
+                "Kullanmadığım yıllık izin haklarım yanar mı?",
+                "İşten ayrılınca yıllık izin haklarım ne olur?",
+                "Kullanmadığım yıllık izinlere ne olur?",
+                "İşten çıkarsam yıllık izin hakkım ne olur?",
+                "Kullanılmayan yıllık izinlerin akıbeti nedir?",
+                "İşten ayrıldığımda yıllık izin ücretim ödenir mi?",
+                "Yıllık iznimi kullanmazsam ne olur?",
+                "Kullanmadığım yıllık izinler işten ayrılınca silinir mi?"
+            ],
+            "responses": [
+                "İş sözleşmenizin herhangi bir sebeple son bulması halinde, kullanmadığınız yıllık izin sürelerinize ait ücretleriniz, hizmet akdinizin son bulduğu tarihteki ücretiniz üzerinden tarafınıza ödenmelidir."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "annual_leave_travel_time",
+            "patterns": [
+                "Yıllık iznimi uzakta geçirirken yol izni kullanabilir miyim?",
+                "Yol izni alabilir miyim?",
+                "Yıllık izinde yol izni nasıl alınır?",
+                "Yıllık izinde seyahat izni alabilir miyim?",
+                "Uzaktaki bir yere yıllık izin alırken yol izni talep edebilir miyim?",
+                "Yıllık izin yol izni hakkım var mı?",
+                "Yıllık izin esnasında yol izni nasıl talep edilir?",
+                "Yol izni kaç gün verilir?"
+            ],
+            "responses": [
+                "Yıllık izninizi işyerinizin kurulu olduğu yerden başka bir yerde geçirecekseniz, bu durumu belgelemeniz ve yol izni talep etmeniz halinde, işvereniniz size 4 güne kadar yol izni vermek zorundadır. Ancak bu izin ücretsiz olacaktır."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "annual_leave_usage_time",
+            "patterns": [
+                "Yıllık iznimi ne zaman kullanabilirim?",
+                "Yıllık izin hakkımı hangi dönemde kullanırım?",
+                "İzin hakkımı ne zaman kullanmaya başlayabilirim?",
+                "Yıllık izin hakkımı hangi yıl içinde kullanmalıyım?",
+                "İlk yıllık izin hakkımı ne zaman kullanabilirim?",
+                "Yıllık izin hakkım hangi dönemde geçerlidir?",
+                "Hizmet yılı dolunca iznimi kullanabilir miyim?",
+                "Yıllık iznim hangi yıl içinde geçerli olur?"
+            ],
+            "responses": [
+                "Her hizmet yılına ait yıllık izninizi gelecek hizmet yılı içinde kullanabilirsiniz."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "hours",
+            "patterns": [
+                "Ne zaman açıksınız",
+                "Çalışma saatleriniz nedir",
+                "Çalışma saatleri",
+                "çalışma saatlerin",
+                "mesai saatleriniz nedir?",
+                "bu platform ne zaman açık?",
+                "ne zaman hizmet veriyorsunuz?",
+                "platformun çalışma saatleri nedir?",
+                "hangi saatlerde çalışıyorsunuz?",
+                "ne zaman hizmet verirsiniz?",
+                "çalışma saatleriniz ne zaman?",
+                "hizmet saatleriniz nedir?",
+                "ne zaman açık oluyorsunuz?",
+                "hangi saatlerde aktif oluyorsunuz?",
+                "ne zaman hizmet sunuyorsunuz?",
+                "saat kaçtan kaça açıksınız?",
+                "ne zaman yardımcı olabilirsiniz?",
+                "size ne zaman ulaşabilirim?",
+                "platform ne zaman hizmet veriyor?",
+                "çalışma saatlerinizi öğrenebilir miyim?"
+            ],
+            "responses": [
+                "7/24",
+                "7/24 buradayız!"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Teşekkürler",
+                "çok teşekkür ederim",
+                "bu çok yardımcı oldu",
+                "harika, teşekkürler",
+                "yardımın için teşekkürler",
+                "çok sağ ol",
+                "Sağ ol",
+                "Minnettarım",
+                "Teşekkür ederim, çok işime yaradı",
+                "Çok faydalı oldu, sağ ol",
+                "Sana minnettarım",
+                "Müthişsin, teşekkürler",
+                "İyi ki varsın, çok sağ ol",
+                "Çok teşekkürler, işime yaradı",
+                "Bana çok yardımcı oldun, teşekkür ederim",
+                "Yardımın için minnettarım",
+                "Gerçekten teşekkür ederim",
+                "Teşekkür ederim, çok iyi oldu",
+                "Teşekkürler, yardımların için",
+                "Teşekkürler, çok yardımcı oldun",
+                "İlgin için teşekkürler",
+                "Destek olduğun için teşekkürler"
+            ],
+            "responses": [
+                "Yardım edebildiğim için mutluyum!",
+                "Her zaman!",
+                "Benim için zevkti!",
+                "Umarım yardımcı olabilmişimdir!",
+                "Rica ederim!"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "noanswer",
+            "patterns": [
+                "Bu ne demek?",
+                "Anlayamadım",
+                "Bir daha söyler misin?",
+                "Bunu açar mısın?",
+                "Ne demek istedin?",
+                "Detaylandırır mısın?",
+                "Biraz daha açıklar mısın?",
+                "Bu konuda ne demek istiyorsun?",
+                "Tam anlayamadım, tekrar eder misin?",
+                "Bunu biraz daha açabilir misin?",
+                "Ne demek istediğini anlamadım",
+                "Bu konu hakkında daha fazla bilgi verebilir misin?",
+                "Anlamadım, açıklayabilir misin?",
+                "Bu konuda daha fazla bilgi verebilir misin?",
+                "Anlamadım, biraz daha detaylandırır mısın?",
+                "Bu konuda ne demek istediğini tam anlayamadım"
+            ],
+            "responses": [
+                "Özür dilerim, sizi anlayamadım.",
+                "Lütfen daha fazla bilgi verir misiniz?",
+                "Sizi anladığımdan emin değilim.",
+                "Sizi anlayamadım, daha fazla bilgi verirseniz yardımcı olabilirim."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "evet",
+            "patterns": [
+                "evet",
+                "Tabii ki",
+                "Aynen öyle",
+                "Evet, lütfen",
+                "Evet, tam olarak",
+                "Doğru",
+                "Kesinlikle",
+                "Anladım",
+                "Evet, doğru",
+                "Evet, öyle",
+                "Evet, tamamen katılıyorum",
+                "Doğru, aynen öyle",
+                "Evet, haklısın",
+                "Elbette",
+                "Tabii",
+                "Evet, olabilir",
+                "Kesinlikle evet",
+                "Evet, bu doğru",
+                "Evet, dediğin gibi",
+                "Tamam, evet",
+                "Evet, anladım"
+            ],
+            "responses": [
+                "Lütfen daha fazla bilgi verir misiniz?",
+                "İsteğiniz hakkında ayrıntı verirseniz, daha fazla yardımcı olabilirim?",
+                "Anladım. Lütfen detayları paylaşın, size nasıl yardımcı olabileceğimi öğrenmek isterim."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "hayır",
+            "patterns": [
+                "hayır",
+                "Hayır, teşekkürler",
+                "Gerek yok",
+                "Olmaz",
+                "Hayır, istemiyorum",
+                "Bu seferlik hayır",
+                "Sanmıyorum",
+                "Hayır, hiç sanmıyorum",
+                "Hayır, gerek yok",
+                "Hayır, bu doğru değil",
+                "Hayır, teşekkür ederim",
+                "Hayır, bu bana uygun değil",
+                "Hayır, teşekkürler, buna ihtiyacım yok",
+                "Hayır, doğru olduğunu sanmıyorum",
+                "Hayır, katılmıyorum",
+                "Bu doğru değil, hayır",
+                "Hayır, bu işime yaramaz",
+                "Hayır, benim için uygun değil"
+            ],
+            "responses": [
+                "Peki öyleyse, umarım yardımcı olabilmişimdir!",
+                "Tamam, daha sonra yine konuşalım!",
+                "Herhangi bir sorununuzda bana tekrardan ulaşabilirsiniz!",
+                "Tamam, anladım. Eğer daha sonra ihtiyacınız olursa çekinmeden bana yazabilirsiniz.",
+                "Anladım. Size başka nasıl yardımcı olabilirim?"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "options",
+            "patterns": [
+                "Bana nasıl yardım edebilirsin?",
+                "Neler yapabiliyorsun?",
+                "ne yapabilirsin?",
+                "yeteneklerin neler?",
+                "başka neler yapabilirsin?",
+                "başka?",
+                "Bu platformda neler yapabilirim?",
+                "Bana hangi konularda yardımcı olabilirsin?",
+                "Sistem neler sunuyor?",
+                "Başka ne tür yardımlar yapabiliyorsun?",
+                "Bu platformda başka neler var?",
+                "Beni nasıl yönlendirebilirsin?",
+                "Ne tür işlevler sunuyorsun?",
+                "Seninle neler yapabilirim?",
+                "Ne tür hizmetler sunuyorsun?",
+                "Başka ne yapabilirsin?",
+                "Sistem neler sunar?",
+                "Hangi görevleri yerine getirebilirsin?",
+                "Bana ne konuda yardımcı olabilirsin?",
+                "Platformda hangi işlemleri yapabiliyorsun?"
+            ],
+            "responses": [
+                "Sorunları çözmek için buradayım, konu nedir?",
+                "Ticket, Scrum Board veya Proje Oluştur'maktan bahsedebilirim.",
+                "Platformun nasıl çalıştığını anlatabilirim.",
+                "Sorunları çözmek ve sizi yönlendirmek için buradayım. Hangi konuda yardımcı olabilirim?",
+                "Size Ticket açma, Proje Oluşturma veya Scrum Board hakkında bilgi verebilirim.",
+                "Yardım etme yeteneklerim arasında Ticket Oluşturma, Proje Yönetimi ve sorularınızı yanıtlama bulunuyor.",
+                "Benim yeteneklerim arasında ticket işlemleri, proje yönetimi ve genel platform rehberliği bulunuyor.",
+                "Size Ticket Oluşturma, Proje yönetimi ve platform hakkında genel bilgi sağlama konularında yardımcı olabilirim.",
+                "Size Ticket Oluşturma, Proje yönetimi veya platformun nasıl çalıştığı hakkında bilgi verme konusunda yardımcı olabilirim."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "tell",
+            "patterns": [
+                "söyle",
+                "konuş",
+                "konuşur musun?",
+                "bahset",
+                "detay ver",
+                "bu konuda daha fazla bilgi ver",
+                "biraz daha açar mısın?",
+                "Bu konuda daha fazla detay verebilir misin?",
+                "Biraz daha açıklar mısın?",
+                "Bu nedir, anlatır mısın?",
+                "Bu konu hakkında bana bilgi verir misin?",
+                "Bu konuda biraz daha konuşur musun?",
+                "Bu özellik hakkında daha fazla bilgi verir misin?",
+                "Lütfen bana bu konuda bilgi ver",
+                "Bu konu hakkında detaylı bilgi verebilir misin?",
+                "Bu konuyu biraz daha açar mısın?",
+                "Bu konu hakkında konuşabilir misin?",
+                "Bana bu konuda bilgi verebilir misin?",
+                "Detayları aktarır mısın?"
+            ],
+            "responses": [
+                "Sorunları çözmek için buradayım, ne anlatmalıyım?",
+                "Ne hakkında konuşmalıyım?",
+                "Size ne hakkında yardımcı olmalıyım?",
+                "Platform hakkında ne anlatmamı istersiniz?",
+                "Ayrıntılı olarak aktarmamı istediğiniz bir konu var mı?",
+                "Size ne söyleyebilirim?",
+                "Elbette, hangi konuda bilgi istersiniz? Ticket işlemleri, projeler veya platform hakkında mı?",
+                "Tabii ki, platformumuz hakkında veya ticket oluşturma süreçleri gibi bir konuda size yardımcı olabilirim.",
+                "Elbette! Ticket oluşturma, proje yönetimi veya platformun genel kullanımı hakkında bilgi vermekten memnuniyet duyarım.",
+                "Size platformumuzun nasıl çalıştığını, ticket oluşturma süreçlerini veya projeleri anlatabilirim.",
+                "Tabii, platformun nasıl çalıştığını, ticket oluşturma adımlarını veya projelerin yönetimini anlatmaktan memnuniyet duyarım."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "complaint",
+            "patterns": [
+                "şikayetim var",
+                "bir şikayetimi dile getirmek istiyorum",
+                "bir hizmetle ilgili şikayet var",
+                "Bu konuda şikayetim var",
+                "Bu hizmetle ilgili sorunum var",
+                "Bir konuyla ilgili rahatsızlığım var",
+                "Bu konuda şikayet etmek istiyorum",
+                "Bu serviste bir sorun yaşadım",
+                "Bir sorunla karşılaştım",
+                "Bir problemle karşılaştım ve şikayetçiyim",
+                "Şikayetim var, dinler misiniz?",
+                "Bu konu hakkında bir şikayetim var",
+                "Bir sorun yaşıyorum, şikayetim var",
+                "Hizmetle ilgili bir problem var",
+                "Bu konu hakkında şikayetim var",
+                "Bu konuda bir sıkıntım var",
+                "Bir sorunum var ve şikayetçiyim",
+                "Bu servisten memnun değilim, şikayetim var",
+                "Bu konuda rahatsızlık duyuyorum",
+                "Şikayetimi iletmek istiyorum"
+            ],
+            "responses": [
+                "Size yardımcı olabilmem için lütfen ayrıntı verir misiniz?",
+                "Lütfen şikayetinizi belirtin, herhangi bir rahatsızlık için özür dileriz",
+                "Size yardımcı olabilmem için lütfen şikayetinizi daha ayrıntılı bir şekilde belirtir misiniz?",
+                "Elbette, rahatsızlığınızı anlamam için şikayetinizi detaylandırabilir misiniz?",
+                "Lütfen şikayetinizi belirtin, size en iyi şekilde yardımcı olmak istiyorum.",
+                "Lütfen şikayetinizi bana detaylı bir şekilde aktarın."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "info-ticket",
+            "patterns": [
+                "ticket nedir?",
+                "ticketlar nedir?",
+                "ticket ne anlama geliyor?",
+                "ticket nasıl kullanılır?",
+                "ticket hakkında bilgi almak istiyorum",
+                "ticketlar hakkında bilgi almak istiyorum"
+            ],
+            "responses": [
+                "Ticketlar, karşılaştığınız sorunları bize bildirebileceğiniz özel iletişim talepleridir. Ticketlarınıza Dashboard > Ticketlar'a tıklayarak ulaşabilir ve mevcut durumları hakkında bilgi alabilirsiniz.",
+                "Ticketlar, yaşadığınız herhangi bir sorunu bildirmek veya bir istekte bulunmak için kullanılan özel iletişim kutularıdır. Dashboard > Ticketlar'a tıklayarak açık ticketlarınızı görebilir ve mevcut durumları hakkında bilgi alabilirsiniz.",
+                "Bir ticket, herhangi bir sorunuz veya ihtiyacınız olduğunda bizimle iletişime geçmek için kullanabileceğiniz özel bir iletişim talebi olarak düşünülebilir.",
+                "Ticketlar sorununuzu bizimle paylaşmanızı sağlar. Size en iyi şekilde yardımcı olmak için bekliyoruz.",
+                "Ticketlar, bizimle etkili iletişim kurmanızı sağlar. Sorunlarınızı bize iletmek için Dashboard > Ticket Ekle'yi kullanabilirsiniz. Açtığınız ticketları Dashboard > Ticketlar'dan yönetebilirsiniz.",
+                "Ticketlar, sorunlarınızı bizimle paylaşmanız için kullanabileceğiniz özel iletişim talepleridir.",
+                "Ticketlar, karşılaştığınız sorunları veya ihtiyaçlarınızı bizimle paylaşmanız için kullanabileceğiniz özel iletişim kutularıdır.",
+                "Bir ticket, herhangi bir sorun veya ihtiyaç durumunda iletişime geçmek için kullanabileceğiniz özel bir iletişim talebidir.",
+                "Ticketlar, platformumuzda yaşadığınız her türlü sorunu veya ihtiyacı bize iletebilmek için kullanabileceğiniz araçlardır.",
+                "Sorunları çözmek ve ihtiyaçlarınıza yanıt vermek için tasarlanmış iletişim taleplerine 'Ticket' adını veriyoruz."
+            ],
+            "context_set": [
+                "get_info-ticket",
+                "set_info-ticket"
+            ]
+        },
+        {
+            "tag": "where-ticket",
+            "patterns": [
+                "ticket ekranı nerede",
+                "ticket ekranını göster",
+                "ticketlar nerede?",
+                "daha önceden oluşturduğum ticketlar nerede?",
+                "açtığım ticketlar nerede?",
+                "ticketlara nereden ulaşabilirim?",
+                "ticket ekranına nereden ulaşabilirim?"
+            ],
+            "responses": [
+                "Ticket listenize Dashboard > Ticketlar'a tıklayarak ulaşabilirsiniz.",
+                "Ticket detaylarına, Dashboard > Ticketlar > Ticket Detayları'na tıklayarak ulaşabilirsiniz.",
+                "Ticketlarınıza en kolay şekilde ulaşmak için Dashboard'da 'Ticketlar' bölümüne gidebilirsiniz.",
+                "Eğer daha önce oluşturduğunuz ticketları görmek isterseniz, Dashboard > Ticketlar bölümüne tıklamanız yeterli.",
+                "Açık veya kapalı ticketlarınıza Dashboard'da bulunan 'Ticketlar' bölümünden erişebilirsiniz.",
+                "Ticketlarınızı yönetmek ve durumlarını görmek için Dashboard > Ticketlar bölümünü ziyaret edin.",
+                "Bir ticketı incelemek isterseniz, Dashboard > Ticketlar > Ticket Detayları'na göz atabilirsiniz.",
+                "Sorunlarınıza dair daha önce oluşturduğunuz ticketları Dashboard > Ticketlar bölümünden bulabilirsiniz.",
+                "Açtığınız veya üzerinde çalışılan ticketları görüntülemek için Dashboard > Ticketlar bölümünü kullanabilirsiniz."
+            ],
+            "context_set": [
+                "get_where-ticket",
+                "set_where-ticket"
+            ]
+        }
+     
+    ]
+}

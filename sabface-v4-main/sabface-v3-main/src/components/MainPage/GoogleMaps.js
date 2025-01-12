@@ -14,6 +14,8 @@ const center = {
   lng: 39.37325320122449,
 };
 
+  
+
 const googleMapsApiKey = "AIzaSyDyMgwuK7JtmJiPjZx039AfYW7H5pyjS78";
 
 const GoogleMaps = ({ selectedCarNo, setSelectedCarNo }) => {
@@ -25,9 +27,15 @@ const GoogleMaps = ({ selectedCarNo, setSelectedCarNo }) => {
   // Robotları çek
   const fetchRobots = async () => {
     const userId = localStorage.getItem('userId'); // Local storage'dan userId'yi al
+    const roles = JSON.parse(sessionStorage.getItem("roles")); // Kullanıcının rollerini al
+    const isAdmin = roles && roles.includes("Admin"); // Admin olup olmadığını kontrol et
+
     if (userId) {
       try {
-        const response = await fetch(`https://localhost:44315/api/UgvRobot/user/${userId}`);
+        const url = isAdmin 
+            ? `https://localhost:44315/api/UgvRobot` // Admin için istek
+            : `https://localhost:44315/api/UgvRobot/user/${userId}`; // Normal kullanıcı için istek
+        const response = await fetch(url);
         const data = await response.json();
         setRobots(data);
       } catch (error) {
@@ -187,6 +195,14 @@ const GoogleMaps = ({ selectedCarNo, setSelectedCarNo }) => {
     }
   }, [map, robots, selectedCarNo]);
   
+
+  useEffect(() => {
+    const storedHeading = localStorage.getItem('heading');
+    if (storedHeading) {
+      // Use the storedHeading value here as needed
+      console.log('Stored heading:', storedHeading);
+    }
+  }, []);
 
   return (
     <Card

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Driver.Core.Authentication;
 using SABApi.Models;
 using SABApi.Services;
 
@@ -63,6 +64,14 @@ namespace SABApi.Controllers
                 Token = token,
                 UserId = user.Id,
                 City = cityName,
+                UserName = user.Username,
+                FirstName = user.Profile.FirstName,
+                LastName = user.Profile.LastName,
+                Email = user.Profile.Email,
+                Phone = user.Profile.Phone,
+                ProfilePicture = user.Profile.ProfilePicture,
+                Ulke = user.Profile.Ulke,
+                Roles = user.Roles,
                 Coordinates = new
                 {
                     Latitude = coordinates.Latitude,
@@ -109,6 +118,75 @@ namespace SABApi.Controllers
                 }
             });
         }
+        [HttpGet("profile/{userId}")]
+        public async Task<IActionResult> GetProfile(string userId)
+        {
+            var user = await _userService.GetByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound("Kullanıcı bulunamadı.");
+            }
+
+            return Ok(user.Profile);
+        }
+        [HttpPut("profile/{userId}")]
+        public async Task<IActionResult> UpdateProfile(string userId, [FromBody] Profile updatedProfile)
+        {
+            var user = await _userService.GetByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound("Kullanıcı bulunamadı.");
+            }
+
+            user.Profile = updatedProfile;
+            await _userService.UpdateUserAsync(user);
+
+            return Ok("Profil başarıyla güncellendi.");
+        }
+
+        [HttpPost("profile/{userId}")]
+        public async Task<IActionResult> CreateProfile(string userId, [FromBody] Profile newProfile)
+        {
+            var user = await _userService.GetByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound("Kullanıcı bulunamadı.");
+            }
+
+            user.Profile = newProfile;
+            await _userService.UpdateUserAsync(user);
+
+            return Ok("Profil başarıyla oluşturuldu.");
+        }
+
+
+        [HttpPatch("{userId}")]
+        public async Task<IActionResult> UpdateUserFields(string userId, [FromBody] User updatedFields)
+        {
+            if (updatedFields == null)
+            {
+                return BadRequest("No fields provided for update.");
+            }
+
+            var user = await _userService.GetByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            // Sadece değiştirilen alanları güncelle
+            await _userService.UpdateUserAsync(updatedFields);
+
+            return Ok(new
+            {
+                Message = "User updated successfully",
+                UpdatedUser = updatedFields
+            });
+        }
+
+
+
+
 
 
 

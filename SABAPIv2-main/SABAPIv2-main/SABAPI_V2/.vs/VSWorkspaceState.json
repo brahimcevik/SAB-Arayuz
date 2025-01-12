@@ -6,6 +6,6 @@
     "\\SABAPI\\Models",
     "\\SABAPI\\Services"
   ],
-  "SelectedNode": "\\SABAPI\\Controllers\\UserController.cs",
+  "SelectedNode": "\\SABAPI\\Models\\UgvRobot.cs",
   "PreviewInSolutionExplorer": false
 }

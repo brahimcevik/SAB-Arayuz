@@ -11,6 +11,7 @@ function ModeCard({ selectedCarNo }) {
     setCurrentPage(page);
   };
 
+
   return (
     <div className="flex justify-center items-start mt-5 space-x-4 ">
       {/* İlk Kart */}

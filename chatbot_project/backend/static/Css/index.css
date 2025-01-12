@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color:whitesmoke;
+}
+#navbar {
+    background: linear-gradient(to right, #82c6ee, #56c1ff, #2380b6);
+    padding: 10px;
+    max-height: 75px;
+}
+.navbar-text{
+    color: white !important;
+    font-size: 18px;
+}
+#chatbox {
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    margin-top: 130px;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    background-color: white;
+}
+#chatbox::-webkit-scrollbar {
+    width: 8px;
+}
+#chatbox::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+#chatbox::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+#chatbox::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.message {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    max-width: 70%;
+}
+.user-message {
+    background-color: #d4edda;
+    color: #155724;
+    align-self: flex-end;
+}
+.bot-message {
+    background-color: #ffeeba;
+    color: #856404;
+}
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+#userInput {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+#sendBtn {
+    padding: 10px 15px;
+    border-radius: 50px;
+    margin-left: 10px;
+    background-color: #56c1ff;
+    border: none;
+    transition: ease 1s ;
+}
+#sendBtn:hover{
+    background-color: #41a1da;
+}
+.navbar-brand img {
+    height: 60px;
+}
+.custom-btn-yes, .custom-btn-no{
+    background-color: #56c1ff;
+    padding: 10px;
+    padding-right: 25px;
+    padding-left: 25px;
+    color: white;
+    transition: ease-in-out 0.5s;
+}
+.custom-btn-no{
+    background-color: rgb(219, 17, 17);
+}
+
+.custom-btn-yes:hover{
+    color: white;
+    background-color:#41a1da ;
+}
+
+.custom-btn-no:hover{
+    background-color: rgb(238, 20, 20);
+    color: white;
+}
+
+#context-display {
+    top: 10px;
+    left: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+  }

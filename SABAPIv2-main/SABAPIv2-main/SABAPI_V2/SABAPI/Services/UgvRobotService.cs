@@ -204,6 +204,7 @@ namespace SABApi.Services
                 x => x.Id == id,
                 updateDefinition);
         }
+      
 
 
         public async Task UpdateManuelStatusAsync(int no, ManuelStatusUpdateRequests request)
@@ -217,6 +218,15 @@ namespace SABApi.Services
 
         public async Task<List<UgvRobot>> GetByUserIdAsync(string userId) =>
             await _ugvRobotCollection.Find(x => x.UserId == userId).ToListAsync();
+
+        public async Task UpdateHeadingAsync(int no, int newHeading)
+        {
+            var updateDefinition = Builders<UgvRobot>.Update.Set(x => x.Heading, newHeading);
+
+            await _ugvRobotCollection.UpdateOneAsync(
+                x => x.No == no,
+                updateDefinition);
+        }
 
     }
 }

@@ -270,6 +270,7 @@ namespace SABApi.Controllers
 
             return NoContent();
         }
+      
 
         [HttpPatch("update-manuel-status/{no}")]
         public async Task<IActionResult> UpdateManuelStatus(int no, [FromBody] ManuelStatusUpdateRequests request)
@@ -286,11 +287,29 @@ namespace SABApi.Controllers
             return NoContent();
         }
 
+        [HttpPatch("update-heading/{no}")]
+        public async Task<ActionResult> UpdateHeading(int no, [FromBody] int newHeading)
+        {
+            var robot = await _ugvRobotService.GetByNoAsync(no);
+
+            if (robot == null)
+            {
+                return NotFound();
+            }
+
+            robot.Heading = newHeading;
+
+            await _ugvRobotService.UpdateHeadingAsync(no, newHeading);
+
+            return NoContent();
+        }
+
         [HttpGet("user/{userId}")]
         public async Task<ActionResult<List<UgvRobot>>> GetByUserId(string userId)
         {
             var robots = await _ugvRobotService.GetByUserIdAsync(userId);
             return Ok(robots);
         }
+
     }
 }
