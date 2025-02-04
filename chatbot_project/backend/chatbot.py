@@ -152,13 +152,21 @@ def predict_class(sentence):
             return []
 
         results.sort(key=lambda x: x[1], reverse=True)
-        return_list = [{'intent': classes[r[0]], 'probability': str(r[1])} for r in results]
+        return_list = []
+        for r in results:
+            return_list.append({
+                "intent": classes[r[0]], 
+                "probability": str(r[1])
+            })
+        
         logger.info(f"Predict class results: {return_list}")
-
         return return_list
 
     except Exception as e:
         logger.error(f"predict_class Hatası: {e}")
+        return []
+
+
 def get_response(intents_list, intent_json, user_response=None, selected_id=None):
     global current_context
 

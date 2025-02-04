@@ -11,12 +11,15 @@ namespace SABApi.Services
     public class UserService
     {
         private readonly IMongoCollection<User> _userCollection;
+        
+
 
         public UserService(IOptions<UgvRobotSettings> settings)
         {
             var client = new MongoClient(settings.Value.ConnectionString);
             var database = client.GetDatabase(settings.Value.DatabaseName);
             _userCollection = database.GetCollection<User>(settings.Value.UserCollectionName);
+          
         }
 
         // Tüm kullanıcıları getir
@@ -134,15 +137,15 @@ namespace SABApi.Services
             }
         }
 
-
-
         // Kullanıcıyı sil
         public async Task DeleteUserAsync(string userId)
         {
             var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
             await _userCollection.DeleteOneAsync(filter);
         }
-       
+
+     
+      
 
     }
 }

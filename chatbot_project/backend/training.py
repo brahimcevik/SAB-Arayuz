@@ -16,7 +16,7 @@ nltk.download('stopwords')
 stop_words = set(stopwords.words("turkish"))
 
 # intents.json dosyasını yükleme
-with open('backend/intents.json', encoding='utf-8') as file:
+with open('c:/Users/ibrah/OneDrive/Belgeler/GitHub/SAB-Arayuz/chatbot_project/backend/intents.json', encoding='utf-8') as file:
     intents = json.load(file)
 
 words = []

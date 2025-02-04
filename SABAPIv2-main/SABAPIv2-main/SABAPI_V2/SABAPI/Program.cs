@@ -14,6 +14,7 @@ builder.Services.Configure<UgvRobotSettings>(
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddScoped<UgvRobotService>();
 
+
 // WeatherService için HttpClient ekliyoruz
 builder.Services.AddHttpClient<WeatherService>();
 

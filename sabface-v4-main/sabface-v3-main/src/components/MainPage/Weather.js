@@ -7,22 +7,27 @@ import { selectSelectedId } from "../../redux/ugvSlice";
 function Weather({ selectedCarNo, cityCoordinates }) {
   const selectedId = useSelector(selectSelectedId);
   const [weatherData, setWeatherData] = useState(null);
-  const [coordinates, setCoordinates] = useState(  { lat: 39.1377, lon: 43.9244 }); // Default coordinates
+  const [coordinates, setCoordinates] = useState({ lat: 39.1377, lon: 43.9244 }); // Default coordinates
 
   const fetchWeatherData = async () => {
     const apiKey = "0c0dcdc7e9b2975a7e115ed4ec2ae3ab";
 
     // alert(selectedId);
     let lat = 39.5
-     let lon = 40
-     if(selectedId==null){
-      lat = cityCoordinates.latitude
-      lon = cityCoordinates.longitude
-      }else{
+    let lon = 40
+    if (selectedId == null) {
+      if (cityCoordinates && cityCoordinates.latitude && cityCoordinates.longitude) {
+        lat = cityCoordinates.latitude;
+        lon = cityCoordinates.longitude;
+      } else {
+        console.error("cityCoordinates is undefined or does not have latitude/longitude");
+        return; // Exit the function if coordinates are not available
+      }
+    } else {
       lat = coordinates.lat
       lon = coordinates.lon
-      }
-    
+    }
+
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
     try {
@@ -49,10 +54,10 @@ function Weather({ selectedCarNo, cityCoordinates }) {
   };
 
   useEffect(() => {
-   
-      // setCoordinates(cityCoordinates);
-      fetchWeatherData();
-    
+
+    // setCoordinates(cityCoordinates);
+    fetchWeatherData();
+
   }, [selectedId, cityCoordinates]);
 
   useEffect(() => {

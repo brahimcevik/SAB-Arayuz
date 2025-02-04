@@ -17,13 +17,20 @@ function CameraPage() {
   const dispatch = useDispatch();
   const selectedId = useSelector(selectSelectedId);
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState([]);
+  
   const [robotInfo, setRobotInfo] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [robots, setRobots] = useState([]);
   const [showRobots, setShowRobots] = useState(false);
   const [selectedCarNo, setSelectedCarNo] = useState('');
   const [currentContext, setCurrentContext] = useState('');
+  const [messages, setMessages] = useState(() => {
+    const savedMessages = localStorage.getItem('chatMessages');
+    return savedMessages ? JSON.parse(savedMessages) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem('chatMessages', JSON.stringify(messages));
+  }, [messages]);
 
   // Robotları Fetch Etme
   useEffect(() => {

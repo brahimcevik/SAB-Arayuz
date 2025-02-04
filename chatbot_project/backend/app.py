@@ -7,7 +7,24 @@ from colored_logger import get_colored_logger
 import requests
 import re
 import urllib3
-import google.generativeai as genai # type: ignore
+import google.generativeai as genai
+from pymongo import MongoClient
+from datetime import datetime, timedelta
+
+import sys
+sys.path.append('C:/Users/ibrah/OneDrive/Belgeler/GitHub/SAB-Arayuz/chatbot_project')
+from database import (
+    save_chat_message,
+    save_chat_summary,
+    get_chat_history,
+    save_mod1_update,
+    save_coordinate_update
+)
+# MongoDB bağlantısı
+client = MongoClient('mongodb://localhost:27017/')
+db = client['chatbot_db']
+chat_history = db['chat_history']
+chat_summaries = db['chat_summaries']
 
 genai.configure(api_key='AIzaSyAMXs2S8hKd6RFtIuXFF25C587Y1BNL77E')
 model = genai.GenerativeModel('gemini-pro')
@@ -74,7 +91,6 @@ tarim_kelimeleri = [
 def home():
     """Anasayfayı renderlar."""
     return render_template('index.html')
-
 @app.route("/chatbot", methods=['POST'])
 def chatbot():
     global current_operation
@@ -90,6 +106,7 @@ def chatbot():
             msg = data.get('msg', '').lower()
             selected_id = data.get('selectedId')
             is_robot_selected = data.get('isRobotSelected', False)
+            user_id = request.remote_addr
 
             if not isinstance(msg, str) or not msg:
                 logger.debug("Mesaj hatalı: Mesaj boş veya geçersiz")
@@ -244,6 +261,11 @@ def chatbot():
                             })
                         mod1_context["parameters"]["ilkDonusAcisi"] = "Sağ" if value == 1 else "Sol"
                         parameters = mod1_context["parameters"]
+
+                        # Mod1 güncellemesini MongoDB'ye kaydet
+                        save_mod1_update(user_id, selected_id, parameters)
+                        logger.info(f"Mod1 parametreleri kaydedildi: {parameters}")
+
                         mod1_context.update({
                             "active": False,
                             "current_step": None,
@@ -312,6 +334,18 @@ def chatbot():
                                 })
                             else:
                                 coordinates = coordinate_context["coordinates"]
+
+                                # Koordinat güncellemesini MongoDB'ye kaydet
+                                save_coordinate_update(user_id, selected_id, coordinates)
+                                logger.info(f"Koordinatlar kaydedildi: {coordinates}")
+
+                                save_chat_message(user_id=user_id, message=msg, sender='user', context='update_coordinates')
+                                save_chat_message(user_id=user_id, message="Koordinatlar başarıyla güncellendi", sender='bot', context='update_coordinates')
+
+                                # Özet oluştur
+                                create_and_save_chat_summary(user_id)
+
+
                                 coordinate_context.update({
                                     "active": False,
                                     "current_step": None,
@@ -342,7 +376,7 @@ def chatbot():
                         "showOptions": True
                     })
 
-            # Normal chatbot akışı kısmını şöyle değiştirelim
+            # Normal chatbot akışı
             INTENT_THRESHOLD = 0.85  # %85 eşik değeri
 
             if not intents_list:
@@ -350,18 +384,32 @@ def chatbot():
                 # Hiç intent bulunamadıysa ve tarımla ilgili kelime varsa
                 if any(kelime in msg.lower() for kelime in tarim_kelimeleri):
                     try:
+                        # Önce kullanıcı mesajını kaydet
+                        save_chat_message(user_id=user_id, message=msg, sender='user', context='gemini_response')
+                        
+                        # Gemini'den yanıt al
                         response = model.generate_content(
                             f"Sen bir tarım chatbot asistanısın. Sadece tarımla ilgili soruları yanıtla. Soru: {msg}"
                         )
+                        
+                        # Bot yanıtını kaydet
+                        save_chat_message(user_id=user_id, message=response.text, sender='bot', context='gemini_response')
+
+                        # Özet oluştur ve kaydet
+                        create_and_save_chat_summary(user_id)
+
                         return jsonify({
                             'response': response.text,
-                            'currentContext': "gemini_response"
+                            'currentContext': "gemini_response",
+                            'showCancelButton': False 
                         })
+                       
                     except Exception as e:
                         logger.error(f"Gemini API hatası: {str(e)}")
                         return jsonify({
                             'response': 'Üzgünüm, bu soruyu şu anda yanıtlayamıyorum.',
-                            'currentContext': "error"
+                            'currentContext': "error",
+                            'showCancelButton': False 
                         })
             else:
                 # Intent bulunduysa, probability kontrolü yap
@@ -369,36 +417,71 @@ def chatbot():
                 probability = float(highest_intent['probability'])
                 
                 if probability >= INTENT_THRESHOLD:
-                    # Eğer probability yüksekse, intent sistemini kullan
-                    response, show_options = get_response(intents_list, intents, user_response=msg, selected_id=selected_id)
-                    return jsonify({
-                        'response': response,
-                        'showOptions': show_options,
-                        'currentContext': current_context
-                    })
+                    try:
+                        # Eğer probability yüksekse, intent sistemini kullan
+                        response, show_options = get_response(intents_list, intents, user_response=msg, selected_id=selected_id)
+
+                        # Önce mesajları kaydet
+                        save_chat_message(user_id=user_id, message=msg, sender='user', context=current_context)
+                        save_chat_message(user_id=user_id, message=response, sender='bot', context=current_context)
+
+                        # Özet oluştur ve kaydet
+                        create_and_save_chat_summary(user_id)
+
+                        return jsonify({
+                            'response': response,
+                            'showOptions': show_options,
+                            'currentContext': current_context,
+                            'showCancelButton': False
+                        })
+
+                    except Exception as e:
+                        logger.error(f"Intent işleme hatası: {str(e)}")
+                        return jsonify({
+                            'response': 'Üzgünüm, bir hata oluştu.',
+                            'currentContext': "error",
+                            'showCancelButton': False
+                        })
+
                 else:
-                    # Probability düşükse ve tarımla ilgili kelime varsa Gemini'ye yönlendir
+    # Probability düşükse ve tarımla ilgili kelime varsa Gemini'ye yönlendir
                     if any(kelime in msg.lower() for kelime in tarim_kelimeleri):
                         try:
+                            # Gemini'den yanıt al
                             response = model.generate_content(
                                 f"Sen bir tarım chatbot asistanısın. Sadece tarımla ilgili soruları yanıtla. Soru: {msg}"
                             )
+                            
+                            # Mesajları kaydet
+                            save_chat_message(user_id=user_id, message=msg, sender='user', context='gemini_response')
+                            save_chat_message(user_id=user_id, message=response.text, sender='bot', context='gemini_response')
+
+                            # Özet oluştur
+                            create_and_save_chat_summary(user_id)
+                            
                             return jsonify({
                                 'response': response.text,
-                                'currentContext': "gemini_response"
+                                'currentContext': "gemini_response",
+                                'showCancelButton': False
                             })
+
                         except Exception as e:
                             logger.error(f"Gemini API hatası: {str(e)}")
                             return jsonify({
                                 'response': 'Üzgünüm, bu soruyu şu anda yanıtlayamıyorum.',
-                                'currentContext': "error"
+                                'currentContext': "error",
+                                'showCancelButton': False
                             })
+
+                        
+
                     else:
                         # Tarımla ilgili kelime de yoksa
                         logger.info("Tarımla ilgili kelime bulunamadı, red cevabı dönülüyor...")
                         return jsonify({
                             'response': 'Bu konu hakkında yardımcı olamıyorum. Ben sadece tarımla ilgili konularda uzmanım.',
-                            'currentContext': "not_agricultural"
+                            'currentContext': "not_agricultural",
+                            'showCancelButton': False
                         })
 
         except Exception as e:
@@ -407,7 +490,71 @@ def chatbot():
     else:
         logger.debug("Geçersiz Content-Type başlığı")
         return jsonify({'error': 'Invalid Content-Type'}), 400
+def create_and_save_chat_summary(user_id, chat_history=None):
+    """Sohbet geçmişini alır, özetler ve kaydeder"""
+    try:
+        if chat_history is None:
+            chat_history = get_chat_history(user_id, hours=1)
+        
+        logger.info(f"Sohbet geçmişi alındı: {len(chat_history)} mesaj bulundu")
+        
+        if chat_history:
+            chat_text = "\n".join([
+                f"{'Kullanıcı' if message.get('sender')=='user' else 'Bot'}: {message.get('message', '')}"
+                for message in chat_history
+            ])
+            logger.info(f"Oluşturulan chat_text: {chat_text}")
 
+            prompt = f"""Sen bir tarım robotu chatbot'usun. Aşağıdaki sohbet geçmişini özetle.
+            ÖZETLEME KURALLARI:
+            1. SADECE bu sohbette geçen konuları özetle
+            2. Sohbette geçmeyen hiçbir konuyu ekleme
+            3. Her kategoriyi sadece konuşulduysa ekle
+
+            ÖZET FORMATI:
+            1. Robot Komutları:
+            - Mod1 güncellemeleri: [varsa detaylar]
+            - Koordinat güncellemeleri: [varsa detaylar]
+            - Diğer robot komutları: [varsa detaylar]
+
+            2. Tarımsal Konular:
+            - Sorulan sorular: [varsa detaylar]
+            - Verilen cevaplar: [varsa detaylar]
+            - Alınan kararlar: [varsa detaylar]
+
+            3. Önemli Notlar:
+            - Karşılaşılan sorunlar: [varsa detaylar]
+            - Çözüm önerileri: [varsa detaylar]
+
+            Sohbet geçmişi:
+            {chat_text}
+
+            NOT: Eğer bir kategori hakkında konuşma geçmediyse, o kategoriyi özete ekleme!
+            """
+            
+            summary_response = model.generate_content(prompt)
+            summary = summary_response.text
+            logger.info(f"Gemini'den alınan özet: {summary}")
+
+            # Özet içeriği kontrolü
+            relevant_keywords = [
+                'mod1', 'koordinat', 'robot', 'tarım', 'sera', 'sulama', 
+                'bitki', 'hasat', 'tohum', 'gübre', 'ilaçlama', 'toprak'
+            ]
+
+            if any(keyword in summary.lower() for keyword in relevant_keywords):
+                save_chat_summary(
+                    user_id=user_id,
+                    summary=summary,
+                    start_time=chat_history[0]['timestamp'] if chat_history else None,
+                    end_time=chat_history[-1]['timestamp'] if chat_history else None
+                )
+                logger.info("Özet başarıyla kaydedildi")
+            else:
+                logger.warning("Özet alakasız görünüyor, kaydedilmedi")
+
+    except Exception as e:
+        logger.error(f"Özet oluşturma ve kaydetme hatası: {str(e)}")
 def fetch_robots_info():
     """Tüm robotları fetch edip bilgilerini döner."""
     url = "https://localhost:44315/api/UgvRobot"
@@ -496,3 +643,6 @@ def update_coordinates(car_no):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
